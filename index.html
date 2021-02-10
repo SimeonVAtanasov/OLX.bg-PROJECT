@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OLX</title>
-    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/style/style.css" />
+    <link rel="stylesheet" href="./assets/style/reset.css" />
     <script
       src="https://kit.fontawesome.com/4645bf5674.js"
       crossorigin="anonymous"
@@ -15,6 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <script src="./assets/script/categories.js"></script>
   </head>
   <body>
     <header>
@@ -39,7 +41,7 @@
             <li>
               <a
                 href="#advertismentPage"
-                class="advertismentBtn"
+                class="advertisment-button"
                 id="advertismentButton"
               >
                 Добави обява
@@ -52,10 +54,13 @@
     <div id="indexPage">
       <main>
         <form action="">
-          <input type="text">
+          <input type="text" />
         </form>
-        <div>
-          <!-- Category container -->
+        <div class="categories">
+          <div class="categories-header">
+            <h3>Главни категории</h3>
+          </div>
+          <div class="categories-container" id="categoriesContainer"></div>
         </div>
         <div>
           <!-- Promo  adds -->
@@ -63,8 +68,7 @@
       </main>
     </div>
 
-<footer>
-
-</footer>
+    <footer></footer>
+    <script src="./assets/script/index.js"></script>
   </body>
 </html>
