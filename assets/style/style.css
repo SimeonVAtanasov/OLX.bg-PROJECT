@@ -78,7 +78,7 @@ header {
   transition: 0.4s ease-in-out;
 }
 
-.advertismentBtn:hover {
+.advertisment-button:hover {
   background: none;
   color: white;
 }
