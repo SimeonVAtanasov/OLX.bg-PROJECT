@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+}
+
+header {
+  background-color: #0e2f35;
+  height: 72px;
+}
+
+.menu {
+  position: absolute;
+  top: 27px;
+  right: 158px;
+}
+
+.menu ul {
+  display: flex;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+.logo {
+  height: 72px;
+  overflow: hidden;
+  position: absolute;
+  top: -14px;
+  left: 180px;
+  width: 93px;
+}
+
+.logo-image {
+  width: 100px;
+  height: 100px;
+}
+
+.fa-heart {
+  font-size: 22px;
+  color: white;
+}
+
+.menu li {
+  margin-right: 40px;
+}
+
+.dropdown {
+  color: white;
+}
+
+.fa-user {
+  font-size: 21px;
+  margin-right: 13px;
+}
+
+.dropdown span {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  margin-right: 5px;
+  position: relative;
+  top: -3px;
+}
+
+.fa-chevron-down {
+  font-size: 15px;
+  color: rgb(221, 216, 216);
+  position: relative;
+  top: -3px;
+}
+
+.advertisment-button {
+  background: #fff;
+  color: #0e2f36;
+  padding: 7px 12px;
+  border: 5px solid white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  transition: 0.4s ease-in-out;
+}
+
+.advertisment-button:hover {
+  background: none;
+  color: white;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.categories-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 70%;
+}
+
+.categories-header {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.category-card {
+  width: 106px;
+  height: 106px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 75px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+}
+
+.image-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 19px;
+}
+
+.title:hover{
+  background-color: #0e2f35;
+  color: white;
+  padding-bottom: 3px;
+}
+
+.image-container img {
+  width: 70px;
+  height: 70px;
+}
