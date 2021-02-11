@@ -1,28 +1,69 @@
-function printCategories(categories) {
-  let categoriesContainer = document.getElementById("categoriesContainer");
-  for (let i = 0; i < categories.length; i++) {
-    let currentCategory = categories[i];
-    let categoryCard = document.createElement("div");
+(() => {
+  window.addEventListener("DOMContentLoaded", onHashChange)
+  window.addEventListener("hashchange", onHashChange)
 
-    categoryCard.className = "category-card";
+  function onHashChange() {
+    const indexPage = getById("indexPage")
+    const adsContainer = getById("noticeContainer")
+    const errorPage = getById("errorPage")
 
-    let imageContainer = document.createElement("div");
+    let page = location.hash.slice(1);
 
-    imageContainer.style.backgroundColor = currentCategory['background-color'];
-    imageContainer.className = "image-container"
+    switch (page) {
+      case"":
+      case "index":
+        indexPage.style.display = "block";
+        adsContainer.style.display = "none";
+        errorPage.style.display = "none"
+        break;
 
-    let categoryImage = document.createElement("img");
+      case "advertisments":
+        indexPage.style.display = "none";
+        adsContainer.style.display = "block";
+        errorPage.style.display = "none"
+        break;
 
-    categoryImage.src = currentCategory.image;
-
-    let description = document.createElement("p");
-
-    description.innerText = currentCategory.title;
-    description.className = "title";
-    imageContainer.append(categoryImage);
-    categoryCard.append(imageContainer, description);
-    categoriesContainer.append(categoryCard);
+      default:
+        indexPage.style.display = "none";
+        adsContainer.style.display = "none";
+        errorPage.style.display = "block"
+    }
   }
-}
 
-printCategories(categories);
+  function printCategories(categories) {
+
+    let categoriesContainer = getById("categoriesContainer");
+
+    for (let i = 0; i < categories.length; i++) {
+      let currentCategory = categories[i];
+      let categoryCard = createElement("div");
+
+      categoryCard.className = "category-card";
+
+      let imageContainer = createElement("div");
+
+      imageContainer.style.backgroundColor = currentCategory['background-color'];
+      imageContainer.className = "image-container"
+
+      let categoryImage = createElement("img");
+
+      categoryImage.src = currentCategory.image;
+
+      let description = createElement("p", currentCategory.title);
+
+      description.className = "title";
+      imageContainer.append(categoryImage);
+      categoryCard.append(imageContainer, description);
+      categoriesContainer.append(categoryCard);
+
+      categoryCard.addEventListener("click", function(){
+        location.hash = "#advertisments"
+        // TO DO Use functions to filter and print in the container
+      })
+    }
+  }
+
+  printCategories(categories);
+
+
+})()

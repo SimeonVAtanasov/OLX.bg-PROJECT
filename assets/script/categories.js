@@ -68,6 +68,11 @@ const categories= [
         "title":"Доставки с отстъпки",
         "image":"./images/Category-Images/delivery.png",
         "background-color": "#cadcfb"
+    },
+    {
+        "title":"Пази се от измами с OLX",
+        "image":"./images/Category-Images/safety.gif",
+        "background-color": "#cadcfb"
     }
 
 ]

@@ -107,6 +107,7 @@ header {
 }
 
 .category-card {
+  cursor: pointer;
   width: 106px;
   height: 106px;
   text-align: center;
