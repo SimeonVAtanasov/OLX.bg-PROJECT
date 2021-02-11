@@ -125,7 +125,7 @@ header {
   margin-bottom: 19px;
 }
 
-.title:hover{
+.title:hover {
   background-color: #0e2f35;
   color: white;
   padding-bottom: 3px;
@@ -135,3 +135,20 @@ header {
   width: 70px;
   height: 70px;
 }
+
+.pro-footer{
+  background-color: #002f34;
+}
+
+.olx-pro {
+  
+  display: flex;
+  text-align: left;
+  font-size: 12px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 820px;
+  height: 130px;
+  align-items: center;
+}
+
