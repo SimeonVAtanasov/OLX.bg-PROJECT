@@ -1,17 +1,20 @@
 class Advertisement {
-    constructor(title, category, description, photo, city, contactName, email, telephoneNumber) {
+    constructor(title, category, description, price, photo, city, contactName, email, telephoneNumber) {
         this.title = title;
         this.category = category;
         this.description = description;
+        this.price = price
         this.photo = photo;
         this.city = city;
+        this.country = "Bulgaria"
         this.contactName = contactName;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
+
     }
 }
 
-class AdvertisementManage {
+class AdvertisementManager {
     constructor() {
         this.allAds = [];
         this.filteredAds = [];
@@ -23,17 +26,47 @@ class AdvertisementManage {
         }
     }
 
-    filter(str) {
-        if (typeof str !== "string" || str.trim().length === 0) {
-            return this.allAds
+    filterBy(type, optionA, optionB) {
+        if (!type || typeof str !== "string" || str.trim().length === 0) {
+            return this.allAds;
         }
 
-        const searchStr = str.toLowerCase().trim();
+        switch (type) {
+            case "title":
+                const filteringStr = optionA.toLowerCase().trim();
 
-        this.filteredAds = this.allAds.filter(notice => notice.title.toLowerCase().includes(str))
+                this.filteredAds = this.allAds.filter(notice => notice.title.toLowerCase().includes(filteringStr))
+
+                return this.filteredAds;
+            case "category":
+                const categorytype = optionA;
+
+                this.filteredAds = this.allAds.filter(notice => notice.category === optionA);
+
+                return this.filteredAds
+            case "price":
+                if (optionA && optionB) {
+
+                    this.filteredAds = this.allAds.filter(notice => notice.price >= optionA && notice.price <= optionB)
+                    return this.filteredAds
+
+                } else if (optionA && !optionB) {
+
+                    this.filteredAds = this.allAds.filter(notice => notice.price >= optionA)
+                    return this.filteredAds
+
+                } else {
+                    
+                    this.filteredAds = this.allAds.filter(notice => notice.price <= optionB)
+                    return this.filteredAds
+
+                }
 
 
-        return this.filteredAds;
+        }
+
+
+
     }
 
 
