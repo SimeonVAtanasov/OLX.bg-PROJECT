@@ -128,7 +128,7 @@ header {
 .title:hover{
   background-color: #0e2f35;
   color: white;
-  height: 16px;
+  padding-bottom: 3px;
 }
 
 .image-container img {
