@@ -107,6 +107,7 @@ header {
 }
 
 .category-card {
+  cursor: pointer;
   width: 106px;
   height: 106px;
   text-align: center;
@@ -136,19 +137,45 @@ header {
   height: 70px;
 }
 
-.pro-footer{
+.pro-footer {
   background-color: #002f34;
 }
 
 .olx-pro {
-  
   display: flex;
   text-align: left;
-  font-size: 12px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 820px;
+  justify-content: space-evenly;
   height: 130px;
   align-items: center;
+  color: white;
+  width: 800px;
+  margin: auto;
+  font-family: "Open Sans", sans-serif;
 }
 
+.olx-pro span {
+  font-size: 20px;
+  font-weight: 500;
+  display: block;
+  margin-top: 5px;
+  color: #fff;
+}
+
+.olx-description {
+  background: #cbf7ee;
+  padding: 76px 0 67px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.description-text {
+  font-size: 14px;
+  line-height: 24px;
+  width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #002f34;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  padding-top: 40px;
+}

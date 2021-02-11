@@ -1,5 +1,6 @@
 class Advertisement {
-    constructor(title, category, description, price, photo, city, contactName, email, telephoneNumber) {
+    constructor(id, title, category, description, price, photo, city, contactName, email, promo, telephoneNumber) {
+        this.id = id;
         this.title = title;
         this.category = category;
         this.description = description;
@@ -9,8 +10,8 @@ class Advertisement {
         this.country = "Bulgaria"
         this.contactName = contactName;
         this.email = email;
+        this.promo = promo;
         this.telephoneNumber = telephoneNumber;
-
     }
 }
 

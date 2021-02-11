@@ -3,7 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OLX</title>
+    <meta
+      name="description"
+      content="Виж най-новите обяви ☛ от мода и услуги през електроника и вещи за дома до апартаменти, авточасти, коли ☛ и направи добра сделка с OLX!"
+    />
+
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+
+    <title>Обяви от България | Купи и продай изгодно | OLX</title>
+
     <link rel="stylesheet" href="./assets/style/style.css" />
     <link rel="stylesheet" href="./assets/style/reset.css" />
     <script
@@ -17,12 +25,13 @@
       rel="stylesheet"
     />
     <script src="./assets/script/categories.js"></script>
+    <script src="./assets/script/utils.js"></script>
   </head>
   <body>
     <header>
       <nav>
         <div class="logo">
-          <a href="#homePage">
+          <a href="">
             <img src="./images/logo.png" alt="olx logo" class="logo-image"
           /></a>
         </div>
@@ -62,20 +71,47 @@
           </div>
           <div class="categories-container" id="categoriesContainer"></div>
         </div>
-        <div>
+        <div id="promoAdsContainer">
           <!-- Promo  adds -->
+          <h1>Promo ads</h1>
         </div>
       </main>
     </div>
-    <div class="pro-footer">
-      <div class="olx-pro">
-        <img src="./images/statics.png" alt="statics">
-      <span>Развий бизнеса си с OLX PRO</span>
-      </div>
-      
+
+    <div id="errorPage">
+      <h1>Грешка! Тази страница не съществува!</h1>
     </div>
 
-    <footer></footer>
+    <div id="noticeContainer">Notice board</div>
+
+    <div class="pro-footer">
+      <div class="olx-pro">
+        <img src="./images/statics.png" alt="statics" />
+        <span>Развий бизнеса си с OLX PRO</span>
+      </div>
+    </div>
+
+    <div class="olx-description">
+      <div class="description-logo">
+        <img src="./images/description-logo.png" alt="logo" />
+      </div>
+      <div class="description-text">
+        <p>
+          OLX.bg e сайт за безплатни обяви в категории: Недвижими имоти,
+          Автомобили и авточасти, Eлектроника, Мода, За бебето и детето, Дом и
+          градина, Свободно време, Домашни любимци, Услути, Работа, Екскурзии и
+          почивки. Тук може да намериш интересни обяви и лесно да се свържеш с
+          продавача. Ако искаш да купиш нещо - може да намериш атрактивни
+          предложения на цени, по-ниски, отколкото в магазина. Ако искаш да
+          продадеш нещо - можеш да добавиш обява бързо, лесно и безплатно (до
+          определен лимит) и да пуснеш за продажба практически всичко, за което
+          се сетиш. Купувай и продавай в OLX.bg!
+        </p>
+      </div>
+    </div>
+
+    <footer>Footer</footer>
+
     <script src="./assets/script/index.js"></script>
   </body>
 </html>
