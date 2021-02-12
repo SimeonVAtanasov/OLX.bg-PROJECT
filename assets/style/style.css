@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: "Open Sans", sans-serif;
 }
 
 header {
@@ -179,3 +180,143 @@ header {
   font-family: "Open Sans", sans-serif;
   padding-top: 40px;
 }
+
+.categories-and-populars {
+  background-color: #f2f4f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.main-categories,
+.popular-searches {
+  width: 487px;
+  height: 240px;
+  margin-left: 12px;
+  margin-right: 40px;
+}
+
+.categories-and-populars-text {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 14px;
+  text-align: center;
+  line-height: 24px;
+  color: #002f34;
+}
+
+.categories-and-populars-text a {
+  font-family: "Open Sans", sans-serif;
+  text-decoration: none;
+  color: #002f34;
+  padding-right: 1px;
+}
+
+.categories-and-populars-text h3 {
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.image-wrapper {
+  height: 136px;
+  margin-bottom: 10px;
+}
+
+.categories-and-populars-text span {
+  text-align: center;
+}
+
+.main-categories {
+  margin-left: 50px;
+}
+
+footer {
+  position: relative;
+  background-color: #f2f4f5;
+}
+
+.footer{
+  border-top: 1px solid #7f9799;
+  padding-top: 45px;
+  margin-top: 35px;
+}
+
+.main-footer {
+  
+ 
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 1;
+  width: 100%;
+  height: 450px;
+  position: relative;
+  left: -28px;
+}
+
+.links {
+  display: flex;
+  width: 600px;
+  justify-content: space-evenly;
+  margin-top: 16px;
+  z-index: 2;
+}
+
+.links-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.links-wrapper a {
+  color: #002f34;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1.88;
+}
+
+.download-app {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.8;
+  color: grey;
+}
+
+.links-wrapper li {
+  margin: 3px 0;
+}
+
+.app-links a {
+  text-decoration: none;
+}
+
+.app-text {
+  text-align: center;
+}
+
+#downloadFromText {
+  color: black;
+  font-weight: bold;
+}
+
+.partners{
+  z-index: 6;
+}
+
+.footer-image {
+  position: absolute;
+  bottom: 0px;
+  left: 53%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+

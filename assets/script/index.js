@@ -1,37 +1,36 @@
 (() => {
-  window.addEventListener("DOMContentLoaded", onHashChange)
-  window.addEventListener("hashchange", onHashChange)
+  window.addEventListener("DOMContentLoaded", onHashChange);
+  window.addEventListener("hashchange", onHashChange);
 
   function onHashChange() {
-    const indexPage = getById("indexPage")
-    const adsContainer = getById("noticeContainer")
-    const errorPage = getById("errorPage")
+    const indexPage = getById("indexPage");
+    const adsContainer = getById("noticeContainer");
+    const errorPage = getById("errorPage");
 
     let page = location.hash.slice(1);
 
     switch (page) {
-      case"":
+      case "":
       case "index":
         indexPage.style.display = "block";
         adsContainer.style.display = "none";
-        errorPage.style.display = "none"
+        errorPage.style.display = "none";
         break;
 
       case "advertisments":
         indexPage.style.display = "none";
         adsContainer.style.display = "block";
-        errorPage.style.display = "none"
+        errorPage.style.display = "none";
         break;
 
       default:
         indexPage.style.display = "none";
         adsContainer.style.display = "none";
-        errorPage.style.display = "block"
+        errorPage.style.display = "block";
     }
   }
 
   function printCategories(categories) {
-
     let categoriesContainer = getById("categoriesContainer");
 
     for (let i = 0; i < categories.length; i++) {
@@ -42,8 +41,9 @@
 
       let imageContainer = createElement("div");
 
-      imageContainer.style.backgroundColor = currentCategory['background-color'];
-      imageContainer.className = "image-container"
+      imageContainer.style.backgroundColor =
+        currentCategory["background-color"];
+      imageContainer.className = "image-container";
 
       let categoryImage = createElement("img");
 
@@ -56,14 +56,49 @@
       categoryCard.append(imageContainer, description);
       categoriesContainer.append(categoryCard);
 
-      categoryCard.addEventListener("click", function(){
-        location.hash = "#advertisments"
+      categoryCard.addEventListener("click", function () {
+        location.hash = "#advertisments";
         // TO DO Use functions to filter and print in the container
-      })
+      });
     }
   }
 
   printCategories(categories);
 
+  let googlePlay = getById("googlePlay");
+  let appStore = getById("appStore");
+  let appGalerry = getById("appGalerry");
+  let downloadText = getById("downloadText");
+  let downloadFrom = getById("downloadFromText");
 
-})()
+  googlePlay.addEventListener("mouseover", changeText);
+  appStore.addEventListener("mouseover", changeText);
+  appGalerry.addEventListener("mouseover", changeText);
+  googlePlay.addEventListener("mouseout", changeText);
+  appStore.addEventListener("mouseout", changeText);
+  appGalerry.addEventListener("mouseout", changeText);
+
+  function checkTarget(ev) {
+    if (ev.target === googlePlay) {
+      downloadFrom.innerHTML = "Google Play";
+    }
+    if (ev.target === appStore) {
+      downloadFrom.innerHTML = "AppStore";
+    }
+    if (ev.target === appGalerry) {
+      downloadFrom.innerHTML = "AppGalerry";
+    }
+  }
+
+  function changeText(ev) {
+    if (ev.type === "mouseover") {
+      downloadText.innerHTML = "Свали от";
+      checkTarget(ev);
+    }
+
+    if (ev.type === "mouseout") {
+      downloadText.innerHTML = "Свали приложението на OLX за твоя телефон!";
+      downloadFrom.innerHTML = "";
+    }
+  }
+})();
