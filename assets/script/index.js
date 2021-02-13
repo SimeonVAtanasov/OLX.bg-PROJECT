@@ -71,12 +71,13 @@
   let downloadText = getById("downloadText");
   let downloadFrom = getById("downloadFromText");
 
-  googlePlay.addEventListener("mouseover", changeText);
-  appStore.addEventListener("mouseover", changeText);
-  appGalerry.addEventListener("mouseover", changeText);
-  googlePlay.addEventListener("mouseout", changeText);
-  appStore.addEventListener("mouseout", changeText);
-  appGalerry.addEventListener("mouseout", changeText);
+  const boxesToChangeText = [googlePlay, appStore, appGalerry]
+
+  boxesToChangeText.forEach(element => {
+    element.addEventListener("mouseover", changeText)
+    element.addEventListener("mouseout", changeText);
+  });
+
 
   function checkTarget(ev) {
     if (ev.target === googlePlay) {
