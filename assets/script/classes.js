@@ -19,6 +19,7 @@ class AdvertisementManager {
     constructor() {
         this.allAds = [];
         this.filteredAds = [];
+        this.promoAds = [];
     }
 
     addAdvertisment(notice) {
@@ -57,7 +58,7 @@ class AdvertisementManager {
                     return this.filteredAds
 
                 } else {
-                    
+
                     this.filteredAds = this.allAds.filter(notice => notice.price <= optionB)
                     return this.filteredAds
 

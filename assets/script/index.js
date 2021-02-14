@@ -2,6 +2,19 @@
   window.addEventListener("DOMContentLoaded", onHashChange);
   window.addEventListener("hashchange", onHashChange);
 
+  const adsManager = new AdvertisementManager();
+
+  // This code ads the test data
+  arrOfAds.forEach(el => {
+    let notice = new Advertisement(el.id, "Продавам", el.category, el.description, el.price, el.photo, el.city, el.fullName, el.email, el.promo, el.telNumber)
+
+    adsManager.allAds.push(notice)
+  });
+
+  adsManager.promoAds = adsManager.allAds.filter(el => el.promo)
+
+  // -------
+
   function onHashChange() {
     const indexPage = getById("indexPage");
     const adsContainer = getById("noticeContainer");
