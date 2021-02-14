@@ -78,6 +78,51 @@
 
   printCategories(categories);
 
+  (function printPromoAds() {
+    const promoContainer = getById("promoAdsContainer");
+
+    promoContainer.innerHTML = "";
+
+    const nameOfSection = createElement("h1",  'Промо Обяви')
+    nameOfSection.id="nameOfSection"
+    const listOfAds = createElement("ul");
+    listOfAds.id = "noticeCardHolder"
+
+    for (let i = 0; i < 16; i++) {
+      const currentNotice = adsManager.promoAds[i];
+      let noticeCard = createElement("li")
+      let imgContainer = createElement('div');
+      imgContainer.className = "img-container";
+      let anchor = createElement('a');
+      anchor.href = "";// TO DO!  Update the router function and make a new place to  show individual ad in the html  file
+      let img = createElement("img");
+      img.src = currentNotice.photo;
+      img.className = 'notice-img';
+
+      anchor.append(img);
+      imgContainer.append(anchor);
+
+      let secondDiv = createElement("div")
+      let title = createElement("h4", currentNotice.title);
+      let place = createElement("span", 'гр. ' + currentNotice.city);
+
+      secondDiv.append(title, place);
+
+      let priceHolder = createElement("div", currentNotice.price + ' лв.');
+      let watchButton = createElement("button", '<i class="far fa-heart"></i>')
+
+      priceHolder.append(watchButton);
+
+      let popUpDiv = createElement('div', '<span>Наблюдавай</span> <i class="far fa-comment-alt"></i');
+
+      noticeCard.append(imgContainer, secondDiv, priceHolder, popUpDiv)
+
+      listOfAds.append(noticeCard)
+    }
+    promoContainer.append(nameOfSection,listOfAds);
+  }());
+
+
   let googlePlay = getById("googlePlay");
   let appStore = getById("appStore");
   let appGalerry = getById("appGalerry");

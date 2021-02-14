@@ -316,3 +316,24 @@ footer {
   transform: translateX(-50%);
   z-index: 0;
 }
+
+#promoAdsContainer{
+  background-color: #bef0e1;
+}
+
+#noticeCardHolder {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.img-container {
+  width: 350px;
+}
+
+#nameOfSection{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bolder;
+}
