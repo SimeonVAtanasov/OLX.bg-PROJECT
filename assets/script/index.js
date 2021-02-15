@@ -19,6 +19,8 @@
     const indexPage = getById("indexPage");
     const adsContainer = getById("noticeContainer");
     const errorPage = getById("errorPage");
+    const singleNoticeContainer = getById("singleNoticeContainer");
+    const searchForm = getById("searchForm")
 
     let page = location.hash.slice(1);
 
@@ -26,15 +28,28 @@
       case "":
       case "index":
         indexPage.style.display = "block";
+        searchForm.style.display = "block";
         adsContainer.style.display = "none";
         errorPage.style.display = "none";
+        singleNoticeContainer.style.display = "none";
         break;
 
       case "advertisments":
         indexPage.style.display = "none";
+        searchForm.style.display = "block";
         adsContainer.style.display = "block";
         errorPage.style.display = "none";
+        singleNoticeContainer.style.display = "none";
         break;
+
+      case "offer":
+        indexPage.style.display = "none";
+        searchForm.style.display = "none";
+        adsContainer.style.display = "none";
+        errorPage.style.display = "none";
+        singleNoticeContainer.style.display = "block";
+        break;
+
 
       default:
         indexPage.style.display = "none";
@@ -83,18 +98,19 @@
 
     promoContainer.innerHTML = "";
 
-    const nameOfSection = createElement("h1",  'Промо Обяви')
-    nameOfSection.id="nameOfSection"
+    const nameOfSection = createElement("h1", 'Промо Обяви')
+    nameOfSection.id = "nameOfSection"
     const listOfAds = createElement("ul");
     listOfAds.id = "noticeCardHolder"
 
     for (let i = 0; i < 16; i++) {
       const currentNotice = adsManager.promoAds[i];
       let noticeCard = createElement("li")
+      noticeCard.className = "offer-box"
       let imgContainer = createElement('div');
       imgContainer.className = "img-container";
       let anchor = createElement('a');
-      anchor.href = "";// TO DO!  Update the router function and make a new place to  show individual ad in the html  file
+      anchor.href = "#offer";// TO DO!  Update the router function and make a new place to  show individual ad in the html  file
       let img = createElement("img");
       img.src = currentNotice.photo;
       img.className = 'notice-img';
@@ -109,17 +125,27 @@
       secondDiv.append(title, place);
 
       let priceHolder = createElement("div", currentNotice.price + ' лв.');
-      let watchButton = createElement("button", '<i class="far fa-heart"></i>')
+      priceHolder.className = "price-holder"
+      let watchButton = createElement("div", '<i class="far fa-heart"></i>');
+      watchButton.className = "watch-button";
 
-      priceHolder.append(watchButton);
+      let pop = createElement("div");
+      pop.className = "pop-up-div"
 
-      let popUpDiv = createElement('div', '<span>Наблюдавай</span> <i class="far fa-comment-alt"></i');
+      // let comment = createElement("div", '');
+      // comment.className = 'comment';
 
-      noticeCard.append(imgContainer, secondDiv, priceHolder, popUpDiv)
+      let message = createElement("div", "<p>Наблюдавай</p>");
+      message.className  = "message"
+      // comment.append(message);
+      pop.append(message);
+      watchButton.append(pop);
+      
+      noticeCard.append(imgContainer, secondDiv, priceHolder,watchButton)
 
       listOfAds.append(noticeCard)
     }
-    promoContainer.append(nameOfSection,listOfAds);
+    promoContainer.append(nameOfSection, listOfAds);
   }());
 
 
