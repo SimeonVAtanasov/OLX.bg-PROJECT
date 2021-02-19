@@ -230,9 +230,12 @@ header {
 }
 
 .main-categories {
-  margin-left: 50px;
+  margin-left: -11px;
 }
 
+.popular-searches{
+      width: 396px;
+}
 footer {
   position: relative;
   background-color: #f2f4f5;
