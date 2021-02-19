@@ -34,11 +34,6 @@ header {
   height: 100px;
 }
 
-.fa-heart {
-  font-size: 22px;
-  color: white;
-}
-
 .menu li {
   margin-right: 40px;
 }
@@ -233,8 +228,8 @@ header {
   margin-left: -11px;
 }
 
-.popular-searches{
-      width: 396px;
+.popular-searches {
+  width: 396px;
 }
 footer {
   position: relative;
@@ -349,11 +344,25 @@ footer {
   height: 320px;
   width: 246px;
   box-sizing: border-box;
-  margin: 15px;
+  margin-bottom: 15px;
+  margin-left: 14px;
   padding: 15px;
-  text-align: center;
-  display: flex;
+  border-radius: 4px;
+  font-family: "Open Sans", sans-serif;
   flex-flow: column;
+}
+
+.ad-description {
+  margin-top: 5px;
+  font-size: 17px;
+  text-align: center;
+}
+
+.ad-place {
+  font-size: 13px;
+  color: #716f6f;
+  position: absolute;
+  bottom: 46px;
 }
 
 .price-holder {
@@ -361,28 +370,53 @@ footer {
   justify-content: space-between;
 }
 
-.fa-heart {
-  cursor: pointer;
-  color: black;
+.price-watch {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 16px;
+  width: 86%;
+  font-size: 18px;
 }
 
-.message {
-  display: block;
-  color: white;
-  position: relative;
-  background-color: rgb(61, 112, 223);
+.fa-heart {
+  font-size: 22px;
+  cursor: pointer;
+  color: grey;
+}
 
+.fa-heart.liked {
+  color: white;
 }
 
 div.pop-up-div {
   display: none;
   position: absolute;
-  width: 100px;
-  top: 100px;
-  left: 150px;
+  top: -51px;
+  left: 195px;
+  font-size: 15px;
+  font-weight: lighter;
+  background: #3a77ff;
+  color: #fff;
+  line-height: 1.29;
+  padding: 10px 15px;
+  border-radius: 4px;
+  z-index: 5;
 }
 
-.watch-button i:hover + div.pop-up-div {
+.message:before {
+  content: "";
+  left: 6px;
+  bottom: -10px;
+  position: absolute;
+  border-left: 10px solid #3b76f6;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  z-index: 5;
+}
+
+.watch-button :hover + div.pop-up-div {
   cursor: pointer;
   display: block;
 }
