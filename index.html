@@ -40,7 +40,7 @@
         <div class="menu">
           <ul>
             <li>
-              <a href="#likedPage"><i class="far fa-heart"></i></a>
+              <a href="#likedPage"><i class="far fa-heart liked"></i></a>
             </li>
             <li>
               <div class="dropdown">
@@ -62,8 +62,10 @@
         </div>
       </nav>
     </header>
-    <form action="" id="searchForm">
-      <input type="text" />
+    <form autocomplete="off" action="" id="searchForm">
+      <div class="searchBox">
+        <input id="searchInput" type="text" name="ads" />
+      </div>
     </form>
     <div id="indexPage">
       <main>
@@ -83,7 +85,7 @@
             <span>Развий бизнеса си с OLX PRO</span>
           </div>
         </div>
-    
+
         <div class="olx-description" id="olxDescription">
           <div class="description-logo">
             <img src="./images/description-logo.png" alt="logo" />
@@ -91,14 +93,15 @@
           <div class="description-text">
             <p>
               OLX.bg e сайт за безплатни обяви в категории: Недвижими имоти,
-              Автомобили и авточасти, Eлектроника, Мода, За бебето и детето, Дом и
-              градина, Свободно време, Домашни любимци, Услути, Работа, Екскурзии и
-              почивки. Тук може да намериш интересни обяви и лесно да се свържеш с
-              продавача. Ако искаш да купиш нещо - може да намериш атрактивни
-              предложения на цени, по-ниски, отколкото в магазина. Ако искаш да
-              продадеш нещо - можеш да добавиш обява бързо, лесно и безплатно (до
-              определен лимит) и да пуснеш за продажба практически всичко, за което
-              се сетиш. Купувай и продавай в OLX.bg!
+              Автомобили и авточасти, Eлектроника, Мода, За бебето и детето, Дом
+              и градина, Свободно време, Домашни любимци, Услути, Работа,
+              Екскурзии и почивки. Тук може да намериш интересни обяви и лесно
+              да се свържеш с продавача. Ако искаш да купиш нещо - може да
+              намериш атрактивни предложения на цени, по-ниски, отколкото в
+              магазина. Ако искаш да продадеш нещо - можеш да добавиш обява
+              бързо, лесно и безплатно (до определен лимит) и да пуснеш за
+              продажба практически всичко, за което се сетиш. Купувай и продавай
+              в OLX.bg!
             </p>
           </div>
         </div>
@@ -107,7 +110,7 @@
             <div class="image-wrapper">
               <img src="./images/mainCategories.png" alt="main categories" />
             </div>
-  
+
             <div class="categories-and-populars-text">
               <h3>Главни категории:</h3>
               <a href="#advertisments"> <span>Недвижими имоти, </span> </a>
@@ -129,7 +132,7 @@
               <a href="#advertisments"> <span>Подарявам, </span> </a>
             </div>
           </div>
-  
+
           <div class="popular-searches">
             <div class="image-wrapper">
               <img src="./images/popularSearch.png" alt="popular searches" />
@@ -165,7 +168,6 @@
     <div id="singleNoticeContainer">Single offer page</div>
 
     <footer>
-      
       <div class="footer">
         <div class="main-footer">
           <div class="links">
@@ -269,7 +271,7 @@
             </div>
           </div>
         </div>
-        
+
         <img
           src="./images/footerImage.png"
           alt="footer image"

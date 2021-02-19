@@ -5,13 +5,25 @@
   const adsManager = new AdvertisementManager();
 
   // This code ads the test data
-  arrOfAds.forEach(el => {
-    let notice = new Advertisement(el.id, "Продавам", el.category, el.description, el.price, el.photo, el.city, el.fullName, el.email, el.promo, el.telNumber)
+  arrOfAds.forEach((el) => {
+    let notice = new Advertisement(
+      el.id,
+      el.title,
+      el.category,
+      el.description,
+      el.price,
+      el.photo,
+      el.city,
+      el.fullName,
+      el.email,
+      el.promo,
+      el.telNumber
+    );
 
-    adsManager.allAds.push(notice)
+    adsManager.allAds.push(notice);
   });
 
-  adsManager.promoAds = adsManager.allAds.filter(el => el.promo)
+  adsManager.promoAds = adsManager.allAds.filter((el) => el.promo);
 
   // -------
 
@@ -20,7 +32,7 @@
     const adsContainer = getById("noticeContainer");
     const errorPage = getById("errorPage");
     const singleNoticeContainer = getById("singleNoticeContainer");
-    const searchForm = getById("searchForm")
+    const searchForm = getById("searchForm");
 
     let page = location.hash.slice(1);
 
@@ -49,7 +61,6 @@
         errorPage.style.display = "none";
         singleNoticeContainer.style.display = "block";
         break;
-
 
       default:
         indexPage.style.display = "none";
@@ -98,56 +109,61 @@
 
     promoContainer.innerHTML = "";
 
-    const nameOfSection = createElement("h1", 'Промо Обяви')
-    nameOfSection.id = "nameOfSection"
+    const nameOfSection = createElement("h1", "Промо Обяви");
+    nameOfSection.id = "nameOfSection";
     const listOfAds = createElement("ul");
-    listOfAds.id = "noticeCardHolder"
+    listOfAds.id = "noticeCardHolder";
 
     for (let i = 0; i < 16; i++) {
       const currentNotice = adsManager.promoAds[i];
-      let noticeCard = createElement("li")
-      noticeCard.className = "offer-box"
-      let imgContainer = createElement('div');
+      let noticeCard = createElement("li");
+      noticeCard.className = "offer-box";
+      let imgContainer = createElement("div");
       imgContainer.className = "img-container";
-      let anchor = createElement('a');
-      anchor.href = "#offer";// TO DO!  Update the router function and make a new place to  show individual ad in the html  file
+      let anchor = createElement("a");
+      anchor.href = "#offer"; // TO DO!  Update the router function and make a new place to  show individual ad in the html  file
       let img = createElement("img");
       img.src = currentNotice.photo;
-      img.className = 'notice-img';
+      img.className = "notice-img";
+      img.style.width = "100%";
+      img.style.height = "165px";
 
       anchor.append(img);
       imgContainer.append(anchor);
 
-      let secondDiv = createElement("div")
+      let descriptionContainer = createElement("div");
+      descriptionContainer.className = "ad-description";
       let title = createElement("h4", currentNotice.title);
-      let place = createElement("span", 'гр. ' + currentNotice.city);
+      descriptionContainer.append(title);
 
-      secondDiv.append(title, place);
+      let placeContainer = createElement("div");
+      placeContainer.className = "ad-place";
+      let place = createElement("span", "гр. " + currentNotice.city);
+      placeContainer.append(place);
 
-      let priceHolder = createElement("div", currentNotice.price + ' лв.');
-      priceHolder.className = "price-holder"
+      let priceContainer = createElement("div");
+      priceContainer.className = "price-watch";
+      let priceHolder = createElement("div", currentNotice.price + " лв.");
+      priceHolder.className = "price-holder";
       let watchButton = createElement("div", '<i class="far fa-heart"></i>');
       watchButton.className = "watch-button";
 
-      let pop = createElement("div");
-      pop.className = "pop-up-div"
+      let pop = createElement("div", "<p>Наблюдавай</p>");
+      pop.classList.add("pop-up-div", "message");
 
-      // let comment = createElement("div", '');
-      // comment.className = 'comment';
-
-      let message = createElement("div", "<p>Наблюдавай</p>");
-      message.className  = "message"
-      // comment.append(message);
-      pop.append(message);
       watchButton.append(pop);
-      
-      noticeCard.append(imgContainer, secondDiv, priceHolder,watchButton)
+      priceContainer.append(priceHolder, watchButton);
+      noticeCard.append(
+        imgContainer,
+        descriptionContainer,
+        placeContainer,
+        priceContainer
+      );
 
-      listOfAds.append(noticeCard)
+      listOfAds.append(noticeCard);
     }
     promoContainer.append(nameOfSection, listOfAds);
-  }());
-
+  })();
 
   let googlePlay = getById("googlePlay");
   let appStore = getById("appStore");
@@ -155,13 +171,12 @@
   let downloadText = getById("downloadText");
   let downloadFrom = getById("downloadFromText");
 
-  const boxesToChangeText = [googlePlay, appStore, appGalerry]
+  const boxesToChangeText = [googlePlay, appStore, appGalerry];
 
-  boxesToChangeText.forEach(element => {
-    element.addEventListener("mouseover", changeText)
+  boxesToChangeText.forEach((element) => {
+    element.addEventListener("mouseover", changeText);
     element.addEventListener("mouseout", changeText);
   });
-
 
   function checkTarget(ev) {
     if (ev.target === googlePlay) {
@@ -186,4 +201,6 @@
       downloadFrom.innerHTML = "";
     }
   }
+
+  const searchMenu = getById("searchInput");
 })();
