@@ -64,13 +64,8 @@ class AdvertisementManager {
 
                 }
 
-
         }
 
-
-
     }
-
-
 
 }
