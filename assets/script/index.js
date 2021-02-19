@@ -2,10 +2,25 @@
   window.addEventListener("DOMContentLoaded", onHashChange);
   window.addEventListener("hashchange", onHashChange);
 
+  const adsManager = new AdvertisementManager();
+
+  // This code ads the test data
+  arrOfAds.forEach(el => {
+    let notice = new Advertisement(el.id, "Продавам", el.category, el.description, el.price, el.photo, el.city, el.fullName, el.email, el.promo, el.telNumber)
+
+    adsManager.allAds.push(notice)
+  });
+
+  adsManager.promoAds = adsManager.allAds.filter(el => el.promo)
+
+  // -------
+
   function onHashChange() {
     const indexPage = getById("indexPage");
     const adsContainer = getById("noticeContainer");
     const errorPage = getById("errorPage");
+    const singleNoticeContainer = getById("singleNoticeContainer");
+    const searchForm = getById("searchForm")
 
     let page = location.hash.slice(1);
 
@@ -13,15 +28,28 @@
       case "":
       case "index":
         indexPage.style.display = "block";
+        searchForm.style.display = "block";
         adsContainer.style.display = "none";
         errorPage.style.display = "none";
+        singleNoticeContainer.style.display = "none";
         break;
 
       case "advertisments":
         indexPage.style.display = "none";
+        searchForm.style.display = "block";
         adsContainer.style.display = "block";
         errorPage.style.display = "none";
+        singleNoticeContainer.style.display = "none";
         break;
+
+      case "offer":
+        indexPage.style.display = "none";
+        searchForm.style.display = "none";
+        adsContainer.style.display = "none";
+        errorPage.style.display = "none";
+        singleNoticeContainer.style.display = "block";
+        break;
+
 
       default:
         indexPage.style.display = "none";
@@ -64,6 +92,62 @@
   }
 
   printCategories(categories);
+
+  (function printPromoAds() {
+    const promoContainer = getById("promoAdsContainer");
+
+    promoContainer.innerHTML = "";
+
+    const nameOfSection = createElement("h1", 'Промо Обяви')
+    nameOfSection.id = "nameOfSection"
+    const listOfAds = createElement("ul");
+    listOfAds.id = "noticeCardHolder"
+
+    for (let i = 0; i < 16; i++) {
+      const currentNotice = adsManager.promoAds[i];
+      let noticeCard = createElement("li")
+      noticeCard.className = "offer-box"
+      let imgContainer = createElement('div');
+      imgContainer.className = "img-container";
+      let anchor = createElement('a');
+      anchor.href = "#offer";// TO DO!  Update the router function and make a new place to  show individual ad in the html  file
+      let img = createElement("img");
+      img.src = currentNotice.photo;
+      img.className = 'notice-img';
+
+      anchor.append(img);
+      imgContainer.append(anchor);
+
+      let secondDiv = createElement("div")
+      let title = createElement("h4", currentNotice.title);
+      let place = createElement("span", 'гр. ' + currentNotice.city);
+
+      secondDiv.append(title, place);
+
+      let priceHolder = createElement("div", currentNotice.price + ' лв.');
+      priceHolder.className = "price-holder"
+      let watchButton = createElement("div", '<i class="far fa-heart"></i>');
+      watchButton.className = "watch-button";
+
+      let pop = createElement("div");
+      pop.className = "pop-up-div"
+
+      // let comment = createElement("div", '');
+      // comment.className = 'comment';
+
+      let message = createElement("div", "<p>Наблюдавай</p>");
+      message.className  = "message"
+      // comment.append(message);
+      pop.append(message);
+      watchButton.append(pop);
+      
+      noticeCard.append(imgContainer, secondDiv, priceHolder,watchButton)
+
+      listOfAds.append(noticeCard)
+    }
+    promoContainer.append(nameOfSection, listOfAds);
+  }());
+
 
   let googlePlay = getById("googlePlay");
   let appStore = getById("appStore");
