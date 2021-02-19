@@ -137,7 +137,7 @@
       descriptionContainer.append(title);
 
       let placeContainer = createElement("div");
-      placeContainer.className = "ad-place";
+      placeContainer.className = "city";
       let place = createElement("span", "гр. " + currentNotice.city);
       placeContainer.append(place);
 
