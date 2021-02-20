@@ -3,6 +3,7 @@
   window.addEventListener("hashchange", onHashChange);
 
   const adsManager = new AdvertisementManager();
+  const user = new User();
 
   // This code ads the test data
   arrOfAds.forEach((el) => {
@@ -149,7 +150,26 @@
       watchButton.className = "watch-button";
 
       let pop = createElement("div", "<p>Наблюдавай</p>");
+
       pop.classList.add("pop-up-div", "message");
+
+      let isAlreadyLiked = user.isInLiked(currentNotice);
+
+      if (isAlreadyLiked) {
+        pop.innerHTML = "<p> Премахни от наблюдавани  </p>";
+        pop.style.width = "91%";
+        watchButton.innerHTML = "<i class='fas fa-heart'></i>";
+        watchButton.addEventListener("click", function () {
+          user.removeFromLiked(currentNotice);
+          printPromoAds();
+        });
+      } else {
+        pop.innerHTML = "<p>Наблюдавай </p>";
+        watchButton.addEventListener("click", function () {
+          user.likeAd(currentNotice);
+          printPromoAds();
+        });
+      }
 
       watchButton.append(pop);
       priceContainer.append(priceHolder, watchButton);
@@ -201,6 +221,4 @@
       downloadFrom.innerHTML = "";
     }
   }
-
-  const searchMenu = getById("searchInput");
 })();

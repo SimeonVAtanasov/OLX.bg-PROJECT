@@ -358,7 +358,7 @@ footer {
   text-align: center;
 }
 
-.city{
+.city {
   font-size: 13px;
   color: #716f6f;
   position: absolute;
@@ -387,6 +387,14 @@ footer {
 
 .fa-heart.liked {
   color: white;
+}
+
+.fa-heart:hover {
+  color: #0e2f35;
+}
+
+.fas.fa-heart {
+  color: #0e2f35;
 }
 
 div.pop-up-div {
