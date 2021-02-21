@@ -449,6 +449,69 @@ div.pop-up-div {
   display: block;
 }
 
+form {
+  background-color: #f2f4f5;
+  padding: 40px;
+  width: 100%;
+}
+
+.form-wrapper {
+  box-sizing: border-box;
+  margin: 46px 150px 46px 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchBox,
+#citySearchBox {
+  position: relative;
+  width: 300px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  margin-top: 0;
+}
+
+#searchForm input,
+#searchForm button {
+  height: 56px;
+  border: none;
+  padding: 10px;
+}
+
+#searchForm i.fa-search,
+#searchForm i.fa-times,
+#searchForm i.fa-map-marker-alt {
+  font-size: 46px;
+  box-sizing: border-box;
+  padding: 8px;
+  /* position: absolute; */
+}
+
+.resetBtn {
+  position: absolute;
+
+  background-color: transparent;
+  border: none;
+}
+.resetBtn:focus,
+#searchInput,
+#citySearch {
+  outline-color: white;
+}
+
+#buttonBox button {
+  display: flex;
+  align-items: center;
+  height: 82px;
+  background-color: #0e2f36;
+  /* font-weight: bold; */
+  font-size: 1.2em;
+  color: white;
+}
+
 .profile-page {
   text-decoration: none;
 }
