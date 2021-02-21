@@ -27,6 +27,8 @@
   adsManager.promoAds = adsManager.allAds.filter((el) => el.promo);
 
   // -------
+  const loginForm = getById("loginForm");
+  const registrationForm = getById("registrationForm");
 
   function onHashChange() {
     const indexPage = getById("indexPage");
@@ -34,6 +36,7 @@
     const errorPage = getById("errorPage");
     const singleNoticeContainer = getById("singleNoticeContainer");
     const searchForm = getById("searchForm");
+    const profilePage = getById("profilePage");
 
     let page = location.hash.slice(1);
 
@@ -44,6 +47,7 @@
         searchForm.style.display = "flex";
         adsContainer.style.display = "none";
         errorPage.style.display = "none";
+        profilePage.style.display = "none";
         singleNoticeContainer.style.display = "none";
         break;
 
@@ -52,6 +56,7 @@
         searchForm.style.display = "flex";
         adsContainer.style.display = "block";
         errorPage.style.display = "none";
+        profilePage.style.display = "none";
         singleNoticeContainer.style.display = "none";
         break;
 
@@ -60,7 +65,17 @@
         searchForm.style.display = "none";
         adsContainer.style.display = "none";
         errorPage.style.display = "none";
+        profilePage.style.display = "none";
         singleNoticeContainer.style.display = "block";
+        break;
+
+      case "profilePage":
+        indexPage.style.display = "none";
+        searchForm.style.display = "none";
+        adsContainer.style.display = "none";
+        errorPage.style.display = "none";
+        profilePage.style.display = "block";
+        singleNoticeContainer.style.display = "none";
         break;
 
       default:
@@ -146,7 +161,10 @@
       priceContainer.className = "price-watch";
       let priceHolder = createElement("div", currentNotice.price + " лв.");
       priceHolder.className = "price-holder";
-      let watchButton = createElement("div", '<i class="far fa-heart"></i>');
+      let watchButton = createElement(
+        "div",
+        '<i class="far fa-heart watched"></i>'
+      );
       watchButton.className = "watch-button";
 
       let pop = createElement("div", "<p>Наблюдавай</p>");
@@ -161,12 +179,14 @@
         watchButton.innerHTML = "<i class='fas fa-heart'></i>";
         watchButton.addEventListener("click", function () {
           user.removeFromLiked(currentNotice);
+          countLikeAds();
           printPromoAds();
         });
       } else {
         pop.innerHTML = "<p>Наблюдавай </p>";
         watchButton.addEventListener("click", function () {
           user.likeAd(currentNotice);
+          countLikeAds();
           printPromoAds();
         });
       }
@@ -221,4 +241,34 @@
       downloadFrom.innerHTML = "";
     }
   }
+
+  function countLikeAds() {
+    let counterLikes = getById("likeCounter");
+    let counter = user.likedAds.length;
+    if (counter >= 1) {
+      counterLikes.style.display = "inline-flex";
+      counterLikes.innerHTML = counter;
+    } else {
+      counterLikes.style.display = "none";
+    }
+  }
+
+  const loginBtn = getById("navLoginBtn");
+  const registrationBtn = getById("navRegistrationBtn");
+
+  loginBtn.addEventListener("click", function (ev) {
+    ev.preventDefault();
+    loginForm.style.display = "flex";
+    registrationForm.style.display = "none";
+    registrationBtn.style.fontWeight = "normal";
+    loginBtn.style.fontWeight = "bold";
+  });
+
+  registrationBtn.addEventListener("click", function (ev) {
+    ev.preventDefault();
+    loginForm.style.display = "none";
+    registrationForm.style.display = "flex";
+    loginBtn.style.fontWeight = "normal";
+    registrationBtn.style.fontWeight = "bold";
+  });
 })();

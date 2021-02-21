@@ -40,14 +40,19 @@
         <div class="menu">
           <ul>
             <li>
-              <a href="#likedPage"><i class="far fa-heart liked"></i></a>
+              <a href="#likedPage" class="like-icon">
+                <i class="far fa-heart liked"></i>
+                <span class="counter" id="likeCounter"></span>
+              </a>
             </li>
             <li>
-              <div class="dropdown">
-                <i class="far fa-user"></i>
-                <span> Моят профил</span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
+              <a href="#profilePage" class="profile-page">
+                <div class="dropdown">
+                  <i class="far fa-user"></i>
+                  <span> Моят профил</span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+              </a>
             </li>
             <li>
               <a
@@ -179,6 +184,138 @@
           </div>
         </div>
       </main>
+    </div>
+
+    <div id="profilePage" class="profile-form">
+      <div class="profile-container">
+        <div class="login-navigation">
+          <ul>
+            <li>
+              <button class="nav-log" id="navLoginBtn">Вход</button>
+            </li>
+            <li>
+              <button class="nav-reg" id="navRegistrationBtn">
+                Регистрация
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <form action="" id="loginForm" class="login-form">
+          <div>
+            <button class="loginBtn facebook">Вход с Facebook</button>
+          </div>
+
+          <div>
+            <p class="or-span">
+              <span>или</span>
+            </p>
+          </div>
+
+          <div class="email-login">
+            <label for="logEmail">Имейл (от OLX профила) </label>
+            <input
+              type="email"
+              id="logEmail"
+              name="logEmail"
+              class="logInput"
+              placeholder="Имейл (от OLX профила)"
+            />
+          </div>
+
+          <div class="password-login">
+            <label for="pass">Парола</label>
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              class="logInput"
+              placeholder="Парола"
+            />
+          </div>
+
+          <div class="forgotten-password">
+            <p>Забравена парола?</p>
+          </div>
+
+          <div>
+            <button class="login-button" id="loginButton">Вход</button>
+          </div>
+
+          <div class="general-terms">
+            <p>
+              Влизайки в профила си приемам <span>общите условия</span> на сайта
+            </p>
+          </div>
+        </form>
+
+        <form action="" id="registrationForm" class="registration-form">
+          <div>
+            <button class="loginBtn facebook">Вход с Facebook</button>
+          </div>
+
+          <div>
+            <p class="or-span">
+              <span>или</span>
+            </p>
+          </div>
+
+          <div class="email-login">
+            <label for="logEmail">Имейл (от OLX профила) </label>
+            <input
+              type="email"
+              id="logEmail"
+              name="logEmail"
+              class="logInput"
+              placeholder="Имейл (от OLX профила)"
+            />
+          </div>
+
+          <div class="password-login">
+            <label for="pass">Парола</label>
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              class="logInput"
+              placeholder="Парола"
+            />
+          </div>
+
+          <div class="general-terms-register">
+            <p>
+              Чрез натискане на бутона за Регистрация приемам
+              <span>Общите условия</span> за използване на платформата.
+            </p>
+            <br />
+            <p>
+              Наясно съм и приемам "Наспърс Класифайдс България" ЕООД да
+              използва моите лични данни в съответствие с
+              <span>"Политиката за поверителност"</span> и
+              <span>"Политиката за бисквитки" </span>с цел предоставяне на
+              услугите в платформата OLX.bg. "Наспърс Класифайдс България" ЕООД
+              използва автоматизирани системи и партньори за анализ на начина,
+              по който използвам услугите, за да може да предостави подходящите
+              функционалност на продукта, съдържание, насочена и персонализирана
+              реклама, както и защита от спам, зловреден софтуер и неразрешена
+              употреба.
+            </p>
+          </div>
+          <div class="checkbox">
+            <label for="check" class="checkbox"
+              >Съгласявам се да получавам маркетинг комуникация, интересни
+              оферти и съвети от OLX
+              <input type="checkbox" id="check" name="check" required />
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div>
+            <button class="login-button" id="registerButton">
+              Регистрация
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
 
     <div id="errorPage">
