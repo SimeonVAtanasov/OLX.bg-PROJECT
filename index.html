@@ -62,11 +62,33 @@
         </div>
       </nav>
     </header>
-    <form autocomplete="off" action="" id="searchForm">
-      <div class="searchBox">
-        <input id="searchInput" type="text" name="ads" />
-      </div>
-    </form>
+    <section id="searchForm">
+      <form autocomplete="off" action="">
+        <div class="form-wrapper">
+          <div id="searchBox">
+            <i class="fas fa-search"></i>
+            <input
+              id="searchInput"
+              type="text"
+              name="ads"
+              placeholder="Обяви близо до теб"
+            />
+            <button type="reset" class="resetBtn" ><i class="fas fa-times"></i></button>
+          </div>
+
+          <div id="citySearchBox">
+            <i class="fas fa-map-marker-alt"></i>
+            <input placeholder="Избери град" type="text" id="citySearch" />
+            <button  type="reset" class="resetBtn" ><i class="fas fa-times"></i></button>
+
+          </div>
+          <div   id="buttonBox">
+            <button id="submitSearch">Търсене<i  class="fas fa-search"></i> </button>
+
+          </div>
+        </div>
+      </form>
+    </section>
     <div id="indexPage">
       <main>
         <div class="categories">
@@ -281,6 +303,5 @@
     </footer>
 
     <script src="./assets/script/index.js"></script>
-    
   </body>
 </html>

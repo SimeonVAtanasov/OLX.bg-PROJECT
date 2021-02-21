@@ -41,7 +41,7 @@
       case "":
       case "index":
         indexPage.style.display = "block";
-        searchForm.style.display = "block";
+        searchForm.style.display = "flex";
         adsContainer.style.display = "none";
         errorPage.style.display = "none";
         singleNoticeContainer.style.display = "none";
@@ -49,7 +49,7 @@
 
       case "advertisments":
         indexPage.style.display = "none";
-        searchForm.style.display = "block";
+        searchForm.style.display = "flex";
         adsContainer.style.display = "block";
         errorPage.style.display = "none";
         singleNoticeContainer.style.display = "none";
