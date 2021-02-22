@@ -67,8 +67,8 @@ const userManager = (function () {
         this.users = [];
         let localUsers = JSON.parse(localStorage.getItem("users"));
         localUsers.forEach(
-          (el) =>
-            function () {
+          (el) => 
+             {
               let userToPush = new User(
                 el.username,
                 el.password,
@@ -83,8 +83,8 @@ const userManager = (function () {
         this.users = [];
         localStorage.setItem("users", JSON.stringify(this.users));
       }
-
       this.currentUser = new User();
+
     }
 
     register(username, password) {

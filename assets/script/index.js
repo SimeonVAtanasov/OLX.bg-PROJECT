@@ -173,13 +173,14 @@ function printPromoAds() {
     let isAlreadyLiked = userManager.currentUser.isInLiked(currentNotice);
 
     if (isAlreadyLiked) {
-      pop.innerHTML = "<p> Премахни от наблюдавани  </p>";
+      pop.innerHTML = "<p>Премахни от наблюдавани</p>";
       pop.style.width = "91%";
       watchButton.innerHTML = "<i class='fas fa-heart'></i>";
       watchButton.addEventListener("click", function () {
         userManager.currentUser.removeFromLiked(currentNotice);
         countLikeAds();
         printPromoAds();
+        localStorage.setItem("users", JSON.stringify(userManager.users));
       });
     } else {
       pop.innerHTML = "<p>Наблюдавай </p>";

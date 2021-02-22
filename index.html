@@ -68,9 +68,9 @@
       </nav>
     </header>
     <section id="searchForm">
-      <form autocomplete="off" action="">
+      <!-- <form autocomplete="off" action=""> -->
         <div class="form-wrapper">
-          <div id="searchBox">
+          <form id="searchBox">
             <i class="fas fa-search"></i>
             <input
               id="searchInput"
@@ -78,21 +78,21 @@
               name="ads"
               placeholder="Обяви близо до теб"
             />
-            <button type="reset" class="resetBtn" ><i class="fas fa-times"></i></button>
-          </div>
+            <button  type="reset" class="resetBtn " > <i class="fas fa-times"></i></button>
+          </form>
 
-          <div id="citySearchBox">
+          <form id="citySearchBox">
             <i class="fas fa-map-marker-alt"></i>
-            <input placeholder="Избери град" type="text" id="citySearch" />
-            <button  type="reset" class="resetBtn" ><i class="fas fa-times"></i></button>
+            <input placeholder="Цялата страна" type="text" id="citySearch" />
+            <button  type="reset" class="resetBtn " > <i class="fas fa-times"></i></button>
 
-          </div>
-          <div   id="buttonBox">
+          </form>
+          <form   id="buttonBox">
             <button id="submitSearch">Търсене<i  class="fas fa-search"></i> </button>
 
-          </div>
+          </form>
         </div>
-      </form>
+      <!-- </form> -->
     </section>
     <div id="indexPage">
       <main>
