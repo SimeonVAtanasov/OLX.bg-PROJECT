@@ -448,7 +448,7 @@ div.pop-up-div {
   cursor: pointer;
   display: block;
 }
-#searchForm{
+#searchForm {
   display: flex;
 }
 /* form {
@@ -466,7 +466,7 @@ div.pop-up-div {
   justify-content: center;
   align-items: center;
 }
-#searchForm > div > form i{
+#searchForm > div > form i {
   font-size: 36px;
   padding: 10px;
 }
@@ -483,7 +483,7 @@ div.pop-up-div {
   align-items: center;
 }
 
-#searchBox  button.fa-times{
+#searchBox button.fa-times {
   height: 72px;
   width: 65px;
 }
@@ -493,7 +493,7 @@ div.pop-up-div {
   width: 412px;
 }
 
-#citySearchBox{
+#citySearchBox {
   background-color: white;
   box-sizing: border-box;
   position: relative;
@@ -505,7 +505,7 @@ div.pop-up-div {
   align-items: center;
 }
 
-#citySearch{
+#citySearch {
   border: none;
   width: 260px;
 }
