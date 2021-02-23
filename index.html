@@ -24,10 +24,17 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <script src="./assets/script/utils.js"></script>
     <script src="./assets/script/categories.js"></script>
     <script src="./assets/script/ads.js"></script>
-    <script src="./assets/script/classes.js"></script>
-    <script src="./assets/script/utils.js"></script>
+    <script src="./assets/script/advertismentModel.js"></script>
+    <script src="./assets/script/UserModel.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+      integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
@@ -90,7 +97,7 @@
           </button>
         </form>
         <form id="buttonBox">
-          <button id="submitSearch" type="submit">
+          <button id="submitSearch" type="submitnpm">
             Търсене<i class="fas fa-search"></i>
           </button>
         </form>
@@ -324,7 +331,7 @@
       <h1>Грешка! Тази страница не съществува!</h1>
     </div>
 
-    <div id="noticeContainer">Notice board</div>
+    <div id="noticeContainer"></div>
 
     <div id="singleNoticeContainer">Single offer page</div>
 
@@ -440,8 +447,40 @@
         />
       </div>
     </footer>
+    <script id="noticeTemplate" type="text/x-handlebars-template">
+      <ul id="noticeList" class="">
+        {{#each this}}
+          <li class="notice-box">
+            <div>
+              <img src="{{photo}}" alt="{{title}}" class="notice-img" />
+            </div>
+            <div class="description-box">
+              <h3>
+                {{title}}
+              </h3>
+              <span>
+                гр.{{city}}
+              </span>
+            </div>
+            <div class="description-box last">
+              <span>
+                {{price}} лв.
+              </span>
+              <div class="watch-button">
+                <i class="far fa-heart watched" aria-hidden="true"></i>
+                <div class="pop-up-div message">
+                  <p>
+                    Наблюдавай
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
 
-    <script src="./assets/script/UserModel.js"></script>
+    <script src="./assets/script/indexView.js"></script>
     <script src="./assets/script/index.js"></script>
     <script src="./assets/script/UserController.js"></script>
   </body>

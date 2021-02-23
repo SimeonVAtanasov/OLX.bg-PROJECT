@@ -67,17 +67,16 @@ const userManager = (function () {
         this.users = [];
         let localUsers = JSON.parse(localStorage.getItem("users"));
         localUsers.forEach(
-          (el) => 
-             {
-              let userToPush = new User(
-                el.username,
-                el.password,
-                el.likedAds,
-                el.favouriteSearches,
-                el.addedAds
-              );
-              this.users.push(userToPush);
-            }
+          (el) => {
+            let userToPush = new User(
+              el.username,
+              el.password,
+              el.likedAds,
+              el.favouriteSearches,
+              el.addedAds
+            );
+            this.users.push(userToPush);
+          }
         );
       } else {
         this.users = [];
@@ -100,7 +99,7 @@ const userManager = (function () {
         (el) => el["username"] === username && el["password"] === password
       );
       this.currentUser = this.users[index];
-      
+
       return isUserLoggedIn;
     }
 
@@ -110,6 +109,10 @@ const userManager = (function () {
       }
 
       return false;
+    }
+
+    setUsers() {
+      localStorage.setItem("users", JSON.stringify(userManager.users));
     }
   }
 

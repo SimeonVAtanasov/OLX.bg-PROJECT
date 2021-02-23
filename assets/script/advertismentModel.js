@@ -34,14 +34,25 @@ class AdvertisementManager {
     this.promoAds = [];
   }
 
-  addAdvertisment(notice) {
-    if (notice instanceof Advertisement) {
-      this.allAds.push(notice);
-    }
+  addAdvertisement(el) {
+    let newNotice = new Advertisement(
+      el.id,
+      el.title,
+      el.category,
+      el.description,
+      el.price,
+      el.photo,
+      el.city,
+      el.fullName,
+      el.email,
+      el.promo,
+      el.telNumber
+    )
+      this.allAds.push(newNotice);
   }
 
   filterBy(type, optionA, optionB) {
-    if (!type || typeof str !== "string" || str.trim().length === 0) {
+    if (typeof type !== "string") {
       return this.allAds;
     }
 
@@ -79,6 +90,8 @@ class AdvertisementManager {
           );
           return this.filteredAds;
         }
+        default:
+          return this.allAds
     }
   }
 }
