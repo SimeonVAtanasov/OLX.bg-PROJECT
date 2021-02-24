@@ -9,6 +9,7 @@ const registrationBtn = getById("navRegistrationBtn");
 const searchContainer = getById("searchContainer")
 const searchBar = getById("searchInput");
 const citySearch = getById("citySearch")
+const searchButton = getById("submitSearch")
 
 // This code ads the test data
 arrOfAds.forEach((el) => {
@@ -115,7 +116,13 @@ searchContainer.addEventListener("input", function () {
 
 citySearch.addEventListener("keyup", filterCities)
 
-showAdds(adsManager.allAds, noticeContainer)
+searchButton.addEventListener("click", function(ev){
+  ev.preventDefault();
+  location.hash = "advertisements";
+})
+
+showAdds(adsManager.allAds, noticeContainer);
+
 let emailRegisterInput = getById("registerEmail");
 let passwordRegisterInput = getById("registerPassword");
 let emailLoginInput = getById("logEmail");
