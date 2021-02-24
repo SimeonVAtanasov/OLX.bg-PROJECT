@@ -698,7 +698,24 @@ div.pop-up-div {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
+
+.profile-form::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -222px;
+  width: 1236px;
+  height: 1236px;
+  margin-left: -618px;
+  border: 150px solid #ceddff;
+  border-radius: 50%;
+  box-sizing: border-box;
+  opacity: 1;
+}
+
+
 
 .login-form label {
   font-size: 14px;
