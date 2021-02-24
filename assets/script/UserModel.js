@@ -66,24 +66,21 @@ const userManager = (function () {
       if (localStorage.getItem("users")) {
         this.users = [];
         let localUsers = JSON.parse(localStorage.getItem("users"));
-        localUsers.forEach(
-          (el) => {
-            let userToPush = new User(
-              el.username,
-              el.password,
-              el.likedAds,
-              el.favouriteSearches,
-              el.addedAds
-            );
-            this.users.push(userToPush);
-          }
-        );
+        localUsers.forEach((el) => {
+          let userToPush = new User(
+            el.username,
+            el.password,
+            el.likedAds,
+            el.favouriteSearches,
+            el.addedAds
+          );
+          this.users.push(userToPush);
+        });
       } else {
         this.users = [];
         localStorage.setItem("users", JSON.stringify(this.users));
       }
       this.currentUser = new User();
-
     }
 
     register(username, password) {
@@ -93,7 +90,7 @@ const userManager = (function () {
 
     login(username, password) {
       const isUserLoggedIn = this.users.some(
-        (user) => user["username"] === username && user['password'] === password
+        (user) => user["username"] === username && user["password"] === password
       );
       let index = this.users.findIndex(
         (el) => el["username"] === username && el["password"] === password
@@ -103,16 +100,16 @@ const userManager = (function () {
       return isUserLoggedIn;
     }
 
-    validate(username, password) {
-      if (username.trim().length > 3 && password.trim().length > 3) {
-        return true;
-      }
-
-      return false;
-    }
-
     setUsers() {
       localStorage.setItem("users", JSON.stringify(userManager.users));
+    }
+
+    isRegistered(username, password) {
+      const isUserRegistered = this.users.some(
+        (user) => user["username"] === username && user["password"] === password
+      );
+
+      return isUserRegistered;
     }
   }
 

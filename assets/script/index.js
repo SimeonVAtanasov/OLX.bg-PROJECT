@@ -116,3 +116,69 @@ searchContainer.addEventListener("input", function () {
 citySearch.addEventListener("keyup", filterCities)
 
 showAdds(adsManager.allAds, noticeContainer)
+let emailRegisterInput = getById("registerEmail");
+let passwordRegisterInput = getById("registerPassword");
+let emailLoginInput = getById("logEmail");
+let passwordLoginInput = getById("loginPassword");
+
+let emailRegMessage = getById("emailRegError");
+let passwordRegMessage = getById("passwordRegError");
+
+let emailLogMessage = getById("emailLogError");
+let passwordLogMessage = getById("passwordLogError");
+
+emailLoginInput.addEventListener("input", function () {
+  validateEmail(emailLoginInput, emailLogMessage);
+});
+
+emailRegisterInput.addEventListener("input", function () {
+  validateEmail(emailRegisterInput, emailRegMessage);
+});
+
+passwordRegisterInput.addEventListener("input", validatePassword);
+
+function validateEmail(email, message) {
+  let emailCheck = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  if (email.value === "") {
+    message.innerHTML = "Полето е задължително!";
+    email.classList.add("active");
+    return false;
+  } else if (emailCheck.test(email.value)) {
+    message.innerHTML = "";
+    email.classList.remove("active");
+    return true;
+  } else {
+    message.innerHTML = "Невалиден имейл адрес";
+    email.classList.add("active");
+    return false;
+  }
+}
+
+function validatePassword() {
+  let passwordCheck = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  if (passwordRegisterInput.value === "") {
+    passwordRegMessage.innerHTML = "Полето е задължително!";
+    passwordRegisterInput.classList.add("active");
+    return false;
+  } else if (passwordCheck.test(passwordRegisterInput.value)) {
+    passwordRegMessage.innerHTML = "";
+    passwordRegisterInput.classList.remove("active");
+    return true;
+  } else {
+    passwordRegMessage.innerHTML =
+      "Паролата трябва да е от поне 8 символа и да съдържа буква и цифра";
+    passwordRegisterInput.classList.add("active");
+    return false;
+  }
+}
+
+function validateUser() {
+  if (emailLoginInput.value === "" || passwordLoginInput.value === "") {
+    validateEmail(emailLoginInput, emailLogMessage);
+  } else if (
+    !userManager.isRegistered(emailRegisterInput, passwordRegisterInput)
+  ) {
+    getById("invalidMessage").style.display = "block";
+  }
+}

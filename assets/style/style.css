@@ -606,8 +606,28 @@ div.pop-up-div {
   padding: 33px;
 }
 
+.login-form input {
+  color: #406367;
+}
+
+.login-form input:focus {
+  box-shadow: 0 2px 0 0 #406367;
+}
+
+.registration-form input:focus {
+  box-shadow: 0 2px 0 0 #406367;
+}
+
+.registration-form input {
+  color: #406367;
+}
+
 .registration-form {
   display: none;
+}
+
+.active {
+  box-shadow: 0 2px 0 0 red;
 }
 
 .or-span {
@@ -679,7 +699,24 @@ div.pop-up-div {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
+
+.profile-form::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -222px;
+  width: 1236px;
+  height: 1236px;
+  margin-left: -618px;
+  border: 150px solid #ceddff;
+  border-radius: 50%;
+  box-sizing: border-box;
+  opacity: 1;
+}
+
+
 
 .login-form label {
   font-size: 14px;
@@ -892,4 +929,25 @@ div.pop-up-div {
   width: 340px;
   max-height: 350px;
   z-index: 2;
+}
+.error-message {
+  color: red;
+  margin-top: 10px;
+  margin-left: 3px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 11px;
+}
+
+.invalid-message {
+  display: none;
+  background: #ffe7e7;
+  color: #d83232;
+  padding: 10px;
+  margin: 15px 20px 20px 20px;
+  border-radius: 3px;
+  width: 320px;
+  height: 16px;
+  text-align: center;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
 }

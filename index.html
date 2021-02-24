@@ -217,6 +217,9 @@
         </div>
 
         <form action="" id="loginForm" class="login-form">
+          <div class="invalid-message" id="invalidMessage">
+            <p>Невалиден имейл или парола</p>
+          </div>
           <div>
             <button class="loginBtn facebook">Вход с Facebook</button>
           </div>
@@ -232,10 +235,11 @@
             <input
               type="email"
               id="logEmail"
-              name="logEmail"
+              name="email"
               class="logInput"
               placeholder="Имейл (от OLX профила)"
             />
+            <p class="error-message" id="emailLogError"></p>
           </div>
 
           <div class="password-login">
@@ -247,6 +251,7 @@
               class="logInput"
               placeholder="Парола"
             />
+            <p class="error-message" id="passwordLogError"></p>
           </div>
 
           <div class="forgotten-password">
@@ -276,14 +281,15 @@
           </div>
 
           <div class="email-login">
-            <label for="logEmail">Имейл (от OLX профила) </label>
+            <label for="email">Имейл (от OLX профила) </label>
             <input
               type="email"
               id="registerEmail"
-              name="logEmail"
+              name="email"
               class="logInput"
               placeholder="Имейл (от OLX профила)"
             />
+            <p class="error-message" id="emailRegError"></p>
           </div>
 
           <div class="password-login">
@@ -295,6 +301,7 @@
               class="logInput"
               placeholder="Парола"
             />
+            <p class="error-message" id="passwordRegError"></p>
           </div>
 
           <div class="general-terms-register">
@@ -320,7 +327,7 @@
             <label for="check" class="checkbox"
               >Съгласявам се да получавам маркетинг комуникация, интересни
               оферти и съвети от OLX
-              <input type="checkbox" id="check" name="check" required />
+              <input type="checkbox" id="check" name="check" />
               <span class="checkmark"></span>
             </label>
           </div>

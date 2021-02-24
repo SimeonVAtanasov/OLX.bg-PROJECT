@@ -1,33 +1,40 @@
+const emailInputLogin = getById("logEmail");
+const passwordInputLogin = getById("loginPassword");
+const emailInputRegister = getById("registerEmail");
+const passwordInputRegister = getById("registerPassword");
 
+let loginButton = getById("loginButton");
+let registerBtn = getById("registerButton");
 
-    const emailInputLogin = getById("logEmail");
-    const passwordInputLogin = getById("loginPassword");
-    const emailInputRegister = getById("registerEmail");
-    const passwordInputRegister = getById("registerPassword");
+loginButton.addEventListener("click", function (ev) {
+  ev.preventDefault();
+  const email = emailInputLogin.value;
+  const password = passwordInputLogin.value;
 
-    let loginButton = getById("loginButton");
-    let registerBtn = getById("registerButton");
+  validateUser();
 
-    loginButton.addEventListener("click", function (ev) {
-        ev.preventDefault();
-        const username = emailInputLogin.value;
-        const password = passwordInputLogin.value;
+  if (userManager.login(email, password)) {
+    countLikeAds();
+    printPromoAds();
+    location.hash = "index";
+  }
+});
 
-        if (userManager.login(username, password)) {
-          countLikeAds();
-          printPromoAds();
-          location.hash="index"; 
-        }
+registerBtn.addEventListener("click", function (ev) {
+  ev.preventDefault();
 
-      });
-    
-      registerBtn.addEventListener("click", function (ev) {
-        ev.preventDefault();
-    
-        const username = emailInputRegister.value;
-        const password = passwordInputRegister.value;
-    
-        userManager.register(username, password);
-      });
+  const email = emailInputRegister;
+  const password = passwordInputRegister;
 
-
+  if (!validateEmail(email, password) || !validatePassword()) {
+    registerForm.reset();
+    return;
+  } else {
+    userManager.register(email.value, password.value);
+    loginForm.style.display = "flex";
+    registrationForm.style.display = "none";
+    registrationBtn.style.fontWeight = "normal";
+    loginBtn.style.fontWeight = "bold";
+    registrationForm.reset();
+  }
+});

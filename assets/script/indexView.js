@@ -10,7 +10,6 @@ function onHashChange() {
 
   switch (page) {
     case "":
-      debugger
     case "index":
       indexPage.style.display = "block";
       searchForm.style.display = "block";
@@ -43,7 +42,7 @@ function onHashChange() {
       searchForm.style.display = "none";
       adsContainer.style.display = "none";
       errorPage.style.display = "none";
-      profilePage.style.display = "block";
+      profilePage.style.display = "flex";
       singleNoticeContainer.style.display = "none";
       break;
 
