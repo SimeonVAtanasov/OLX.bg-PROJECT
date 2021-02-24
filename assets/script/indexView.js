@@ -1,92 +1,94 @@
 function onHashChange() {
-    const indexPage = getById("indexPage");
-    const adsContainer = getById("noticeContainer");
-    const errorPage = getById("errorPage");
-    const singleNoticeContainer = getById("singleNoticeContainer");
-    const searchForm = getById("searchForm");
-    const profilePage = getById("profilePage");
-  
-    let page = location.hash.slice(1);
-  
-    switch (page) {
-      case "":
-      case "index":
-        indexPage.style.display = "block";
-        searchForm.style.display = "block";
-        adsContainer.style.display = "none";
-        errorPage.style.display = "none";
-        profilePage.style.display = "none";
-        singleNoticeContainer.style.display = "none";
-        break;
-  
-      case "advertisments":
-        indexPage.style.display = "none";
-        searchForm.style.display = "block";
-        adsContainer.style.display = "block";
-        errorPage.style.display = "none";
-        profilePage.style.display = "none";
-        singleNoticeContainer.style.display = "none";
-        break;
-  
-      case "offer":
-        indexPage.style.display = "none";
-        searchForm.style.display = "none";
-        adsContainer.style.display = "none";
-        errorPage.style.display = "none";
-        profilePage.style.display = "none";
-        singleNoticeContainer.style.display = "block";
-        break;
-  
-      case "profilePage":
-        indexPage.style.display = "none";
-        searchForm.style.display = "none";
-        adsContainer.style.display = "none";
-        errorPage.style.display = "none";
-        profilePage.style.display = "block";
-        singleNoticeContainer.style.display = "none";
-        break;
-  
-      default:
-        indexPage.style.display = "none";
-        adsContainer.style.display = "none";
-        errorPage.style.display = "block";
-    }
-  }
-  
-  function printCategories(categories) {
-    let categoriesContainer = getById("categoriesContainer");
-  
-    for (let i = 0; i < categories.length; i++) {
-      let currentCategory = categories[i];
-      let categoryCard = createElement("div");
-  
-      categoryCard.className = "category-card";
-  
-      let imageContainer = createElement("div");
-  
-      imageContainer.style.backgroundColor = currentCategory["background-color"];
-      imageContainer.className = "image-container";
-  
-      let categoryImage = createElement("img");
-  
-      categoryImage.src = currentCategory.image;
-      categoryImage.alt = currentCategory.title;
-  
-      let description = createElement("p", currentCategory.title);
-  
-      description.className = "title";
-      imageContainer.append(categoryImage);
-      categoryCard.append(imageContainer, description);
-      categoriesContainer.append(categoryCard);
-  
-      categoryCard.addEventListener("click", function () {
-        showAdds(adsManager.filterBy("category", currentCategory.title), noticeContainer)
-        location.hash = "#advertisments";
-      });
-    }
-  }
+  const indexPage = getById("indexPage");
+  const adsContainer = getById("noticeContainer");
+  const errorPage = getById("errorPage");
+  const singleNoticeContainer = getById("singleNoticeContainer");
+  const searchForm = getById("searchForm");
+  const profilePage = getById("profilePage");
 
-  printCategories(categories);
+  let page = location.hash.slice(1);
+
+  switch (page) {
+    case "":
+      debugger
+    case "index":
+      indexPage.style.display = "block";
+      searchForm.style.display = "block";
+      adsContainer.style.display = "none";
+      errorPage.style.display = "none";
+      profilePage.style.display = "none";
+      singleNoticeContainer.style.display = "none";
+      break;
+
+    case "advertisements":
+      indexPage.style.display = "none";
+      searchForm.style.display = "block";
+      adsContainer.style.display = "block";
+      errorPage.style.display = "none";
+      profilePage.style.display = "none";
+      singleNoticeContainer.style.display = "none";
+      break;
+
+    case "offer":
+      indexPage.style.display = "none";
+      searchForm.style.display = "none";
+      adsContainer.style.display = "none";
+      errorPage.style.display = "none";
+      profilePage.style.display = "none";
+      singleNoticeContainer.style.display = "block";
+      break;
+
+    case "profilePage":
+      indexPage.style.display = "none";
+      searchForm.style.display = "none";
+      adsContainer.style.display = "none";
+      errorPage.style.display = "none";
+      profilePage.style.display = "block";
+      singleNoticeContainer.style.display = "none";
+      break;
+
+    default:
+      indexPage.style.display = "none";
+      adsContainer.style.display = "none";
+      searchForm.style.display = "none";
+      errorPage.style.display = "block";
+  }
+}
+
+function printCategories(categories) {
+  let categoriesContainer = getById("categoriesContainer");
+
+  for (let i = 0; i < categories.length; i++) {
+    let currentCategory = categories[i];
+    let categoryCard = createElement("div");
+
+    categoryCard.className = "category-card";
+
+    let imageContainer = createElement("div");
+
+    imageContainer.style.backgroundColor = currentCategory["background-color"];
+    imageContainer.className = "image-container";
+
+    let categoryImage = createElement("img");
+
+    categoryImage.src = currentCategory.image;
+    categoryImage.alt = currentCategory.title;
+
+    let description = createElement("p", currentCategory.title);
+
+    description.className = "title";
+    imageContainer.append(categoryImage);
+    categoryCard.append(imageContainer, description);
+    categoriesContainer.append(categoryCard);
+
+    categoryCard.addEventListener("click", function () {
+      showAdds(adsManager.filterBy("category", currentCategory.title), noticeContainer)
+      location.hash = "#advertisements";
+    });
+  }
+}
+
+printCategories(categories);
 
 function printPromoAds() {
   const promoContainer = getById("promoAdsContainer");
@@ -111,7 +113,7 @@ function printPromoAds() {
     img.src = currentNotice.photo;
     img.alt = currentNotice.title;
     img.className = "notice-img";
-    
+
 
     anchor.append(img);
     imgContainer.append(anchor);
@@ -178,9 +180,14 @@ function printPromoAds() {
 }
 
 function showAdds(arr, container) {
+  if (arr.length > 0) {
     const source = document.getElementById("noticeTemplate").innerHTML;
     const template = Handlebars.compile(source);
     const html = template(arr)
-  
+
     container.innerHTML = html;
+  } else {
+    container.innerHTML = "Няма намерени обяви"
   }
+
+}

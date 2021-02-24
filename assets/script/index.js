@@ -2,7 +2,13 @@ window.addEventListener("DOMContentLoaded", onHashChange);
 window.addEventListener("hashchange", onHashChange);
 
 const adsManager = new AdvertisementManager();
-const noticeContainer = getById("noticeContainer")
+const noticeContainer = getById("noticeContainer");
+const loginBtn = getById("navLoginBtn");
+const registrationBtn = getById("navRegistrationBtn");
+// SearchBar elements
+const searchContainer = getById("searchContainer")
+const searchBar = getById("searchInput");
+const citySearch = getById("citySearch")
 
 // This code ads the test data
 arrOfAds.forEach((el) => {
@@ -65,8 +71,7 @@ function countLikeAds() {
   }
 }
 
-const loginBtn = getById("navLoginBtn");
-const registrationBtn = getById("navRegistrationBtn");
+
 
 loginBtn.addEventListener("click", function (ev) {
   ev.preventDefault();
@@ -83,3 +88,31 @@ registrationBtn.addEventListener("click", function (ev) {
   loginBtn.style.fontWeight = "normal";
   registrationBtn.style.fontWeight = "bold";
 });
+
+searchContainer.addEventListener("input", function () {
+  let inputValue = searchBar.value.toLowerCase().trim();
+  let citySearched = citySearch.value.toLowerCase().trim();
+
+  if (inputValue && citySearched) {
+
+    adsManager.filterBy("title", inputValue);
+    adsManager.filterBy("city", citySearched);
+
+    showAdds(adsManager.filteredAds, noticeContainer);
+
+  } else if (inputValue) {
+
+    adsManager.filterBy("title", inputValue);
+    showAdds(adsManager.filteredAds, noticeContainer);
+
+  }
+  else if(citySearched){
+    adsManager.filterBy("city", citySearched);
+    showAdds(adsManager.filteredAds, noticeContainer)
+  }
+   else { showAdds(adsManager.allAds, noticeContainer) }
+});
+
+citySearch.addEventListener("keyup", filterCities)
+
+showAdds(adsManager.allAds, noticeContainer)

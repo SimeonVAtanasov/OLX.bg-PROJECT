@@ -27,7 +27,7 @@
     <script src="./assets/script/utils.js"></script>
     <script src="./assets/script/categories.js"></script>
     <script src="./assets/script/ads.js"></script>
-    <script src="./assets/script/advertismentModel.js"></script>
+    <script src="./assets/script/advertisementModel.js"></script>
     <script src="./assets/script/UserModel.js"></script>
 
     <script
@@ -63,9 +63,9 @@
             </li>
             <li>
               <a
-                href="#advertismentPage"
-                class="advertisment-button"
-                id="advertismentButton"
+                href="#advertisementPage"
+                class="advertisement-button"
+                id="advertisementButton"
               >
                 Добави обява
               </a>
@@ -75,7 +75,7 @@
       </nav>
     </header>
     <section id="searchForm">
-      <div class="form-wrapper">
+      <div class="form-wrapper" id="searchContainer">
         <form id="searchBox">
           <i class="fas fa-search"></i>
           <input
@@ -88,21 +88,27 @@
             <i class="fas fa-times"></i>
           </button>
         </form>
-
-        <form id="citySearchBox">
+        <div>
+          <form id="citySearchBox">
           <i class="fas fa-map-marker-alt"></i>
-          <input placeholder="Цялата страна" type="text" id="citySearch" />
+          <input placeholder="Цялата страна" type="text" id="citySearch" autocomplete="off" />
           <button type="reset" class="resetBtn">
             <i class="fas fa-times"></i>
           </button>
         </form>
+        <div id="suggestion">
+            tuka shte ima gradove
+        </div>
+        </div>
+        
         <form id="buttonBox">
-          <button id="submitSearch" type="submitnpm">
+          <button id="submitSearch" type="submitnpm" >
             Търсене<i class="fas fa-search"></i>
           </button>
         </form>
       </div>
     </section>
+
     <div id="indexPage">
       <main>
         <div class="categories">
@@ -149,23 +155,23 @@
 
             <div class="categories-and-populars-text">
               <h3>Главни категории:</h3>
-              <a href="#advertisments"> <span>Недвижими имоти, </span> </a>
-              <a href="#advertisments">
+              <a href="#advertisements"> <span>Недвижими имоти, </span> </a>
+              <a href="#advertisements">
                 <span>Автомобили, каравани, лодки, </span>
               </a>
-              <a href="#advertisments"> <span>Електроника, </span></a>
-              <a href="#advertisments"> <span>Спорт, книги, хоби, </span> </a>
-              <a href="#advertisments"> <span>Животни, </span> </a>
-              <a href="#advertisments"> <span>Дом и градина, </span></a>
-              <a href="#advertisments"> <span>Мода, </span></a>
-              <a href="#advertisments"> <span>За бебето и детето, </span> </a>
-              <a href="#advertisments"> <span>Eкскурзии,почивки, </span> </a>
-              <a href="#advertisments"> <span>Услуги, </span> </a>
-              <a href="#advertisments"> <span>Работа, </span></a>
-              <a href="#advertisments">
+              <a href="#advertisements"> <span>Електроника, </span></a>
+              <a href="#advertisements"> <span>Спорт, книги, хоби, </span> </a>
+              <a href="#advertisements"> <span>Животни, </span> </a>
+              <a href="#advertisements"> <span>Дом и градина, </span></a>
+              <a href="#advertisements"> <span>Мода, </span></a>
+              <a href="#advertisements"> <span>За бебето и детето, </span> </a>
+              <a href="#advertisements"> <span>Eкскурзии,почивки, </span> </a>
+              <a href="#advertisements"> <span>Услуги, </span> </a>
+              <a href="#advertisements"> <span>Работа, </span></a>
+              <a href="#advertisements">
                 <span>Машини, инструменти, бизнес оборудване, </span></a
               >
-              <a href="#advertisments"> <span>Подарявам, </span> </a>
+              <a href="#advertisements"> <span>Подарявам, </span> </a>
             </div>
           </div>
 
@@ -175,20 +181,20 @@
             </div>
             <div class="categories-and-populars-text">
               <h3>Популярни търсения:</h3>
-              <a href="#advertisments"> <span>Nike, </span> </a>
-              <a href="#advertisments"> <span>Adidas, </span> </a>
-              <a href="#advertisments"> <span>Велосипед, </span> </a>
-              <a href="#advertisments"> <span>Трактор, </span> </a>
-              <a href="#advertisments"> <span>Лаптоп, </span> </a>
-              <a href="#advertisments"> <span>Ски, </span> </a>
-              <a href="#advertisments"> <span>Guess, </span> </a>
-              <a href="#advertisments"> <span>Zara, </span> </a>
-              <a href="#advertisments"> <span>Ps4, </span> </a>
-              <a href="#advertisments"> <span>Playstation 5, </span> </a>
-              <a href="#advertisments"> <span>Sony, </span> </a>
-              <a href="#advertisments"> <span>Тонколони, </span> </a>
-              <a href="#advertisments"> <span>BMW, </span> </a>
-              <a href="#advertisments"> <span>Къща</span></a>
+              <a href="#advertisements"> <span>Nike, </span> </a>
+              <a href="#advertisements"> <span>Adidas, </span> </a>
+              <a href="#advertisements"> <span>Велосипед, </span> </a>
+              <a href="#advertisements"> <span>Трактор, </span> </a>
+              <a href="#advertisements"> <span>Лаптоп, </span> </a>
+              <a href="#advertisements"> <span>Ски, </span> </a>
+              <a href="#advertisements"> <span>Guess, </span> </a>
+              <a href="#advertisements"> <span>Zara, </span> </a>
+              <a href="#advertisements"> <span>Ps4, </span> </a>
+              <a href="#advertisements"> <span>Playstation 5, </span> </a>
+              <a href="#advertisements"> <span>Sony, </span> </a>
+              <a href="#advertisements"> <span>Тонколони, </span> </a>
+              <a href="#advertisements"> <span>BMW, </span> </a>
+              <a href="#advertisements"> <span>Къща</span></a>
             </div>
           </div>
         </div>
@@ -328,7 +334,9 @@
     </div>
 
     <div id="errorPage">
-      <h1>Грешка! Тази страница не съществува!</h1>
+
+      <h1>Съжаляваме, не можем да намерим тази страница… </h1>
+      <a href="index">Oтиди на заглавната страница!</a>
     </div>
 
     <div id="noticeContainer"></div>
@@ -447,6 +455,8 @@
         />
       </div>
     </footer>
+
+
     <script id="noticeTemplate" type="text/x-handlebars-template">
       <ul id="noticeList" class="">
         {{#each this}}
@@ -480,6 +490,7 @@
       </ul>
     </script>
 
+    <script src="./assets/script/filterCities.js"></script>
     <script src="./assets/script/indexView.js"></script>
     <script src="./assets/script/index.js"></script>
     <script src="./assets/script/UserController.js"></script>

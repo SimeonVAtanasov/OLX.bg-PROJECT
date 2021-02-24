@@ -62,7 +62,7 @@ header {
   top: -3px;
 }
 
-.advertisment-button {
+.advertisement-button {
   background: #fff;
   color: #0e2f36;
   padding: 7px 12px;
@@ -74,7 +74,7 @@ header {
   transition: 0.4s ease-in-out;
 }
 
-.advertisment-button:hover {
+.advertisement-button:hover {
   background: none;
   color: white;
 }
@@ -444,7 +444,7 @@ div.pop-up-div {
   z-index: 5;
 }
 
-.watch-button{
+.watch-button {
   position: relative;
 }
 
@@ -464,7 +464,8 @@ div.pop-up-div {
   justify-content: center;
   align-items: center;
 }
-#searchForm > div > form i {
+#searchBox i,
+#citySearchBox i {
   font-size: 36px;
   padding: 10px;
 }
@@ -480,7 +481,6 @@ div.pop-up-div {
   justify-content: space-between;
   align-items: center;
   border-radius: 4px;
-
 }
 
 #searchBox button.fa-times {
@@ -515,7 +515,6 @@ div.pop-up-div {
   background-color: transparent;
   border: none;
   cursor: pointer;
-
 }
 
 .resetBtn:focus,
@@ -536,7 +535,7 @@ div.pop-up-div {
   transition: 0.4s ease-in-out;
 }
 
-#buttonBox button:hover{
+#buttonBox button:hover {
   background-color: #0e2f36;
   color: white;
 }
@@ -844,26 +843,26 @@ div.pop-up-div {
   transform: rotate(45deg);
 }
 
-.notice-img{
+.notice-img {
   width: 216px;
   height: 156px;
 }
 
-#noticeContainer{
+#noticeContainer {
   background-color: #f2f4f5;
-} 
+}
 
-#noticeList{
+#noticeList {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.notice-box{
+.notice-box {
   background-color: white;
   display: flex;
-  flex-direction: row ;
+  flex-direction: row;
   box-sizing: border-box;
   width: 1029px;
   height: 168px;
@@ -872,7 +871,7 @@ div.pop-up-div {
   border-radius: 4px;
 }
 
-.description-box{
+.description-box {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -880,8 +879,17 @@ div.pop-up-div {
   padding: 8px;
 }
 
-.last{
+.last {
   display: flex;
   align-items: flex-end;
   flex-grow: 1;
+}
+
+#suggestion {position: absolute;
+  background-color: white;
+  display: none;
+  overflow: hidden auto;
+  width: 340px;
+  max-height: 350px;
+  z-index: 2;
 }

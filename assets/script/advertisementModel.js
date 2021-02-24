@@ -48,10 +48,10 @@ class AdvertisementManager {
       el.promo,
       el.telNumber
     )
-      this.allAds.push(newNotice);
+    this.allAds.push(newNotice);
   }
 
-  filterBy(type, optionA, optionB) {
+  filterBy(type, optionA) {
     if (typeof type !== "string") {
       return this.allAds;
     }
@@ -63,7 +63,6 @@ class AdvertisementManager {
         this.filteredAds = this.allAds.filter((notice) =>
           notice.title.toLowerCase().includes(filteringStr)
         );
-
         return this.filteredAds;
       case "category":
         const categorytype = optionA;
@@ -73,25 +72,45 @@ class AdvertisementManager {
         );
 
         return this.filteredAds;
-      case "price":
-        if (optionA && optionB) {
-          this.filteredAds = this.allAds.filter(
-            (notice) => notice.price >= optionA && notice.price <= optionB
+      case "city":
+        if (this.filteredAds.length > 0) {
+          const filteringStr = optionA.toLowerCase().trim();
+
+          this.filteredAds = this.filteredAds.filter(notice =>
+            notice.city.toLowerCase().includes(filteringStr)
           );
-          return this.filteredAds;
-        } else if (optionA && !optionB) {
-          this.filteredAds = this.allAds.filter(
-            (notice) => notice.price >= optionA
-          );
+           
           return this.filteredAds;
         } else {
-          this.filteredAds = this.allAds.filter(
-            (notice) => notice.price <= optionB
-          );
-          return this.filteredAds;
+          const filteringStr = optionA.toLowerCase().trim();
+
+        this.filteredAds = this.allAds.filter(notice =>
+          notice.city.toLowerCase().includes(filteringStr)
+        );
+
+        return this.filteredAds;
         }
-        default:
-          return this.allAds
+
+      default:
+        return this.allAds
+    }
+  }
+  sortByPrice(a, b, decending) {
+    if (a && b) {
+      this.filteredAds = this.allAds.filter(
+        (notice) => notice.price >= optionA && notice.price <= optionB
+      );
+      return this.filteredAds;
+    } else if (a && !b) {
+      this.filteredAds = this.allAds.filter(
+        (notice) => notice.price >= optionA
+      );
+      return this.filteredAds;
+    } else {
+      this.filteredAds = this.allAds.filter(
+        (notice) => notice.price <= optionB
+      );
+      return this.filteredAds;
     }
   }
 }
