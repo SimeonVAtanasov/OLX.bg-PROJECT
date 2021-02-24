@@ -2,24 +2,11 @@ window.addEventListener("DOMContentLoaded", onHashChange);
 window.addEventListener("hashchange", onHashChange);
 
 const adsManager = new AdvertisementManager();
+const noticeContainer = getById("noticeContainer");
 
 // This code ads the test data
 arrOfAds.forEach((el) => {
-  let notice = new Advertisement(
-    el.id,
-    el.title,
-    el.category,
-    el.description,
-    el.price,
-    el.photo,
-    el.city,
-    el.fullName,
-    el.email,
-    el.promo,
-    el.telNumber
-  );
-
-  adsManager.allAds.push(notice);
+  adsManager.addAdvertisement(el);
 });
 
 adsManager.promoAds = adsManager.allAds.filter((el) => el.promo);
@@ -27,183 +14,6 @@ adsManager.promoAds = adsManager.allAds.filter((el) => el.promo);
 // -------
 const loginForm = getById("loginForm");
 const registrationForm = getById("registrationForm");
-
-function onHashChange() {
-  const indexPage = getById("indexPage");
-  const adsContainer = getById("noticeContainer");
-  const errorPage = getById("errorPage");
-  const singleNoticeContainer = getById("singleNoticeContainer");
-  const searchForm = getById("searchForm");
-  const profilePage = getById("profilePage");
-
-  let page = location.hash.slice(1);
-
-  switch (page) {
-    case "":
-    case "index":
-      indexPage.style.display = "block";
-      searchForm.style.display = "block";
-      adsContainer.style.display = "none";
-      errorPage.style.display = "none";
-      profilePage.style.display = "none";
-      singleNoticeContainer.style.display = "none";
-      break;
-
-    case "advertisments":
-      indexPage.style.display = "none";
-      searchForm.style.display = "block";
-      adsContainer.style.display = "block";
-      errorPage.style.display = "none";
-      profilePage.style.display = "none";
-      singleNoticeContainer.style.display = "none";
-      break;
-
-    case "offer":
-      indexPage.style.display = "none";
-      searchForm.style.display = "none";
-      adsContainer.style.display = "none";
-      errorPage.style.display = "none";
-      profilePage.style.display = "none";
-      singleNoticeContainer.style.display = "block";
-      break;
-
-    case "profilePage":
-      indexPage.style.display = "none";
-      searchForm.style.display = "none";
-      adsContainer.style.display = "none";
-      errorPage.style.display = "none";
-      profilePage.style.display = "block";
-      singleNoticeContainer.style.display = "none";
-      break;
-
-    default:
-      indexPage.style.display = "none";
-      adsContainer.style.display = "none";
-      errorPage.style.display = "block";
-  }
-}
-
-function printCategories(categories) {
-  let categoriesContainer = getById("categoriesContainer");
-
-  for (let i = 0; i < categories.length; i++) {
-    let currentCategory = categories[i];
-    let categoryCard = createElement("div");
-
-    categoryCard.className = "category-card";
-
-    let imageContainer = createElement("div");
-
-    imageContainer.style.backgroundColor = currentCategory["background-color"];
-    imageContainer.className = "image-container";
-
-    let categoryImage = createElement("img");
-
-    categoryImage.src = currentCategory.image;
-
-    let description = createElement("p", currentCategory.title);
-
-    description.className = "title";
-    imageContainer.append(categoryImage);
-    categoryCard.append(imageContainer, description);
-    categoriesContainer.append(categoryCard);
-
-    categoryCard.addEventListener("click", function () {
-      location.hash = "#advertisments";
-      // TO DO Use functions to filter and print in the container
-    });
-  }
-}
-
-printCategories(categories);
-
-function printPromoAds() {
-  const promoContainer = getById("promoAdsContainer");
-  console.log(userManager);
-  console.log(userManager.currentUser);
-  promoContainer.innerHTML = "";
-
-  const nameOfSection = createElement("h1", "Промо Обяви");
-  nameOfSection.id = "nameOfSection";
-  const listOfAds = createElement("ul");
-  listOfAds.id = "noticeCardHolder";
-
-  for (let i = 0; i < 16; i++) {
-    const currentNotice = adsManager.promoAds[i];
-    let noticeCard = createElement("li");
-    noticeCard.className = "offer-box";
-    let imgContainer = createElement("div");
-    imgContainer.className = "img-container";
-    let anchor = createElement("a");
-    anchor.href = "#offer"; // TO DO!  Update the router function and make a new place to  show individual ad in the html  file
-    let img = createElement("img");
-    img.src = currentNotice.photo;
-    img.className = "notice-img";
-    img.style.width = "100%";
-    img.style.height = "165px";
-
-    anchor.append(img);
-    imgContainer.append(anchor);
-
-    let descriptionContainer = createElement("div");
-    descriptionContainer.className = "ad-description";
-    let title = createElement("h4", currentNotice.title);
-    descriptionContainer.append(title);
-
-    let placeContainer = createElement("div");
-    placeContainer.className = "city";
-    let place = createElement("span", "гр. " + currentNotice.city);
-    placeContainer.append(place);
-
-    let priceContainer = createElement("div");
-    priceContainer.className = "price-watch";
-    let priceHolder = createElement("div", currentNotice.price + " лв.");
-    priceHolder.className = "price-holder";
-    let watchButton = createElement(
-      "div",
-      '<i class="far fa-heart watched"></i>'
-    );
-    watchButton.className = "watch-button";
-
-    let pop = createElement("div", "<p>Наблюдавай</p>");
-
-    pop.classList.add("pop-up-div", "message");
-
-    //
-    let isAlreadyLiked = userManager.currentUser.isInLiked(currentNotice);
-
-    if (isAlreadyLiked) {
-      pop.innerHTML = "<p> Премахни от наблюдавани  </p>";
-      pop.style.width = "91%";
-      watchButton.innerHTML = "<i class='fas fa-heart'></i>";
-      watchButton.addEventListener("click", function () {
-        userManager.currentUser.removeFromLiked(currentNotice);
-        countLikeAds();
-        printPromoAds();
-      });
-    } else {
-      pop.innerHTML = "<p>Наблюдавай </p>";
-      watchButton.addEventListener("click", function () {
-        userManager.currentUser.likeAd(currentNotice);
-        countLikeAds();
-        printPromoAds();
-        localStorage.setItem("users", JSON.stringify(userManager.users));
-      });
-    }
-
-    watchButton.append(pop);
-    priceContainer.append(priceHolder, watchButton);
-    noticeCard.append(
-      imgContainer,
-      descriptionContainer,
-      placeContainer,
-      priceContainer
-    );
-
-    listOfAds.append(noticeCard);
-  }
-  promoContainer.append(nameOfSection, listOfAds);
-}
 
 printPromoAds();
 
@@ -273,3 +83,70 @@ registrationBtn.addEventListener("click", function (ev) {
   loginBtn.style.fontWeight = "normal";
   registrationBtn.style.fontWeight = "bold";
 });
+
+let emailRegisterInput = getById("registerEmail");
+let passwordRegisterInput = getById("registerPassword");
+let emailLoginInput = getById("logEmail");
+let passwordLoginInput = getById("loginPassword");
+
+let emailRegMessage = getById("emailRegError");
+let passwordRegMessage = getById("passwordRegError");
+
+let emailLogMessage = getById("emailLogError");
+let passwordLogMessage = getById("passwordLogError");
+
+emailLoginInput.addEventListener("input", function () {
+  validateEmail(emailLoginInput, emailLogMessage);
+});
+
+emailRegisterInput.addEventListener("input", function () {
+  validateEmail(emailRegisterInput, emailRegMessage);
+});
+
+passwordRegisterInput.addEventListener("input", validatePassword);
+
+function validateEmail(email, message) {
+  let emailCheck = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  if (email.value === "") {
+    message.innerHTML = "Полето е задължително!";
+    email.classList.add("active");
+    return false;
+  } else if (emailCheck.test(email.value)) {
+    message.innerHTML = "";
+    email.classList.remove("active");
+    return true;
+  } else {
+    message.innerHTML = "Невалиден имейл адрес";
+    email.classList.add("active");
+    return false;
+  }
+}
+
+function validatePassword() {
+  let passwordCheck = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  if (passwordRegisterInput.value === "") {
+    passwordRegMessage.innerHTML = "Полето е задължително!";
+    passwordRegisterInput.classList.add("active");
+    return false;
+  } else if (passwordCheck.test(passwordRegisterInput.value)) {
+    passwordRegMessage.innerHTML = "";
+    passwordRegisterInput.classList.remove("active");
+    return true;
+  } else {
+    passwordRegMessage.innerHTML =
+      "Паролата трябва да е от поне 8 символа и да съдържа буква и цифра";
+    passwordRegisterInput.classList.add("active");
+    return false;
+  }
+}
+
+function validateUser() {
+  if (emailLoginInput.value === "" || passwordLoginInput.value === "") {
+    validateEmail(emailLoginInput, emailLogMessage);
+  } else if (
+    !userManager.isRegistered(emailRegisterInput, passwordRegisterInput)
+  ) {
+    getById("invalidMessage").style.display = "block";
+  }
+}

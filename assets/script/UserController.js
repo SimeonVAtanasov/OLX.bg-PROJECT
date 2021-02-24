@@ -8,10 +8,12 @@ let registerBtn = getById("registerButton");
 
 loginButton.addEventListener("click", function (ev) {
   ev.preventDefault();
-  const username = emailInputLogin.value;
+  const email = emailInputLogin.value;
   const password = passwordInputLogin.value;
 
-  if (userManager.login(username, password)) {
+  validateUser();
+
+  if (userManager.login(email, password)) {
     countLikeAds();
     printPromoAds();
     location.hash = "index";
@@ -21,8 +23,18 @@ loginButton.addEventListener("click", function (ev) {
 registerBtn.addEventListener("click", function (ev) {
   ev.preventDefault();
 
-  const username = emailInputRegister.value;
-  const password = passwordInputRegister.value;
+  const email = emailInputRegister;
+  const password = passwordInputRegister;
 
-  userManager.register(username, password);
+  if (!validateEmail(email, password) || !validatePassword()) {
+    registerForm.reset();
+    return;
+  } else {
+    userManager.register(email.value, password.value);
+    loginForm.style.display = "flex";
+    registrationForm.style.display = "none";
+    registrationBtn.style.fontWeight = "normal";
+    loginBtn.style.fontWeight = "bold";
+    registrationForm.reset();
+  }
 });

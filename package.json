@@ -1,0 +1,22 @@
+{
+  "name": "olx-project",
+  "version": "1.0.0",
+  "description": "OLX.bg COPY OF THE ORIGINAL SITE",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simoatanasov9915/OLX.bg-PROJECT.git"
+  },
+  "author": "Nevena Kirova and Simeon Atanasov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simoatanasov9915/OLX.bg-PROJECT/issues"
+  },
+  "homepage": "https://github.com/simoatanasov9915/OLX.bg-PROJECT#readme",
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}

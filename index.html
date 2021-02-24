@@ -24,10 +24,17 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <script src="./assets/script/utils.js"></script>
     <script src="./assets/script/categories.js"></script>
     <script src="./assets/script/ads.js"></script>
-    <script src="./assets/script/classes.js"></script>
-    <script src="./assets/script/utils.js"></script>
+    <script src="./assets/script/advertismentModel.js"></script>
+    <script src="./assets/script/UserModel.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+      integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
@@ -68,31 +75,33 @@
       </nav>
     </header>
     <section id="searchForm">
-      <form autocomplete="off" action="">
-        <div class="form-wrapper">
-          <div id="searchBox">
-            <i class="fas fa-search"></i>
-            <input
-              id="searchInput"
-              type="text"
-              name="ads"
-              placeholder="Обяви близо до теб"
-            />
-            <button type="reset" class="resetBtn" ><i class="fas fa-times"></i></button>
-          </div>
+      <div class="form-wrapper">
+        <form id="searchBox">
+          <i class="fas fa-search"></i>
+          <input
+            id="searchInput"
+            type="text"
+            name="ads"
+            placeholder="Обяви близо до теб"
+          />
+          <button type="reset" class="resetBtn">
+            <i class="fas fa-times"></i>
+          </button>
+        </form>
 
-          <div id="citySearchBox">
-            <i class="fas fa-map-marker-alt"></i>
-            <input placeholder="Избери град" type="text" id="citySearch" />
-            <button  type="reset" class="resetBtn" ><i class="fas fa-times"></i></button>
-
-          </div>
-          <div   id="buttonBox">
-            <button id="submitSearch">Търсене<i  class="fas fa-search"></i> </button>
-
-          </div>
-        </div>
-      </form>
+        <form id="citySearchBox">
+          <i class="fas fa-map-marker-alt"></i>
+          <input placeholder="Цялата страна" type="text" id="citySearch" />
+          <button type="reset" class="resetBtn">
+            <i class="fas fa-times"></i>
+          </button>
+        </form>
+        <form id="buttonBox">
+          <button id="submitSearch" type="submitnpm">
+            Търсене<i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
     </section>
     <div id="indexPage">
       <main>
@@ -202,6 +211,9 @@
         </div>
 
         <form action="" id="loginForm" class="login-form">
+          <div class="invalid-message" id="invalidMessage">
+            <p>Невалиден имейл или парола</p>
+          </div>
           <div>
             <button class="loginBtn facebook">Вход с Facebook</button>
           </div>
@@ -217,10 +229,11 @@
             <input
               type="email"
               id="logEmail"
-              name="logEmail"
+              name="email"
               class="logInput"
               placeholder="Имейл (от OLX профила)"
             />
+            <p class="error-message" id="emailLogError"></p>
           </div>
 
           <div class="password-login">
@@ -232,6 +245,7 @@
               class="logInput"
               placeholder="Парола"
             />
+            <p class="error-message" id="passwordLogError"></p>
           </div>
 
           <div class="forgotten-password">
@@ -261,14 +275,15 @@
           </div>
 
           <div class="email-login">
-            <label for="logEmail">Имейл (от OLX профила) </label>
+            <label for="email">Имейл (от OLX профила) </label>
             <input
               type="email"
               id="registerEmail"
-              name="logEmail"
+              name="email"
               class="logInput"
               placeholder="Имейл (от OLX профила)"
             />
+            <p class="error-message" id="emailRegError"></p>
           </div>
 
           <div class="password-login">
@@ -280,6 +295,7 @@
               class="logInput"
               placeholder="Парола"
             />
+            <p class="error-message" id="passwordRegError"></p>
           </div>
 
           <div class="general-terms-register">
@@ -305,7 +321,7 @@
             <label for="check" class="checkbox"
               >Съгласявам се да получавам маркетинг комуникация, интересни
               оферти и съвети от OLX
-              <input type="checkbox" id="check" name="check" required />
+              <input type="checkbox" id="check" name="check" />
               <span class="checkmark"></span>
             </label>
           </div>
@@ -322,7 +338,7 @@
       <h1>Грешка! Тази страница не съществува!</h1>
     </div>
 
-    <div id="noticeContainer">Notice board</div>
+    <div id="noticeContainer"></div>
 
     <div id="singleNoticeContainer">Single offer page</div>
 
@@ -438,8 +454,40 @@
         />
       </div>
     </footer>
+    <script id="noticeTemplate" type="text/x-handlebars-template">
+      <ul id="noticeList" class="">
+        {{#each this}}
+          <li class="notice-box">
+            <div>
+              <img src="{{photo}}" alt="{{title}}" class="notice-img" />
+            </div>
+            <div class="description-box">
+              <h3>
+                {{title}}
+              </h3>
+              <span>
+                гр.{{city}}
+              </span>
+            </div>
+            <div class="description-box last">
+              <span>
+                {{price}} лв.
+              </span>
+              <div class="watch-button">
+                <i class="far fa-heart watched" aria-hidden="true"></i>
+                <div class="pop-up-div message">
+                  <p>
+                    Наблюдавай
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
 
-    <script src="./assets/script/UserModel.js"></script>
+    <script src="./assets/script/indexView.js"></script>
     <script src="./assets/script/index.js"></script>
     <script src="./assets/script/UserController.js"></script>
   </body>
