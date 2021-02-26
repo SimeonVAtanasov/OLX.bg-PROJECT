@@ -1,8 +1,9 @@
 const userManager = (function () {
   class User {
-    constructor(username, password, likedAds, favouriteSearches, addedAds) {
-      this.username = username;
+    constructor(email, password, likedAds, favouriteSearches, addedAds) {
+      this.email = email;
       this.password = password;
+      this.isLogged = false;
 
       if (likedAds) {
         this.likedAds = likedAds;
@@ -68,11 +69,13 @@ const userManager = (function () {
         let localUsers = JSON.parse(localStorage.getItem("users"));
         localUsers.forEach((el) => {
           let userToPush = new User(
-            el.username,
+            el.email,
             el.password,
+            el.isLogged,
             el.likedAds,
             el.favouriteSearches,
-            el.addedAds
+            el.addedAds,
+            
           );
           this.users.push(userToPush);
         });
@@ -83,34 +86,53 @@ const userManager = (function () {
       this.currentUser = new User();
     }
 
-    register(username, password) {
-      this.users.push(new User(username, password));
+    register(email, password) {
+      this.users.push(new User(email, password));
       localStorage.setItem("users", JSON.stringify(this.users));
     }
 
-    login(username, password) {
+    login(email, password) {
       const isUserLoggedIn = this.users.some(
-        (user) => user["username"] === username && user["password"] === password
+        (user) => user["email"] === email && user["password"] === password
       );
       let index = this.users.findIndex(
-        (el) => el["username"] === username && el["password"] === password
+        (el) => el["email"] === email && el["password"] === password
       );
+      this.currentUser.isLogged = true;
       this.currentUser = this.users[index];
+      
+      this.setUsers();
+     
 
       return isUserLoggedIn;
     }
+
+    checkLoggedUser(isLogged = true){
+      let isUserLoggedIn = this.users.some(
+        (user) => user["isLogged"] === isLogged);
+
+        if(isUserLoggedIn){
+          let index = this.users.findIndex(
+            (el) => el["isLoggedin"] === isLoggedin );
+            this.currentUser=this.users[index];
+            this.login(this.currentUser.email,this.currentUser.password);
+        }
+    
+    
+  }
 
     setUsers() {
       localStorage.setItem("users", JSON.stringify(userManager.users));
     }
 
-    isRegistered(username, password) {
+    isRegistered(email, password) {
       const isUserRegistered = this.users.some(
-        (user) => user["username"] === username && user["password"] === password
+        (user) => user["email"] === email && user["password"] === password
       );
 
       return isUserRegistered;
     }
+
   }
 
   return new UserManager();

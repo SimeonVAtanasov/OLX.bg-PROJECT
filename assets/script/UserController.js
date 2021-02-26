@@ -3,8 +3,11 @@ const passwordInputLogin = getById("loginPassword");
 const emailInputRegister = getById("registerEmail");
 const passwordInputRegister = getById("registerPassword");
 
+
+
 let loginButton = getById("loginButton");
 let registerBtn = getById("registerButton");
+
 
 loginButton.addEventListener("click", function (ev) {
   ev.preventDefault();
@@ -12,12 +15,14 @@ loginButton.addEventListener("click", function (ev) {
   const password = passwordInputLogin.value;
 
   validateUser();
-
+  
   if (userManager.login(email, password)) {
     countLikeAds();
     printPromoAds();
     location.hash = "index";
   }
+
+  changeProfileFunctions(email,password);
 });
 
 registerBtn.addEventListener("click", function (ev) {
@@ -38,3 +43,6 @@ registerBtn.addEventListener("click", function (ev) {
     registrationForm.reset();
   }
 });
+
+
+

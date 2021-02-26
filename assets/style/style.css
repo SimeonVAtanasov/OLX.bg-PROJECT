@@ -7,38 +7,53 @@ header {
   background-color: #0e2f35;
   height: 72px;
 }
+.navigation {
+  display: flex;
+  align-items: flex-end;
+  padding-top: 13px;
+  flex-direction: column;
+}
+
+.navigation-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
 
 .menu {
-  position: absolute;
-  top: 27px;
-  right: 158px;
+  height: 20px;
+  margin-right: 52px;
 }
+
+
+
+
 
 .menu ul {
   display: flex;
   list-style-type: none;
   margin-bottom: 0;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  transition: all .5s ease;
 }
 
 .logo {
-  height: 72px;
-  overflow: hidden;
-  position: absolute;
-  top: -14px;
-  left: 180px;
-  width: 93px;
+  margin-left: 95px;
 }
 
 #logoImage {
-  width: 100px;
-  height: 100px;
+  width: 73px;
+  height: 43px;
 }
 
 .menu li {
   margin-right: 40px;
 }
 
-.dropdown {
+.my-profile {
   color: white;
 }
 
@@ -47,7 +62,7 @@ header {
   margin-right: 13px;
 }
 
-.dropdown span {
+.my-profile span {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   margin-right: 5px;
@@ -542,6 +557,7 @@ div.pop-up-div {
 
 .profile-page {
   text-decoration: none;
+  display: block;
 }
 
 .loginBtn {
@@ -715,8 +731,6 @@ div.pop-up-div {
   box-sizing: border-box;
   opacity: 1;
 }
-
-
 
 .login-form label {
   font-size: 14px;
@@ -922,7 +936,8 @@ div.pop-up-div {
   flex-grow: 1;
 }
 
-#suggestion {position: absolute;
+#suggestion {
+  position: absolute;
   background-color: white;
   display: none;
   overflow: hidden auto;
@@ -950,4 +965,73 @@ div.pop-up-div {
   text-align: center;
   font-size: 13px;
   font-family: "Open Sans", sans-serif;
+}
+
+.profile-dropdown {
+  display: none;
+  border-radius: 4px;
+  width: 225px;
+  background: #fff;
+  margin: 3px 256px 0px 20px;
+  z-index: 2;
+  overflow: hidden;
+  font-family: "Open Sans", sans-serif;
+  box-shadow: 0 0 4px 0 rgb(0 48 53 / 15%), 0 0 4px 0 rgb(0 48 53 / 15%);
+  transition: all .5s ease;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px 5px;
+}
+.user-image {
+  width: 40px;
+  margin-right: 14px;
+}
+
+.profile-dropdown h5 {
+  padding: 0 24px;
+  color: #7f9799;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-top: 20px;
+  margin-bottom: 9px;
+  
+}
+
+.profile-dropdown ul {
+  font-size: 14px;
+  line-height: 1.29;
+  margin: 10px 0;
+}
+
+.profile-dropdown a {
+  padding: 9px 24px;
+  display: block;
+  text-decoration: none;
+  color: #002f34;
+}
+
+.profile-dropdown a:hover {
+  background: #002f34;
+  color: #fff;
+}
+
+.profile-dropdown div:last-child ul a {
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+
+.profile-dropdown div:last-child ul {
+  border-top: 1px solid #d8dfe0;
+  margin-bottom: 0;
+}
+
+
+
+.fa-truck {
+  margin-right: 6px;
+  font-size: 17px;
 }

@@ -81,7 +81,10 @@ function printCategories(categories) {
     categoriesContainer.append(categoryCard);
 
     categoryCard.addEventListener("click", function () {
-      showAdds(adsManager.filterBy("category", currentCategory.title), noticeContainer)
+      showAdds(
+        adsManager.filterBy("category", currentCategory.title),
+        noticeContainer
+      );
       location.hash = "#advertisements";
     });
   }
@@ -112,7 +115,6 @@ function printPromoAds() {
     img.src = currentNotice.photo;
     img.alt = currentNotice.title;
     img.className = "notice-img";
-
 
     anchor.append(img);
     imgContainer.append(anchor);
@@ -182,11 +184,42 @@ function showAdds(arr, container) {
   if (arr.length > 0) {
     const source = document.getElementById("noticeTemplate").innerHTML;
     const template = Handlebars.compile(source);
-    const html = template(arr)
+    const html = template(arr);
 
     container.innerHTML = html;
   } else {
-    container.innerHTML = "Няма намерени обяви"
+    container.innerHTML = "Няма намерени обяви";
   }
-
 }
+
+function changeProfileFunctions(email, password) {
+  if (!userManager.login(email, password)) {
+    profileMenu.href = "#profilePage";
+    profileMenu.style.display = "none";
+    dropdownArrow.classList = "";
+  } else {
+    //change href when there is a page for my ads
+    profileMenu.href="#"
+    profileUsername.innerText = email;
+    dropdownArrow.classList.add("fas", "fa-chevron-down");
+    profileMenu.addEventListener("mouseover", showProfileMenu);
+    profileDropdown.addEventListener("mouseleave", hideProfileMenu);
+  }
+}
+
+function showProfileMenu(e) {
+  profileDropdown.style.display = "block";
+}
+
+
+function hideProfileMenu(e){
+
+  if(e.target === getById("userCard") || e.target === getById("text1") || e.target === getById("text2")
+  || e.target === getById("userImage") || e.target === getById("userName")){
+    return;
+  }
+    setTimeout(() => {
+     profileDropdown.style.display = "none";
+  },1000);
+}
+  

@@ -610,7 +610,7 @@ let arrOfAds = [
     email: "wegginton11@tripadvisor.com",
     price: 461,
     city: "Хаджидимово",
-    photo: "Modul3/OLX.bg-PROJECT/images/Аds-images/sneakers.jpg",
+    photo: "./images/Аds-images/sneakers.jpg",
     promo: false,
     telNumber: "6334062123202255",
     category: "Мода",
@@ -772,5 +772,3 @@ let arrOfAds = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
   },
 ];
-
-

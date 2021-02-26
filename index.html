@@ -38,7 +38,8 @@
   </head>
   <body>
     <header>
-      <nav>
+      <nav class="navigation">
+        <div class="navigation-container">
         <div class="logo">
           <a href="#index">
             <img src="./images/logo.png" alt="olx logo" id="logoImage"
@@ -47,19 +48,20 @@
         <div class="menu">
           <ul>
             <li>
-              <a href="#likedPage" class="like-icon">
+              <a href="" class="like-icon">
                 <i class="far fa-heart liked"></i>
                 <span class="counter" id="likeCounter"></span>
               </a>
             </li>
             <li>
-              <a href="#profilePage" class="profile-page">
-                <div class="dropdown">
+              <a href="#profilePage" class="profile-page" id="profileMenu">
+                <div class="my-profile">
                   <i class="far fa-user"></i>
                   <span> Моят профил</span>
-                  <i class="fas fa-chevron-down"></i>
+                  <i class="" id="arrow"></i>
                 </div>
               </a>
+             
             </li>
             <li>
               <a
@@ -72,8 +74,69 @@
             </li>
           </ul>
         </div>
+      </div>
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="user-card" id="userCard">
+            <div class="user-photo">
+              <img src="./images/user.png" alt="user photo" class="user-image" id="userImage">
+            </div>
+            <div class="user-name">
+              <p id="userName"></p>
+            </div>
+          </div>
+          <div >
+            <h5 id="text1">Моят профил:</h5>
+          </div>
+          <div>
+            <ul>
+              <li>
+                <a href="#" id="profile-ads">
+                  <span>Обяви</span>
+                </a></li>
+              <li>
+                <a href="#" id="profile-messages">
+                  <span>Съобщения</span>
+                </a></li>
+              <li>
+                <a href="#" id="profile-payments">
+                  <span>Плащания</span>
+                </a></li>
+              <li>
+                <a href="#" id="profile-settings">
+                  <span>Настройки</span>
+                </a></li>
+              <li>
+                <a href="#" id="profile-delivery">
+                  <i class="fas fa-truck"></i>
+                  <span>Доставка</span>
+                </a></li>
+            </ul>
+          </div>
+          <div >
+            <h5 id="text2">Любими:</h5>
+          </div>
+          <div>
+            <ul>
+              <li><a href="#" id="observed-ads">
+                <span>Обяви</span>
+              </a></li>
+              <li><a href="#" id="observed-searches">
+                <span>Търсения</span>
+              </a></li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>
+                <a href="#" id="log-out">
+                  <span>Изход</span>
+                </a></li>
+            </ul>
+          </div>
+        </div>
       </nav>
     </header>
+    
     <section id="searchForm">
       <div class="form-wrapper" id="searchContainer">
         <form id="searchBox">

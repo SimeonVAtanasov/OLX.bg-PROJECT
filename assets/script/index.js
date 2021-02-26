@@ -1,5 +1,9 @@
 window.addEventListener("DOMContentLoaded", onHashChange);
 window.addEventListener("hashchange", onHashChange);
+window.addEventListener("click", hideProfileMenu);
+
+
+
 
 const adsManager = new AdvertisementManager();
 const noticeContainer = getById("noticeContainer");
@@ -8,8 +12,14 @@ const registrationBtn = getById("navRegistrationBtn");
 // SearchBar elements
 const searchContainer = getById("searchContainer")
 const searchBar = getById("searchInput");
-const citySearch = getById("citySearch")
-const searchButton = getById("submitSearch")
+const citySearch = getById("citySearch");
+const searchButton = getById("submitSearch");
+
+//Profile Menu elements
+let profileMenu = getById("profileMenu")
+let profileDropdown = getById("profileDropdown");
+let dropdownArrow = getById("arrow");
+let profileUsername = getById("userName");
 
 // This code ads the test data
 arrOfAds.forEach((el) => {
@@ -189,3 +199,4 @@ function validateUser() {
     getById("invalidMessage").style.display = "block";
   }
 }
+
