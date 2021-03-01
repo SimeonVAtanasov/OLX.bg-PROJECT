@@ -18,7 +18,7 @@ loginButton.addEventListener("click", function (ev) {
   
   if (userManager.login(email, password)) {
     countLikeAds();
-    printPromoAds();
+    printPromoAds(adsManager.promoAds, promoContainer);
     location.hash = "index";
   }
 

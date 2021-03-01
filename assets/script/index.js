@@ -2,25 +2,6 @@ window.addEventListener("DOMContentLoaded", onHashChange);
 window.addEventListener("hashchange", onHashChange);
 window.addEventListener("click", hideProfileMenu);
 
-
-
-
-const adsManager = new AdvertisementManager();
-const noticeContainer = getById("noticeContainer");
-const loginBtn = getById("navLoginBtn");
-const registrationBtn = getById("navRegistrationBtn");
-// SearchBar elements
-const searchContainer = getById("searchContainer")
-const searchBar = getById("searchInput");
-const citySearch = getById("citySearch");
-const searchButton = getById("submitSearch");
-
-//Profile Menu elements
-let profileMenu = getById("profileMenu")
-let profileDropdown = getById("profileDropdown");
-let dropdownArrow = getById("arrow");
-let profileUsername = getById("userName");
-
 // This code ads the test data
 arrOfAds.forEach((el) => {
   adsManager.addAdvertisement(el);
@@ -29,18 +10,8 @@ arrOfAds.forEach((el) => {
 adsManager.promoAds = adsManager.allAds.filter((el) => el.promo);
 
 // -------
-const loginForm = getById("loginForm");
-const registrationForm = getById("registrationForm");
 
-printPromoAds();
-
-let googlePlay = getById("googlePlay");
-let appStore = getById("appStore");
-let appGalerry = getById("appGalerry");
-let downloadText = getById("downloadText");
-let downloadFrom = getById("downloadFromText");
-
-const boxesToChangeText = [googlePlay, appStore, appGalerry];
+printPromoAds(adsManager.promoAds, promoContainer);
 
 boxesToChangeText.forEach((element) => {
   element.addEventListener("mouseover", changeText);
@@ -82,8 +53,6 @@ function countLikeAds() {
   }
 }
 
-
-
 loginBtn.addEventListener("click", function (ev) {
   ev.preventDefault();
   loginForm.style.display = "flex";
@@ -117,32 +86,22 @@ searchContainer.addEventListener("input", function () {
     showAdds(adsManager.filteredAds, noticeContainer);
 
   }
-  else if(citySearched){
+  else if (citySearched) {
     adsManager.filterBy("city", citySearched);
     showAdds(adsManager.filteredAds, noticeContainer)
   }
-   else { showAdds(adsManager.allAds, noticeContainer) }
+  else { showAdds(adsManager.allAds, noticeContainer) }
 });
 
 citySearch.addEventListener("keyup", filterCities)
 
-searchButton.addEventListener("click", function(ev){
+searchButton.addEventListener("click", function (ev) {
   ev.preventDefault();
   location.hash = "advertisements";
 })
 
 showAdds(adsManager.allAds, noticeContainer);
 
-let emailRegisterInput = getById("registerEmail");
-let passwordRegisterInput = getById("registerPassword");
-let emailLoginInput = getById("logEmail");
-let passwordLoginInput = getById("loginPassword");
-
-let emailRegMessage = getById("emailRegError");
-let passwordRegMessage = getById("passwordRegError");
-
-let emailLogMessage = getById("emailLogError");
-let passwordLogMessage = getById("passwordLogError");
 
 emailLoginInput.addEventListener("input", function () {
   validateEmail(emailLoginInput, emailLogMessage);
@@ -199,4 +158,21 @@ function validateUser() {
     getById("invalidMessage").style.display = "block";
   }
 }
+
+window.addEventListener("scroll", makeNavBarSticky);
+
+let sticky = 99;
+
+function makeNavBarSticky() {
+  if (window.pageYOffset >= sticky) {
+  setTimeout(function () {
+      navbar.classList.add("sticky")
+      sticky = window.pageYOffset;
+    }, 150)
+  } else {
+      navbar.classList.remove("sticky");
+      sticky = window.pageYOffset;
+    }
+}
+
 

@@ -49,10 +49,10 @@ const userManager = (function () {
       this.likedAds.splice(foundAdIndex, 1);
     }
 
-    isInLiked(ad) {
+    isInLiked(id) {
       let isAlreadyLiked = false;
       for (let i = 0; i < this.likedAds.length; i++) {
-        if (this.likedAds[i].id === ad.id) {
+        if (this.likedAds[i].id === id) {
           isAlreadyLiked = true;
           break;
         }

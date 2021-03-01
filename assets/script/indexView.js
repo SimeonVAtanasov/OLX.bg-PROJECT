@@ -1,11 +1,4 @@
 function onHashChange() {
-  const indexPage = getById("indexPage");
-  const adsContainer = getById("noticeContainer");
-  const errorPage = getById("errorPage");
-  const singleNoticeContainer = getById("singleNoticeContainer");
-  const searchForm = getById("searchForm");
-  const profilePage = getById("profilePage");
-
   let page = location.hash.slice(1);
 
   switch (page) {
@@ -92,19 +85,15 @@ function printCategories(categories) {
 
 printCategories(categories);
 
-function printPromoAds() {
-  const promoContainer = getById("promoAdsContainer");
-  console.log(userManager);
-  console.log(userManager.currentUser);
-  promoContainer.innerHTML = "";
+function printPromoAds(arr, container) {
 
-  const nameOfSection = createElement("h1", "Промо Обяви");
-  nameOfSection.id = "nameOfSection";
+  container.innerHTML = "";
+
   const listOfAds = createElement("ul");
   listOfAds.id = "noticeCardHolder";
 
   for (let i = 0; i < 16; i++) {
-    const currentNotice = adsManager.promoAds[i];
+    const currentNotice = arr[i];
     let noticeCard = createElement("li");
     noticeCard.className = "offer-box";
     let imgContainer = createElement("div");
@@ -144,7 +133,7 @@ function printPromoAds() {
     pop.classList.add("pop-up-div", "message");
 
     //
-    let isAlreadyLiked = userManager.currentUser.isInLiked(currentNotice);
+    let isAlreadyLiked = userManager.currentUser.isInLiked(currentNotice.id);
 
     if (isAlreadyLiked) {
       pop.innerHTML = "<p>Премахни от наблюдавани</p>";
@@ -153,7 +142,7 @@ function printPromoAds() {
       watchButton.addEventListener("click", function () {
         userManager.currentUser.removeFromLiked(currentNotice);
         countLikeAds();
-        printPromoAds();
+        printPromoAds(adsManager.promoAds, promoContainer);
         userManager.setUsers();
       });
     } else {
@@ -161,7 +150,7 @@ function printPromoAds() {
       watchButton.addEventListener("click", function () {
         userManager.currentUser.likeAd(currentNotice);
         countLikeAds();
-        printPromoAds();
+        printPromoAds(adsManager.promoAds, promoContainer);
         userManager.setUsers();
       });
     }
@@ -177,7 +166,7 @@ function printPromoAds() {
 
     listOfAds.append(noticeCard);
   }
-  promoContainer.append(nameOfSection, listOfAds);
+  container.append(listOfAds);
 }
 
 function showAdds(arr, container) {
@@ -187,6 +176,18 @@ function showAdds(arr, container) {
     const html = template(arr);
 
     container.innerHTML = html;
+
+    let btns = Array.from(document.getElementsByName("likebtn"));
+    btns.forEach(el => el.addEventListener("click", function (ev) {
+      let idNum = ev.target.id;
+      if (userManager.currentUser.isInLiked(idNum)) {
+        let addToTemove = adsManager.currentUser.likeAds.filter(el => el.id == idNum)
+      } else {
+        let addToLike = adsManager.allAds.filter(el => el.id == idNum)
+        userManager.currentUser.likeAd(addToLike)
+        console.log(addToLike);
+      }
+    }))
   } else {
     container.innerHTML = "Няма намерени обяви";
   }
@@ -199,9 +200,10 @@ function changeProfileFunctions(email, password) {
     dropdownArrow.classList = "";
   } else {
     //change href when there is a page for my ads
-    profileMenu.href="#"
+    profileMenu.href = "#"
     profileUsername.innerText = email;
     dropdownArrow.classList.add("fas", "fa-chevron-down");
+
     profileMenu.addEventListener("mouseover", showProfileMenu);
     profileDropdown.addEventListener("mouseleave", hideProfileMenu);
   }
@@ -211,15 +213,13 @@ function showProfileMenu(e) {
   profileDropdown.style.display = "block";
 }
 
-
-function hideProfileMenu(e){
-
-  if(e.target === getById("userCard") || e.target === getById("text1") || e.target === getById("text2")
-  || e.target === getById("userImage") || e.target === getById("userName")){
+function hideProfileMenu(e) {
+  if (e.target === getById("userCard") || e.target === getById("text1") || e.target === getById("text2")
+    || e.target === getById("userImage") || e.target === getById("userName")) {
     return;
   }
-    setTimeout(() => {
-     profileDropdown.style.display = "none";
-  },1000);
+  setTimeout(() => {
+    profileDropdown.style.display = "none";
+  }, 1000);
 }
-  
+

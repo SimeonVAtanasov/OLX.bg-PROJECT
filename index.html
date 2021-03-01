@@ -37,54 +37,58 @@
     ></script>
   </head>
   <body>
-    <header>
+    <header id="header">
       <nav class="navigation">
         <div class="navigation-container">
-        <div class="logo">
-          <a href="#index">
-            <img src="./images/logo.png" alt="olx logo" id="logoImage"
-          /></a>
+          <div class="logo">
+            <a href="#index">
+              <img src="./images/logo.png" alt="olx logo" id="logoImage"
+            /></a>
+          </div>
+          <div class="menu">
+            <ul>
+              <li>
+                <a href="" class="like-icon">
+                  <i class="far fa-heart liked"></i>
+                  <span class="counter" id="likeCounter"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#profilePage" class="profile-page" id="profileMenu">
+                  <div class="my-profile">
+                    <i class="far fa-user"></i>
+                    <span> Моят профил</span>
+                    <i class="" id="arrow"></i>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#advertisementPage"
+                  class="advertisement-button"
+                  id="advertisementButton"
+                >
+                  Добави обява
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="menu">
-          <ul>
-            <li>
-              <a href="" class="like-icon">
-                <i class="far fa-heart liked"></i>
-                <span class="counter" id="likeCounter"></span>
-              </a>
-            </li>
-            <li>
-              <a href="#profilePage" class="profile-page" id="profileMenu">
-                <div class="my-profile">
-                  <i class="far fa-user"></i>
-                  <span> Моят профил</span>
-                  <i class="" id="arrow"></i>
-                </div>
-              </a>
-             
-            </li>
-            <li>
-              <a
-                href="#advertisementPage"
-                class="advertisement-button"
-                id="advertisementButton"
-              >
-                Добави обява
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
         <div class="profile-dropdown" id="profileDropdown">
           <div class="user-card" id="userCard">
             <div class="user-photo">
-              <img src="./images/user.png" alt="user photo" class="user-image" id="userImage">
+              <img
+                src="./images/user.png"
+                alt="user photo"
+                class="user-image"
+                id="userImage"
+              />
             </div>
             <div class="user-name">
               <p id="userName"></p>
             </div>
           </div>
-          <div >
+          <div>
             <h5 id="text1">Моят профил:</h5>
           </div>
           <div>
@@ -92,37 +96,46 @@
               <li>
                 <a href="#" id="profile-ads">
                   <span>Обяви</span>
-                </a></li>
+                </a>
+              </li>
               <li>
                 <a href="#" id="profile-messages">
                   <span>Съобщения</span>
-                </a></li>
+                </a>
+              </li>
               <li>
                 <a href="#" id="profile-payments">
                   <span>Плащания</span>
-                </a></li>
+                </a>
+              </li>
               <li>
                 <a href="#" id="profile-settings">
                   <span>Настройки</span>
-                </a></li>
+                </a>
+              </li>
               <li>
                 <a href="#" id="profile-delivery">
                   <i class="fas fa-truck"></i>
                   <span>Доставка</span>
-                </a></li>
+                </a>
+              </li>
             </ul>
           </div>
-          <div >
+          <div>
             <h5 id="text2">Любими:</h5>
           </div>
           <div>
             <ul>
-              <li><a href="#" id="observed-ads">
-                <span>Обяви</span>
-              </a></li>
-              <li><a href="#" id="observed-searches">
-                <span>Търсения</span>
-              </a></li>
+              <li>
+                <a href="#" id="observed-ads">
+                  <span>Обяви</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" id="observed-searches">
+                  <span>Търсения</span>
+                </a>
+              </li>
             </ul>
           </div>
           <div>
@@ -130,13 +143,14 @@
               <li>
                 <a href="#" id="log-out">
                   <span>Изход</span>
-                </a></li>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    
+
     <section id="searchForm">
       <div class="form-wrapper" id="searchContainer">
         <form id="searchBox">
@@ -153,20 +167,23 @@
         </form>
         <div>
           <form id="citySearchBox">
-          <i class="fas fa-map-marker-alt"></i>
-          <input placeholder="Цялата страна" type="text" id="citySearch" autocomplete="off" />
-          <button type="reset" class="resetBtn">
-            <i class="fas fa-times"></i>
-          </button>
-        </form>
-        <div id="suggestion">
-            tuka shte ima gradove
+            <i class="fas fa-map-marker-alt"></i>
+            <input
+              placeholder="Цялата страна"
+              type="text"
+              id="citySearch"
+              autocomplete="off"
+            />
+            <button type="reset" class="resetBtn">
+              <i class="fas fa-times"></i>
+            </button>
+          </form>
+          <div id="suggestion">tuka shte ima gradove</div>
         </div>
-        </div>
-        
+
         <form id="buttonBox">
-          <button id="submitSearch" type="submitnpm" >
-            Търсене<i class="fas fa-search"></i>
+          <button id="submitSearch" type="submitnpm">
+            Търсене&ThickSpace;<i class="fas fa-search"></i>
           </button>
         </form>
       </div>
@@ -180,9 +197,15 @@
           </div>
           <div class="categories-container" id="categoriesContainer"></div>
         </div>
-        <div id="promoAdsContainer">
-          <!-- Promo  adds -->
-          <h1>Promo ads</h1>
+        <div id="promoAdsPage">
+          
+          <h1 id="nameOfSection">Промо Обяви</h1>
+          <div id="promoAdsContainer">
+
+          </div>
+          <div id="seeAll">
+            <button id="seeAllPromo"  class="transparentBtn">Виж всички</button>
+          </div>
         </div>
         <div class="pro-footer" id="proFooter">
           <div class="olx-pro">
@@ -404,12 +427,70 @@
     </div>
 
     <div id="errorPage">
-
-      <h1>Съжаляваме, не можем да намерим тази страница… </h1>
+      <h1>Съжаляваме, не можем да намерим тази страница…</h1>
       <a href="index">Oтиди на заглавната страница!</a>
     </div>
 
-    <div id="noticeContainer"></div>
+    <div id="noticePage">
+      <form id="filtering">
+        <div id="checkboxWrapper">
+          <input type="checkbox" id="includeDescription" />
+          <label for="includeDescription">
+            търси и в описанието на обявите
+          </label>
+
+          <input type="checkbox" id="onlyWithPhoto" />
+          <label for="onlyWithPhoto">само със снимка</label>
+
+          <input type="checkbox" id="delivery" id="includeDelivery">
+          <label for="delivery"><i class="fas fa-truck"></i> само с доставка</label>
+          
+            <div id="button">
+              <button class="transparentBtn">
+              <i class="far fa-heart watched"></i>&ThickSpace;Любимо търсене </i></i>
+            </button>
+            </div>
+            
+        </div>
+        
+        
+          <h2>Филтри</h2>
+          <div class="form-box">
+            <div id="categoryPick">
+              <label for="categoryFilter">Категория</label>
+            <select name="categoryFilter" id="categoryFilter">
+              <option>Всички</option>
+              <option>Недвижими имоти</option>
+              <option>Автомобили, каравани, лодки</option>
+              <option>Електроника</option>
+              <option>Спорт, книги, хоби</option>
+              <option>Животни</option>
+              <option>Дом и градина</option>
+              <option>Мода</option>
+              <option>За бебето и детето</option>
+              <option>Екскурзии, почивки</option>
+              <option>Услуги</option>
+              <option>Машини, инструменти, бизнес оборудване</option>
+              <option>Работа</option>
+              <option>Подарявам</option>
+            </select>
+            </div>
+        
+            
+            
+            <div id="filterPrice">
+              <label for="fromNum">Цена</label>
+              <div>
+                <input type="number" placeholder="от" id="fromNum">
+                <input type="number" placeholder="до" id="toNum">
+              </div>
+              
+            </div>
+          </div>
+        
+      </form>
+      <div id="noticeContainer"></div>
+    </div>
 
     <div id="singleNoticeContainer">Single offer page</div>
 
@@ -526,8 +607,11 @@
       </div>
     </footer>
 
-
     <script id="noticeTemplate" type="text/x-handlebars-template">
+      <h2 id="foundAds">
+        Намерени {{this.length}} обяви
+      </h2>
+     
       <ul id="noticeList" class="">
         {{#each this}}
           <li class="notice-box">
@@ -547,7 +631,7 @@
                 {{price}} лв.
               </span>
               <div class="watch-button">
-                <i class="far fa-heart watched" aria-hidden="true"></i>
+                <i id="{{id}}"name="likebtn" class="far fa-heart watched" aria-hidden="true"></i>
                 <div class="pop-up-div message">
                   <p>
                     Наблюдавай
@@ -559,6 +643,7 @@
         {{/each}}
       </ul>
     </script>
+    <script src="./assets/script/constants.js"></script>
 
     <script src="./assets/script/filterCities.js"></script>
     <script src="./assets/script/indexView.js"></script>
