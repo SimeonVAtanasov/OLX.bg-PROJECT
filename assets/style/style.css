@@ -445,7 +445,7 @@ footer {
 div.pop-up-div {
   display: none;
   position: absolute;
-  top: -51px;
+  bottom: 37px;
   left: 15px;
   font-size: 15px;
   font-weight: lighter;

@@ -10,3 +10,11 @@ function createElement(el, text) {
 
     return element;
 }
+
+function debounce(func, time) {
+    let timerId;
+    return function () {
+      clearTimeout(timerId);
+      timerId = setTimeout(func, time);
+    };
+  }

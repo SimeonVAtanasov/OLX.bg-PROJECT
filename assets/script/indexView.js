@@ -132,12 +132,11 @@ function printPromoAds(arr, container) {
 
     pop.classList.add("pop-up-div", "message");
 
-    //
     let isAlreadyLiked = userManager.currentUser.isInLiked(currentNotice.id);
-
+    // 
     if (isAlreadyLiked) {
       pop.innerHTML = "<p>Премахни от наблюдавани</p>";
-      pop.style.top = "-70px";
+      // pop.style.top = "-70px";
       watchButton.innerHTML = "<i class='fas fa-heart'></i>";
       watchButton.addEventListener("click", function () {
         userManager.currentUser.removeFromLiked(currentNotice);
@@ -180,12 +179,32 @@ function showAdds(arr, container) {
     let btns = Array.from(document.getElementsByName("likebtn"));
     btns.forEach(el => el.addEventListener("click", function (ev) {
       let idNum = ev.target.id;
+
       if (userManager.currentUser.isInLiked(idNum)) {
-        let addToTemove = adsManager.currentUser.likeAds.filter(el => el.id == idNum)
+        let icon = getById(`${idNum}`);
+        icon.className = "far fa-heart watched"
+
+        let popDiv = document.querySelector(`#noticeList > li:nth-child(${idNum}) > div.description-box.last > div > div`)
+        popDiv.innerText = "Наблюдавай"
+
+        let toRemove = userManager.currentUser.likedAds.filter(el => el.id == idNum);
+        userManager.currentUser.removeFromLiked(toRemove[0]);
+
+        countLikeAds();
+        userManager.setUsers();
+
       } else {
-        let addToLike = adsManager.allAds.filter(el => el.id == idNum)
-        userManager.currentUser.likeAd(addToLike)
-        console.log(addToLike);
+        let icon = getById(`${idNum}`);
+        icon.className = "fas fa-heart"
+        console.log(idNum);
+        // Is working only when the all ads are displayed, when they are filtered ir does not work
+        let popDiv = document.querySelector(`#noticeList > li:nth-child(${idNum}) > div.description-box.last > div > div`)
+        popDiv.innerText = "Премахни от наблюдавани"
+        let addToLike = adsManager.allAds.filter(el => el.id == idNum);
+        userManager.currentUser.likeAd(addToLike[0]);
+
+        countLikeAds();
+        userManager.setUsers();
       }
     }))
   } else {

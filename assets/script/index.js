@@ -159,20 +159,22 @@ function validateUser() {
   }
 }
 
-window.addEventListener("scroll", makeNavBarSticky);
 
-let sticky = 99;
+
+let debouncedMakeNavBarSticky = debounce(makeNavBarSticky, 150);
+
+window.addEventListener("scroll", debouncedMakeNavBarSticky);
+
+let sticky = window.pageYOffset;
 
 function makeNavBarSticky() {
   if (window.pageYOffset >= sticky) {
-  setTimeout(function () {
       navbar.classList.add("sticky")
       sticky = window.pageYOffset;
-    }, 150)
   } else {
-      navbar.classList.remove("sticky");
-      sticky = window.pageYOffset;
-    }
+    navbar.classList.remove("sticky");
+    sticky = window.pageYOffset;
+  }
 }
 
 
