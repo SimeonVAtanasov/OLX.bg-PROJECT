@@ -1,6 +1,6 @@
 const userManager = (function () {
   class User {
-    constructor(email, password, isLogged, likedAds, favouriteSearches, addedAds) {
+    constructor(email, password, isLogged = false, likedAds, favouriteSearches, addedAds) {
       this.email = email;
       this.password = password;
       this.isLogged = isLogged;
@@ -98,34 +98,43 @@ const userManager = (function () {
       let index = this.users.findIndex(
         (el) => el["email"] === email && el["password"] === password
       );
-      this.currentUser.isLogged = true;
+      // this.users.forEach(el => el.isLogged = false)
       this.currentUser = this.users[index];
+      this.currentUser.isLogged = true;
 
       this.setUsers();
-
 
       return isUserLoggedIn;
     }
 
+    setUsers() {
+      localStorage.setItem("users", JSON.stringify(userManager.users));
+    }
+
+    logOut() {
+      userManager.users.forEach(el => el.isLogged = false);
+
+      this.setUsers();
+    }
+
     checkLoggedUser() {
-      debugger
-      console.log(userManager);
       let isLogged = this.users.some(
         user => user.isLogged === true);
 
       if (isLogged) {
         let index = this.users.findIndex(
           (el) => el.isLogged === true);
+
         this.login(userManager.users[index].email, userManager.users[index].password);
-        console.log(userManager.currentUser);
+
+        return true;
       }
 
+      return false;
 
     }
 
-    setUsers() {
-      localStorage.setItem("users", JSON.stringify(userManager.users));
-    }
+    
 
     isRegistered(email, password) {
       const isUserRegistered = this.users.some(

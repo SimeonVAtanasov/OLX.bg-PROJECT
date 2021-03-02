@@ -1,8 +1,16 @@
-window.addEventListener("DOMContentLoaded", onHashChange);
+window.addEventListener("DOMContentLoaded", function () {
+  onHashChange();
+  if(userManager.checkLoggedUser()){
+    changeProfileFunctions(userManager.currentUser.email, userManager.currentUser.password);
+  }
+});
 window.addEventListener("hashchange", onHashChange);
 window.addEventListener("click", hideProfileMenu);
 
-userManager.checkLoggedUser();
+logOut.addEventListener("click", function(){
+  userManager.logOut();
+  location.reload();
+})
 
 // This code ads the test data
 arrOfAds.forEach((el) => {
@@ -171,8 +179,8 @@ let sticky = window.pageYOffset;
 
 function makeNavBarSticky() {
   if (window.pageYOffset >= sticky) {
-      navbar.classList.add("sticky")
-      sticky = window.pageYOffset;
+    navbar.classList.add("sticky")
+    sticky = window.pageYOffset;
   } else {
     navbar.classList.remove("sticky");
     sticky = window.pageYOffset;

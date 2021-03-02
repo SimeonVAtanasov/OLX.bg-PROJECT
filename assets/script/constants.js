@@ -25,6 +25,7 @@ const profileMenu = getById("profileMenu")
 const profileDropdown = getById("profileDropdown");
 const dropdownArrow = getById("arrow");
 const profileUsername = getById("userName");
+const logOut = getById("log-out")
 
 const googlePlay = getById("googlePlay");
 const appStore = getById("appStore");
