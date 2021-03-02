@@ -1,9 +1,9 @@
 const userManager = (function () {
   class User {
-    constructor(email, password, likedAds, favouriteSearches, addedAds) {
+    constructor(email, password, isLogged, likedAds, favouriteSearches, addedAds) {
       this.email = email;
       this.password = password;
-      this.isLogged = false;
+      this.isLogged = isLogged;
 
       if (likedAds) {
         this.likedAds = likedAds;
@@ -75,7 +75,7 @@ const userManager = (function () {
             el.likedAds,
             el.favouriteSearches,
             el.addedAds,
-            
+
           );
           this.users.push(userToPush);
         });
@@ -100,26 +100,28 @@ const userManager = (function () {
       );
       this.currentUser.isLogged = true;
       this.currentUser = this.users[index];
-      
+
       this.setUsers();
-     
+
 
       return isUserLoggedIn;
     }
 
-    checkLoggedUser(isLogged = true){
-      let isUserLoggedIn = this.users.some(
-        (user) => user["isLogged"] === isLogged);
+    checkLoggedUser() {
+      debugger
+      console.log(userManager);
+      let isLogged = this.users.some(
+        user => user.isLogged === true);
 
-        if(isUserLoggedIn){
-          let index = this.users.findIndex(
-            (el) => el["isLoggedin"] === isLoggedin );
-            this.currentUser=this.users[index];
-            this.login(this.currentUser.email,this.currentUser.password);
-        }
-    
-    
-  }
+      if (isLogged) {
+        let index = this.users.findIndex(
+          (el) => el.isLogged === true);
+        this.login(userManager.users[index].email, userManager.users[index].password);
+        console.log(userManager.currentUser);
+      }
+
+
+    }
 
     setUsers() {
       localStorage.setItem("users", JSON.stringify(userManager.users));

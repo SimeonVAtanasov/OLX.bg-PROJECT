@@ -2,6 +2,8 @@ window.addEventListener("DOMContentLoaded", onHashChange);
 window.addEventListener("hashchange", onHashChange);
 window.addEventListener("click", hideProfileMenu);
 
+userManager.checkLoggedUser();
+
 // This code ads the test data
 arrOfAds.forEach((el) => {
   adsManager.addAdvertisement(el);

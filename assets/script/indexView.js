@@ -184,7 +184,7 @@ function showAdds(arr, container) {
         let icon = getById(`${idNum}`);
         icon.className = "far fa-heart watched"
 
-        let popDiv = document.querySelector(`#noticeList > li:nth-child(${idNum}) > div.description-box.last > div > div`)
+        let popDiv = getById(`p${idNum}`)
         popDiv.innerText = "Наблюдавай"
 
         let toRemove = userManager.currentUser.likedAds.filter(el => el.id == idNum);
@@ -198,7 +198,7 @@ function showAdds(arr, container) {
         icon.className = "fas fa-heart"
         console.log(idNum);
         // Is working only when the all ads are displayed, when they are filtered ir does not work
-        let popDiv = document.querySelector(`#noticeList > li:nth-child(${idNum}) > div.description-box.last > div > div`)
+        let popDiv = getById(`#p${idNum})`)
         popDiv.innerText = "Премахни от наблюдавани"
         let addToLike = adsManager.allAds.filter(el => el.id == idNum);
         userManager.currentUser.likeAd(addToLike[0]);
