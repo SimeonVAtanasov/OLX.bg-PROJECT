@@ -64,7 +64,7 @@
               </li>
               <li>
                 <a
-                  href="#advertisementPage"
+                  href="#addAdvertisementPage"
                   class="advertisement-button"
                   id="advertisementButton"
                 >
@@ -424,6 +424,117 @@
           </div>
         </form>
       </div>
+    </div>
+
+    <div id="addAdvertisementPage">
+      
+       <form action="" id="addForm" class="add-form">
+
+          <div >
+             <h1>Добави обява</h1>
+          </div>
+
+          <div class="form-box">
+
+             <div class="form-title">
+               <p>Заглавие на обявата</p>
+             </div>
+
+             <div class="add-Title">
+
+               <div>
+                 <label for="adTitle">Заглавие на обявата  <span class="star-required">*</span></label>
+               </div>
+
+               <div class="input-box">
+                  <input type="text" id="adTitle" name="adTitle">
+                  <span class="pho">PHO</span>
+                  <div class="suggest-message" id="suggestMessage">
+                     <p>Добави атрактивно описание - това ще допринесе за повече 
+                        преглеждания 
+                      </p>
+                      <p>Не пиши с включен CAPS LOCK</p>
+                  </div>
+                </div>
+
+               <div class = "title-message">
+                 <p>
+                   <span></span> оставащи символа
+                 </p>
+               </div>
+
+               <div>
+                 <label>Категория <span class="star-required">*</span></label>
+               </div>
+
+               <div>
+                 <button class="addCategory">
+                  <i class="fas fa-chevron-down"></i>
+                 </button>
+               </div>
+
+             </div>
+          </div>
+
+          <div class="form-box">
+            <div class="form-title">
+              <p>Описание</p>
+            </div>
+            <div class="ad-title">
+              <div>
+                <label for="adDescription">Описание <span class="star-required">*</span></label>
+              </div>
+              <div class="textarea-container">
+                <div>
+                  <textarea id="adDescription" name="adDescription" maxlength="9000" class="description-textarea" rows="10" cols="80"></textarea>
+                </div>
+                <div class="suggest-message">
+                  <p>Направи описанието ясно и прегледно за купувачите. Опиши предимствата на продукта или услугата, която предлагаш.
+                   </p>
+                   <p>Опиши възможно най-детайлно продукта - купувачите ще имат по-малко въпроси.</p>
+                   <p>Спазвай правописа и пиши на кирилица.</p>
+                   <p>Не използвай вулгарни изрази.</p>
+                    <p>Не пиши с включен CAPS LOCK</p>
+               </div>
+                <div>
+                  <span class="status-icon" id="statusIcon">
+
+                  </span>
+                </div>
+                <div class = "title-message">
+                  <p>
+                    <span></span> оставащи символа
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="form-box">
+            <div class="form-title">
+              <p>Снимки</p>
+            </div>
+            <div class = "title-description">
+               <p>Добави снимки и получи <span> три пъти повече </span> съобщения</p>
+            </div>
+            <div>
+            <ul class="upload-images" id="uploadImages">
+              <li class = "add-file">
+                <input type="file" class="file-input">
+                <p>Кликни, за да добавиш снимка на корицата</p>
+              </li>
+
+            </ul>
+          </div>
+          <div class="change-form-file">
+            <p>Ако имаш проблем използвай <a href="javascript:void(0);"> опростената форма</a> </p>
+          </div>
+          </div>
+          
+           
+        </form>
+        
     </div>
 
     <div id="errorPage">

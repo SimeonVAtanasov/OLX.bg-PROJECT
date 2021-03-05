@@ -187,4 +187,4 @@ function makeNavBarSticky() {
   }
 }
 
-
+// advertismentBtn.addEventListener("click")

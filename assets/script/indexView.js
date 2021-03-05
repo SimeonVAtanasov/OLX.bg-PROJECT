@@ -10,6 +10,7 @@ function onHashChange() {
       errorPage.style.display = "none";
       profilePage.style.display = "none";
       singleNoticeContainer.style.display = "none";
+      addAdvertisementPage.style.display = "none";
       break;
 
     case "advertisements":
@@ -19,6 +20,7 @@ function onHashChange() {
       errorPage.style.display = "none";
       profilePage.style.display = "none";
       singleNoticeContainer.style.display = "none";
+      addAdvertisementPage.style.display = "none";
       break;
 
     case "offer":
@@ -28,6 +30,7 @@ function onHashChange() {
       errorPage.style.display = "none";
       profilePage.style.display = "none";
       singleNoticeContainer.style.display = "block";
+      addAdvertisementPage.style.display = "none";
       break;
 
     case "profilePage":
@@ -37,6 +40,17 @@ function onHashChange() {
       errorPage.style.display = "none";
       profilePage.style.display = "flex";
       singleNoticeContainer.style.display = "none";
+      addAdvertisementPage.style.display = "none";
+      break;
+
+    case "addAdvertisementPage":
+      indexPage.style.display = "none";
+      searchForm.style.display = "none";
+      adsContainer.style.display = "none";
+      errorPage.style.display = "none";
+      profilePage.style.display = "none";
+      singleNoticeContainer.style.display = "none";
+      addAdvertisementPage.style.display = "block";
       break;
 
     default:
@@ -44,6 +58,7 @@ function onHashChange() {
       adsContainer.style.display = "none";
       searchForm.style.display = "none";
       errorPage.style.display = "block";
+      addAdvertisementPage.style.display = "none";
   }
 }
 
@@ -86,7 +101,6 @@ function printCategories(categories) {
 printCategories(categories);
 
 function printPromoAds(arr, container) {
-
   container.innerHTML = "";
 
   const listOfAds = createElement("ul");
@@ -133,7 +147,7 @@ function printPromoAds(arr, container) {
     pop.classList.add("pop-up-div", "message");
 
     let isAlreadyLiked = userManager.currentUser.isInLiked(currentNotice.id);
-    // 
+    //
     if (isAlreadyLiked) {
       pop.innerHTML = "<p>Премахни от наблюдавани</p>";
       // pop.style.top = "-70px";
@@ -177,36 +191,39 @@ function showAdds(arr, container) {
     container.innerHTML = html;
 
     let btns = Array.from(document.getElementsByName("likebtn"));
-    btns.forEach(el => el.addEventListener("click", function (ev) {
-      let idNum = ev.target.id;
+    btns.forEach((el) =>
+      el.addEventListener("click", function (ev) {
+        let idNum = ev.target.id;
 
-      if (userManager.currentUser.isInLiked(idNum)) {
-        let icon = getById(`${idNum}`);
-        icon.className = "far fa-heart watched"
+        if (userManager.currentUser.isInLiked(idNum)) {
+          let icon = getById(`${idNum}`);
+          icon.className = "far fa-heart watched";
 
-        let popDiv = getById(`p${idNum}`)
-        popDiv.innerText = "Наблюдавай"
+          let popDiv = getById(`p${idNum}`);
+          popDiv.innerText = "Наблюдавай";
 
-        let toRemove = userManager.currentUser.likedAds.filter(el => el.id == idNum);
-        userManager.currentUser.removeFromLiked(toRemove[0]);
+          let toRemove = userManager.currentUser.likedAds.filter(
+            (el) => el.id == idNum
+          );
+          userManager.currentUser.removeFromLiked(toRemove[0]);
 
-        countLikeAds();
-        userManager.setUsers();
+          countLikeAds();
+          userManager.setUsers();
+        } else {
+          let icon = getById(`${idNum}`);
+          icon.className = "fas fa-heart";
+          console.log(idNum);
+          // Is working only when the all ads are displayed, when they are filtered ir does not work
+          let popDiv = getById(`#p${idNum})`);
+          popDiv.innerText = "Премахни от наблюдавани";
+          let addToLike = adsManager.allAds.filter((el) => el.id == idNum);
+          userManager.currentUser.likeAd(addToLike[0]);
 
-      } else {
-        let icon = getById(`${idNum}`);
-        icon.className = "fas fa-heart"
-        console.log(idNum);
-        // Is working only when the all ads are displayed, when they are filtered ir does not work
-        let popDiv = getById(`#p${idNum})`)
-        popDiv.innerText = "Премахни от наблюдавани"
-        let addToLike = adsManager.allAds.filter(el => el.id == idNum);
-        userManager.currentUser.likeAd(addToLike[0]);
-
-        countLikeAds();
-        userManager.setUsers();
-      }
-    }))
+          countLikeAds();
+          userManager.setUsers();
+        }
+      })
+    );
   } else {
     container.innerHTML = "Няма намерени обяви";
   }
@@ -219,7 +236,7 @@ function changeProfileFunctions(email, password) {
     dropdownArrow.classList = "";
   } else {
     //change href when there is a page for my ads
-    profileMenu.href = "#"
+    profileMenu.href = "#";
     profileUsername.innerText = email;
     dropdownArrow.classList.add("fas", "fa-chevron-down");
 
@@ -233,8 +250,13 @@ function showProfileMenu(e) {
 }
 
 function hideProfileMenu(e) {
-  if (e.target === getById("userCard") || e.target === getById("text1") || e.target === getById("text2")
-    || e.target === getById("userImage") || e.target === getById("userName")) {
+  if (
+    e.target === getById("userCard") ||
+    e.target === getById("text1") ||
+    e.target === getById("text2") ||
+    e.target === getById("userImage") ||
+    e.target === getById("userName")
+  ) {
     return;
   }
   setTimeout(() => {
@@ -242,3 +264,24 @@ function hideProfileMenu(e) {
   }, 1000);
 }
 
+function printFileUploads() {
+  let uploadImagesContainer = getById("uploadImages");
+
+  for (let i = 0; i < 11; i++) {
+    let liImage = createElement("li");
+    liImage.className = "add-file";
+
+    let inputFile = createElement("input");
+    inputFile.type = "file";
+    inputFile.className = "file-input";
+
+    let imageIcon = createElement("i");
+    imageIcon.classList.add("fas");
+    imageIcon.classList.add("fa-camera");
+
+    liImage.append(inputFile, imageIcon);
+    uploadImagesContainer.append(liImage);
+  }
+}
+
+printFileUploads();

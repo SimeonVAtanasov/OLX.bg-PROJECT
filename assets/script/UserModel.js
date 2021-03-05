@@ -1,6 +1,13 @@
 const userManager = (function () {
   class User {
-    constructor(email, password, isLogged = false, likedAds, favouriteSearches, addedAds) {
+    constructor(
+      email,
+      password,
+      isLogged = false,
+      likedAds,
+      favouriteSearches,
+      addedAds
+    ) {
       this.email = email;
       this.password = password;
       this.isLogged = isLogged;
@@ -74,8 +81,7 @@ const userManager = (function () {
             el.isLogged,
             el.likedAds,
             el.favouriteSearches,
-            el.addedAds,
-
+            el.addedAds
           );
           this.users.push(userToPush);
         });
@@ -112,29 +118,27 @@ const userManager = (function () {
     }
 
     logOut() {
-      userManager.users.forEach(el => el.isLogged = false);
+      userManager.users.forEach((el) => (el.isLogged = false));
 
       this.setUsers();
     }
 
     checkLoggedUser() {
-      let isLogged = this.users.some(
-        user => user.isLogged === true);
+      let isLogged = this.users.some((user) => user.isLogged === true);
 
       if (isLogged) {
-        let index = this.users.findIndex(
-          (el) => el.isLogged === true);
+        let index = this.users.findIndex((el) => el.isLogged === true);
 
-        this.login(userManager.users[index].email, userManager.users[index].password);
+        this.login(
+          userManager.users[index].email,
+          userManager.users[index].password
+        );
 
         return true;
       }
 
       return false;
-
     }
-
-    
 
     isRegistered(email, password) {
       const isUserRegistered = this.users.some(
@@ -143,7 +147,6 @@ const userManager = (function () {
 
       return isUserRegistered;
     }
-
   }
 
   return new UserManager();
