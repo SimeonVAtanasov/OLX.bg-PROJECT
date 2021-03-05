@@ -1156,13 +1156,13 @@ div.pop-up-div {
 .input-box {
   position: relative;
   display: flex;
+
 }
 
 .pho {
   position: absolute;
   left: 45%;
   top: 13px;
-  padding: 2px;
   background: #d1e0f5;
   color: #0098d0;
   font-weight: bold;
@@ -1205,6 +1205,7 @@ div.pop-up-div {
 }
 
 .suggest-message {
+  display: none;
   position: absolute;
   right: 204px;
   background: #3a77ff;
@@ -1214,7 +1215,7 @@ div.pop-up-div {
   line-height: 1.29;
   padding: 11px 22px;
   border-radius: 4px;
-  top: 0;
+  top: -11px;
   font-family: "Open Sans", sans-serif;
   font-weight: lighter;
 }
@@ -1307,5 +1308,88 @@ div.pop-up-div {
 
 .change-form-file {
   font-weight: lighter;
-  font-size: 11px;
+  font-size: 12px;
+}
+
+.form-box a{
+  color: #3a77ff;
+}
+
+.input-box > .contacts-input{
+  width: 338px ; 
+}
+
+.contact-information .pho{
+  left: 27%;
+}
+
+.contact-information .suggest-message{
+  left: 410px;
+}
+
+.add-form div{
+  margin: 10px 0px 10px 0;
+  z-index: 1;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.complete-adding{
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.complete-adding .continue-button{
+  background: #0e2f36;
+  color: white;
+  padding: 9px 65px;
+  font-size: 16px;
+  border: 4px solid #0e2f36;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  transition: 0.2s ease-in-out;
+}
+
+.continue-button:hover {
+  background: none;
+  color: #0e2f36;
+}
+
+.complete-adding .preview-link{
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 1.25;
+    color: #002f34;
+}
+
+.complete-adding div{
+  margin-left: 40px;
+}
+
+.preview-link::after{
+  content: '';
+  position: absolute;
+  width: 67px;
+  height: 2px;
+  right: 235px;
+  top: 35px;
+  background: #002f34;
+  transition:0.2s ease-in-out;
+  margin-top: 2px;
+}
+
+.preview-link:hover::after{
+  width: 3%;
+  right: 251px;
 }

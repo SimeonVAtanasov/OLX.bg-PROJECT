@@ -187,4 +187,43 @@ function makeNavBarSticky() {
   }
 }
 
-// advertismentBtn.addEventListener("click")
+// adTitleInput.addEventListener("focusin", function(){
+//   
+// })
+
+// adDescriptionInput.addEventListener("focusin", function(){
+//   
+// })
+
+
+inputsToFocus.forEach(element => {
+  element.addEventListener("focus",showMessage);
+  element.addEventListener("focusout",hideMessage);
+})
+
+function showMessage(e){
+  let target = e.target;
+  if(target === adTitleInput){
+    getById("suggestMessageTitle").style.display="block"
+  }else if(e.target === adDescriptionInput){
+    getById("suggestMessageDescription").style.display = "block";
+  }else if(e.target === adCityInput ){
+    getById("suggestMessageCity").style.display = "block";
+  }else {
+    getById("suggestMessageNumber").style.display = "block";
+  }
+  
+}
+
+function hideMessage(e){
+  let target = e.target;
+  if(target === adTitleInput){
+    getById("suggestMessageTitle").style.display="none"
+  }else if(e.target === adDescriptionInput){
+    getById("suggestMessageDescription").style.display = "none";
+  }else if(e.target === adCityInput ){
+    getById("suggestMessageCity").style.display = "none";
+  }else {
+    getById("suggestMessageNumber").style.display = "none";
+  }
+}

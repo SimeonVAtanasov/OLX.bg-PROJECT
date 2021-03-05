@@ -47,3 +47,11 @@ const passwordRegMessage = getById("passwordRegError");
 
 const emailLogMessage = getById("emailLogError");
 const passwordLogMessage = getById("passwordLogError");
+
+
+
+const adTitleInput = getById("adTitle");
+const adDescriptionInput = getById("adDescription");
+const adCityInput = getById("contactsCity");
+const adNumberInput = getById("contactsNumber");
+const inputsToFocus = [adTitleInput, adDescriptionInput,adCityInput,adNumberInput];

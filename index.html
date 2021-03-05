@@ -178,7 +178,8 @@
               <i class="fas fa-times"></i>
             </button>
           </form>
-          <div id="suggestion">tuka shte ima gradove</div>
+          <!-- cities container -->
+          <div id="suggestion"></div>
         </div>
 
         <form id="buttonBox">
@@ -449,7 +450,7 @@
                <div class="input-box">
                   <input type="text" id="adTitle" name="adTitle">
                   <span class="pho">PHO</span>
-                  <div class="suggest-message" id="suggestMessage">
+                  <div class="suggest-message" id="suggestMessageTitle">
                      <p>Добави атрактивно описание - това ще допринесе за повече 
                         преглеждания 
                       </p>
@@ -486,9 +487,9 @@
               </div>
               <div class="textarea-container">
                 <div>
-                  <textarea id="adDescription" name="adDescription" maxlength="9000" class="description-textarea" rows="10" cols="80"></textarea>
+                  <textarea id="adDescription" name="adDescription" maxlength="9000" class="description-textarea" rows="10" cols="80" ></textarea>
                 </div>
-                <div class="suggest-message">
+                <div class="suggest-message" id="suggestMessageDescription">
                   <p>Направи описанието ясно и прегледно за купувачите. Опиши предимствата на продукта или услугата, която предлагаш.
                    </p>
                    <p>Опиши възможно най-детайлно продукта - купувачите ще имат по-малко въпроси.</p>
@@ -500,6 +501,7 @@
                   <span class="status-icon" id="statusIcon">
 
                   </span>
+      
                 </div>
                 <div class = "title-message">
                   <p>
@@ -530,6 +532,89 @@
           <div class="change-form-file">
             <p>Ако имаш проблем използвай <a href="javascript:void(0);"> опростената форма</a> </p>
           </div>
+          </div>
+
+          <div class="form-box">
+            <div class="form-title">
+              <p>Данни за контакт</p>
+            </div>
+            <div class = "title-description">
+              <p>Ще запеметим данните за твое удобство. Можеш да ги актуализираш в <a href="javascript:void(0);">настройки</a></p>
+           </div>
+
+           <div class="contact-information">
+             <div>
+                <label for="city">Населено място <span class="star-required">*</span> </label>
+                <div class="input-box">
+               
+                   <input  id="contactsCity" class="contacts-input" type="text" id="cityContact" name="city" autocomplete="off">
+                  <span class="pho">PHO</span>
+                  <div class="suggest-message" id="suggestMessageCity">
+                    <p>Започни да пишеш населено място и избери от падащото меню. Избери и квартал, ако има такива в воето населено място.
+                     </p>
+                 </div>
+                </div>
+             <!-- cities sugestions -->
+                 <div id="citySuggestion"></div>
+             </div>
+
+             <div>
+              <label for="neighbourhood">квартал<span class="star-required">*</span> </label>
+              <div class="input-box">
+                 <input  class="contacts-input" type="text" id="neighbourhoodContact" name="neighbourhood" autocomplete="off">
+                <span class="pho">PHO</span>
+              </div>
+           </div>
+
+             <div>
+              <label for="name">Лице за контакт <span class="star-required">*</span> </label>
+              <div class="input-box">
+             
+                 <input class="contacts-input" type="text" id="nameContact" name="name" autocomplete="off">
+                <span class="pho">PHO</span>
+              </div>
+
+           </div>
+
+           <div>
+            <label for="email"> Имейл адрес <span class="star-required">*</span> </label>
+            <div class="input-box">
+               <input class="contacts-input" type="email" id="emailContact" name="email" autocomplete="off">
+            </div>
+        
+         </div>
+
+         <div>
+          <label for="number" >Телефонен номер </label>
+          <div class="input-box">
+         
+             <input  id="contactsNumber" class="contacts-input" type="number" id="numberContact" name="number">
+
+             <div class="suggest-message" id="suggestMessageNumber">
+              <p>Този телефон номер ще се покаже в тази обява. Можеш да добавиш повече от 
+                един номер, като ги разделиш със запетаи. Все пак не забравяй, 
+                че чатът е най-сигурният начин за комуникация с други потребители на OLX.
+               </p>
+           </div>
+
+          </div>
+   
+       </div>
+            
+            </div>
+          </div>
+
+          <div class="form-box">
+            <div class="complete-adding">
+              <div>
+                <a href="javascript:void(0);" class= "preview-link"><span>Преглед</span></a>
+              </div>
+               <div>
+                  <a href="#" class="continue-button" id="addAdvertisementButton">Напред </a>
+               </div>
+           
+            </div>
+           
           </div>
           
            
