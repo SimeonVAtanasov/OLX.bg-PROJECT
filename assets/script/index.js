@@ -1,16 +1,19 @@
 window.addEventListener("DOMContentLoaded", function () {
   onHashChange();
-  if(userManager.checkLoggedUser()){
-    changeProfileFunctions(userManager.currentUser.email, userManager.currentUser.password);
+  if (userManager.checkLoggedUser()) {
+    changeProfileFunctions(
+      userManager.currentUser.email,
+      userManager.currentUser.password
+    );
   }
 });
 window.addEventListener("hashchange", onHashChange);
 window.addEventListener("click", hideProfileMenu);
 
-logOut.addEventListener("click", function(){
+logOut.addEventListener("click", function () {
   userManager.logOut();
   location.reload();
-})
+});
 
 // This code ads the test data
 arrOfAds.forEach((el) => {
@@ -84,34 +87,29 @@ searchContainer.addEventListener("input", function () {
   let citySearched = citySearch.value.toLowerCase().trim();
 
   if (inputValue && citySearched) {
-
     adsManager.filterBy("title", inputValue);
     adsManager.filterBy("city", citySearched);
 
     showAdds(adsManager.filteredAds, noticeContainer);
-
   } else if (inputValue) {
-
     adsManager.filterBy("title", inputValue);
     showAdds(adsManager.filteredAds, noticeContainer);
-
-  }
-  else if (citySearched) {
+  } else if (citySearched) {
     adsManager.filterBy("city", citySearched);
-    showAdds(adsManager.filteredAds, noticeContainer)
+    showAdds(adsManager.filteredAds, noticeContainer);
+  } else {
+    showAdds(adsManager.allAds, noticeContainer);
   }
-  else { showAdds(adsManager.allAds, noticeContainer) }
 });
 
-citySearch.addEventListener("keyup", filterCities)
+citySearch.addEventListener("keyup", filterCities);
 
 searchButton.addEventListener("click", function (ev) {
   ev.preventDefault();
   location.hash = "advertisements";
-})
+});
 
 showAdds(adsManager.allAds, noticeContainer);
-
 
 emailLoginInput.addEventListener("input", function () {
   validateEmail(emailLoginInput, emailLogMessage);
@@ -169,8 +167,6 @@ function validateUser() {
   }
 }
 
-
-
 let debouncedMakeNavBarSticky = debounce(makeNavBarSticky, 150);
 
 window.addEventListener("scroll", debouncedMakeNavBarSticky);
@@ -179,7 +175,7 @@ let sticky = window.pageYOffset;
 
 function makeNavBarSticky() {
   if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
+    navbar.classList.add("sticky");
     sticky = window.pageYOffset;
   } else {
     navbar.classList.remove("sticky");
@@ -187,43 +183,43 @@ function makeNavBarSticky() {
   }
 }
 
-// adTitleInput.addEventListener("focusin", function(){
-//   
-// })
+inputsToFocus.forEach((element) => {
+  element.addEventListener("focus", showMessage);
+  element.addEventListener("focusout", hideMessage);
+});
 
-// adDescriptionInput.addEventListener("focusin", function(){
-//   
-// })
-
-
-inputsToFocus.forEach(element => {
-  element.addEventListener("focus",showMessage);
-  element.addEventListener("focusout",hideMessage);
-})
-
-function showMessage(e){
+function showMessage(e) {
   let target = e.target;
-  if(target === adTitleInput){
-    getById("suggestMessageTitle").style.display="block"
-  }else if(e.target === adDescriptionInput){
+  if (target === adTitleInput) {
+    getById("suggestMessageTitle").style.display = "block";
+  } else if (e.target === adDescriptionInput) {
     getById("suggestMessageDescription").style.display = "block";
-  }else if(e.target === adCityInput ){
+  } else if (e.target === adCityInput) {
     getById("suggestMessageCity").style.display = "block";
-  }else {
+  } else {
     getById("suggestMessageNumber").style.display = "block";
   }
-  
 }
 
-function hideMessage(e){
+function hideMessage(e) {
   let target = e.target;
-  if(target === adTitleInput){
-    getById("suggestMessageTitle").style.display="none"
-  }else if(e.target === adDescriptionInput){
+  if (target === adTitleInput) {
+    getById("suggestMessageTitle").style.display = "none";
+  } else if (e.target === adDescriptionInput) {
     getById("suggestMessageDescription").style.display = "none";
-  }else if(e.target === adCityInput ){
+  } else if (e.target === adCityInput) {
     getById("suggestMessageCity").style.display = "none";
-  }else {
+  } else {
     getById("suggestMessageNumber").style.display = "none";
   }
 }
+
+adTitleInput.addEventListener("input", function () {
+  let length = adTitleInput.value.length;
+  getById("titleSymbols").innerText = 70 - length;
+});
+
+adDescriptionInput.addEventListener("input", function () {
+  let length = adDescriptionInput.value.length;
+  getById("descriptionSymbols").innerText = 9000 - length;
+});

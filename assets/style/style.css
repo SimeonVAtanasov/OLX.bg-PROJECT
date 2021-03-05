@@ -1156,7 +1156,6 @@ div.pop-up-div {
 .input-box {
   position: relative;
   display: flex;
-
 }
 
 .pho {
@@ -1311,28 +1310,28 @@ div.pop-up-div {
   font-size: 12px;
 }
 
-.form-box a{
+.form-box a {
   color: #3a77ff;
 }
 
-.input-box > .contacts-input{
-  width: 338px ; 
+.input-box > .contacts-input {
+  width: 338px;
 }
 
-.contact-information .pho{
+.contact-information .pho {
   left: 27%;
 }
 
-.contact-information .suggest-message{
+.contact-information .suggest-message {
   left: 410px;
 }
 
-.add-form div{
+.add-form div {
   margin: 10px 0px 10px 0;
   z-index: 1;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -1342,13 +1341,13 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.complete-adding{
+.complete-adding {
   display: flex;
   justify-content: flex-end;
   position: relative;
 }
 
-.complete-adding .continue-button{
+.complete-adding .continue-button {
   background: #0e2f36;
   color: white;
   padding: 9px 65px;
@@ -1365,31 +1364,31 @@ input::-webkit-inner-spin-button {
   color: #0e2f36;
 }
 
-.complete-adding .preview-link{
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 1.25;
-    color: #002f34;
+.complete-adding .preview-link {
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 1.25;
+  color: #002f34;
 }
 
-.complete-adding div{
+.complete-adding div {
   margin-left: 40px;
 }
 
-.preview-link::after{
-  content: '';
+.preview-link::after {
+  content: "";
   position: absolute;
   width: 67px;
   height: 2px;
   right: 235px;
   top: 35px;
   background: #002f34;
-  transition:0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
   margin-top: 2px;
 }
 
-.preview-link:hover::after{
+.preview-link:hover::after {
   width: 3%;
   right: 251px;
 }
