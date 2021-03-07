@@ -62,9 +62,10 @@ function onHashChange() {
   }
 }
 
-function printCategories(categories) {
-  let categoriesContainer = getById("categoriesContainer");
+let categoriesContainer = getById("categoriesContainer");
+let categoriesFormContainer = getById("addCategories");
 
+function printCategories(categories, container) {
   for (let i = 0; i < categories.length; i++) {
     let currentCategory = categories[i];
     let categoryCard = createElement("div");
@@ -86,19 +87,54 @@ function printCategories(categories) {
     description.className = "title";
     imageContainer.append(categoryImage);
     categoryCard.append(imageContainer, description);
-    categoriesContainer.append(categoryCard);
+  
+    if(container === getById("addCategories") && i<=11){
+      container.append(categoryCard);
+    } else if(container == categoriesContainer){
+      container.append(categoryCard);
+    } else{
+      continue;
+    }
 
-    categoryCard.addEventListener("click", function () {
-      showAdds(
-        adsManager.filterBy("category", currentCategory.title),
-        noticeContainer
-      );
-      location.hash = "#advertisements";
-    });
+    let chosenCategoryContainer = getById("chosenCategoryContainer");
+    if (container === getById("addCategories")) {
+      categoryCard.addEventListener("click", function () {
+        chosenCategoryContainer.innerHTML = "";
+
+        let imgContainer = createElement("div");
+        imgContainer.style.backgroundColor =
+          currentCategory["background-color"];
+        imgContainer.className = "image-container";
+
+        let img = createElement("img");
+        img.src = currentCategory.image;
+        img.alt = currentCategory.title;
+
+        let categoryTitle = createElement("p",currentCategory.title);
+
+        imgContainer.append(img);
+        chosenCategoryContainer.append(imgContainer, categoryTitle);
+        getById("categoryBox").style.backgroundColor = currentCategory["background-color"];
+        getById("selectCategory").style.display="none";
+      });
+     
+    } 
+
+    if (container === categoriesContainer) {
+      categoryCard.addEventListener("click", function () {
+        showAdds(
+          adsManager.filterBy("category", currentCategory.title),
+          noticeContainer
+        );
+        location.hash = "#advertisements";
+      });
+    }
   }
 }
 
-printCategories(categories);
+printCategories(categories, categoriesContainer);
+
+printCategories(categories, categoriesFormContainer);
 
 function printPromoAds(arr, container) {
   container.innerHTML = "";

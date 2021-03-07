@@ -55,3 +55,5 @@ const adDescriptionInput = getById("adDescription");
 const adCityInput = getById("contactsCity");
 const adNumberInput = getById("contactsNumber");
 const inputsToFocus = [adTitleInput, adDescriptionInput,adCityInput,adNumberInput];
+
+const categoryBtn = getById("categoryBox");

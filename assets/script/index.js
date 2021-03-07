@@ -223,3 +223,11 @@ adDescriptionInput.addEventListener("input", function () {
   let length = adDescriptionInput.value.length;
   getById("descriptionSymbols").innerText = 9000 - length;
 });
+
+categoryBtn.addEventListener("click", function () {
+  getById("selectCategory").style.display = "block";
+});
+
+getById("closeCategoryForm").addEventListener("click", function (e) {
+  getById("selectCategory").style.display = "none";
+});

@@ -1186,7 +1186,7 @@ div.pop-up-div {
 
 .addCategory {
   border: none;
-  padding: 10px 15px;
+  /* padding: 10px 15px; */
   border-radius: 4px;
   font-size: 16px;
   line-height: 1.25;
@@ -1199,7 +1199,7 @@ div.pop-up-div {
 .addCategory i {
   position: relative;
   top: 50%;
-  left: 45%;
+  left: 90%;
   font-size: 27px;
 }
 
@@ -1391,4 +1391,66 @@ input::-webkit-inner-spin-button {
 .preview-link:hover::after {
   width: 3%;
   right: 251px;
+}
+
+.form-categories {
+  background-color: white;
+  width: 71%;
+  margin: 150px auto;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.form-categories h2 {
+  font-weight: lighter;
+  margin-bottom: 35px;
+  color: #002f34;
+  font-family: "Open Sans", sans-serif;
+}
+
+.chosen-category {
+  display: flex;
+  align-items: center;
+  color: #00282c;
+}
+
+.category-form {
+  width: 100%;
+}
+
+.category-form > .category-card {
+  width: 129px;
+  height: 137px;
+  margin-right: 33px;
+}
+
+.category-form > .category-card > .image-container {
+  width: 94px;
+  height: 89px;
+}
+
+.category-form > .category-card > .image-container > img {
+  width: 84px;
+  height: 84px;
+}
+
+.catecory-select {
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  background-color: rgb(0 0 0 / 67%);
+  cursor: pointer;
+  height: 3314px;
+  display: none;
+}
+
+.form-categories-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-categories-header i {
+  padding: 20px;
+  font-size: 24px;
+  cursor: default;
 }

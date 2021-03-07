@@ -468,9 +468,12 @@
                  <label>Категория <span class="star-required">*</span></label>
                </div>
 
-               <div>
-                 <button class="addCategory">
-                  <i class="fas fa-chevron-down"></i>
+               <div >
+                 <button class="addCategory" id="categoryBox">
+                   <div id="chosenCategoryContainer" class="chosen-category">
+                      <i class="fas fa-chevron-down"></i>
+                   </div>
+                 
                  </button>
                </div>
 
@@ -619,6 +622,19 @@
           
            
         </form>
+
+        <div class="catecory-select" id="selectCategory">
+          <div class="form-categories" id="formCategories">
+            <div class="form-categories-header">
+              <h2>Избери категория</h2>
+                <i class="fas fa-times" id="closeCategoryForm"></i>
+            </div>
+
+            <div class="categories-container category-form" id="addCategories">
+
+            </div>
+          </div>
+        </div>
         
     </div>
 
