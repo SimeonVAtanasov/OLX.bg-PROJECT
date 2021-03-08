@@ -34,21 +34,10 @@ class AdvertisementManager {
     this.promoAds = [];
   }
 
-  addAdvertisement(el) {
-    let newNotice = new Advertisement(
-      el.id,
-      el.title,
-      el.category,
-      el.description,
-      el.price,
-      el.photo,
-      el.city,
-      el.fullName,
-      el.email,
-      el.promo,
-      el.telNumber
-    )
-    this.allAds.push(newNotice);
+  addAdvertisement(ad) {
+
+    this.allAds.push(ad);
+    
   }
 
   filterBy(type, optionA) {

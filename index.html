@@ -526,7 +526,7 @@
             <div>
             <ul class="upload-images" id="uploadImages">
               <li class = "add-file">
-                <input type="file" class="file-input">
+                <input type="file" class="file-input" id="fileInput">
                 <p>Кликни, за да добавиш снимка на корицата</p>
               </li>
 
@@ -582,7 +582,7 @@
            <div>
             <label for="email"> Имейл адрес <span class="star-required">*</span> </label>
             <div class="input-box">
-               <input class="contacts-input" type="email" id="emailContact" name="email" autocomplete="off">
+               <input class="contacts-input" type="email" id="emailContact" name="email" autocomplete="off" disabled>
             </div>
         
          </div>
@@ -613,7 +613,7 @@
                 <a href="javascript:void(0);" class= "preview-link"><span>Преглед</span></a>
               </div>
                <div>
-                  <a href="#" class="continue-button" id="addAdvertisementButton">Напред </a>
+                  <a href="#myAdsPage" class="continue-button" id="addAdvertisementButton">Напред </a>
                </div>
            
             </div>
@@ -642,6 +642,33 @@
       <h1>Съжаляваме, не можем да намерим тази страница…</h1>
       <a href="index">Oтиди на заглавната страница!</a>
     </div>
+
+    <div id="myAdsPage" class="my-ads">
+      <div class = "my-ads-header">
+        <div>
+           <h1>Моите обяви</h1>
+        </div>
+        <div class="balance-container">
+          <div class="balance">
+            <p>Баланс 0лв</p>
+            <p>Бонус точки: 0 бонус точки</p>
+          </div>
+          <div class="balance-button">
+            <span>Увеличи баланса</span>
+          </div>
+        </div>
+      </div>
+      <div class="my-ads-messagebox">
+        <p>OLX не предлага система за онлайн плащане на продаваните артикули в сайта. Получаването на пари по сделката се
+          извършва само чрез куриерската компания! Не напускай чата на OLX и не въвеждай данните за банковата си карта в
+          сайтове, получени по други канали, напр. Viber.</p>
+      </div>
+
+      <div id="myAdsContainer">
+
+      </div>
+    </div>
+
 
     <div id="noticePage">
       <form id="filtering">
@@ -828,7 +855,7 @@
         {{#each this}}
           <li class="notice-box">
             <div>
-              <img src="{{photo}}" alt="{{title}}" class="notice-img" />
+              <img src="{{photo}}" alt="{{title}}" class="notice-img" id="noticeImg"/>
             </div>
             <div class="description-box">
               <h3>

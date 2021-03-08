@@ -67,6 +67,11 @@ const userManager = (function () {
 
       return isAlreadyLiked;
     }
+
+    addAd(ad){
+ 
+      this.addedAds.push(ad);
+    }
   }
 
   class UserManager {

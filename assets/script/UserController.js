@@ -19,10 +19,13 @@ loginButton.addEventListener("click", function (ev) {
   if (userManager.login(email, password)) {
     countLikeAds();
     printPromoAds(adsManager.promoAds, promoContainer);
+    changeProfileFunctions(email,password);
+    getById("emailContact").value = email;
     location.hash = "index";
+
   }
 
-  changeProfileFunctions(email,password);
+  
 });
 
 registerBtn.addEventListener("click", function (ev) {

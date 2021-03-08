@@ -1,6 +1,7 @@
 const indexPage = getById("indexPage");
 const adsContainer = getById("noticePage");
 const errorPage = getById("errorPage");
+const myAdsPage = getById("myAdsPage")
 const singleNoticeContainer = getById("singleNoticeContainer");
 const searchForm = getById("searchForm");
 const profilePage = getById("profilePage");
@@ -57,3 +58,5 @@ const adNumberInput = getById("contactsNumber");
 const inputsToFocus = [adTitleInput, adDescriptionInput,adCityInput,adNumberInput];
 
 const categoryBtn = getById("categoryBox");
+
+const preview = getById("noticeImg");

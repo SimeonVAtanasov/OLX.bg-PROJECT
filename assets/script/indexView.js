@@ -11,6 +11,7 @@ function onHashChange() {
       profilePage.style.display = "none";
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
+      myAdsPage.style.display = "none";
       break;
 
     case "advertisements":
@@ -21,6 +22,7 @@ function onHashChange() {
       profilePage.style.display = "none";
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
+      myAdsPage.style.display = "none";
       break;
 
     case "offer":
@@ -31,6 +33,7 @@ function onHashChange() {
       profilePage.style.display = "none";
       singleNoticeContainer.style.display = "block";
       addAdvertisementPage.style.display = "none";
+      myAdsPage.style.display = "none";
       break;
 
     case "profilePage":
@@ -41,6 +44,7 @@ function onHashChange() {
       profilePage.style.display = "flex";
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
+      myAdsPage.style.display = "none";
       break;
 
     case "addAdvertisementPage":
@@ -51,6 +55,18 @@ function onHashChange() {
       profilePage.style.display = "none";
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "block";
+      myAdsPage.style.display = "none";
+      break;
+
+    case "myAdsPage":
+      indexPage.style.display = "none";
+      searchForm.style.display = "none";
+      adsContainer.style.display = "none";
+      errorPage.style.display = "none";
+      profilePage.style.display = "none";
+      singleNoticeContainer.style.display = "none";
+      addAdvertisementPage.style.display = "none";
+      myAdsPage.style.display = "block";
       break;
 
     default:
@@ -59,6 +75,7 @@ function onHashChange() {
       searchForm.style.display = "none";
       errorPage.style.display = "block";
       addAdvertisementPage.style.display = "none";
+      myAdsPage.style.display = "none";
   }
 }
 
@@ -87,12 +104,12 @@ function printCategories(categories, container) {
     description.className = "title";
     imageContainer.append(categoryImage);
     categoryCard.append(imageContainer, description);
-  
-    if(container === getById("addCategories") && i<=11){
+
+    if (container === getById("addCategories") && i <= 11) {
       container.append(categoryCard);
-    } else if(container == categoriesContainer){
+    } else if (container == categoriesContainer) {
       container.append(categoryCard);
-    } else{
+    } else {
       continue;
     }
 
@@ -110,15 +127,15 @@ function printCategories(categories, container) {
         img.src = currentCategory.image;
         img.alt = currentCategory.title;
 
-        let categoryTitle = createElement("p",currentCategory.title);
+        let categoryTitle = createElement("p", currentCategory.title);
 
         imgContainer.append(img);
         chosenCategoryContainer.append(imgContainer, categoryTitle);
-        getById("categoryBox").style.backgroundColor = currentCategory["background-color"];
-        getById("selectCategory").style.display="none";
+        getById("categoryBox").style.backgroundColor =
+          currentCategory["background-color"];
+        getById("selectCategory").style.display = "none";
       });
-     
-    } 
+    }
 
     if (container === categoriesContainer) {
       categoryCard.addEventListener("click", function () {
@@ -133,7 +150,6 @@ function printCategories(categories, container) {
 }
 
 printCategories(categories, categoriesContainer);
-
 printCategories(categories, categoriesFormContainer);
 
 function printPromoAds(arr, container) {

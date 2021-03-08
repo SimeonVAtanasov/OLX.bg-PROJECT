@@ -224,10 +224,71 @@ adDescriptionInput.addEventListener("input", function () {
   getById("descriptionSymbols").innerText = 9000 - length;
 });
 
-categoryBtn.addEventListener("click", function () {
+categoryBtn.addEventListener("click", function (ev) {
+  ev.preventDefault();
   getById("selectCategory").style.display = "block";
 });
 
 getById("closeCategoryForm").addEventListener("click", function (e) {
   getById("selectCategory").style.display = "none";
 });
+
+let counterId = 51;
+function addNewAd() {
+  // previewFile();
+  let adId = counterId;
+  let adTitle = getById("adTitle").value;
+  let name = getById("nameContact").value;
+  let email = getById("emailContact").value;
+  let adPrice = counterId;
+  let adCity = getById("contactsCity").value;
+  let adPhoto = getById("noticeImg").src;
+
+  let adPromo = false;
+  let telNumber = getById("contactsNumber").value;
+  let adCategory = getById("chosenCategoryContainer").lastChild.innerText;
+  let adDescription = getById("adDescription").value;
+
+  let advertisement = new Advertisement(
+    adId,
+    adTitle,
+    adCategory,
+    adDescription,
+    adPrice,
+    adPhoto,
+    adCity,
+    name,
+    email,
+    adPromo,
+    telNumber
+  );
+
+  userManager.currentUser.addAd(advertisement);
+  adsManager.addAdvertisement(advertisement);
+  console.log(adPhoto);
+  showAdds(userManager.currentUser.addedAds, getById("myAdsContainer"));
+}
+
+getById("addAdvertisementButton").addEventListener("click", addNewAd);
+getById("addAdvertisementButton").addEventListener("click", previewFile);
+
+debugger;
+
+function previewFile() {
+  const preview = getById("noticeImg");
+  const file = document.querySelector("input[type=file]").files[0];
+  const reader = new FileReader();
+
+  reader.addEventListener(
+    "load",
+    function () {
+      // convert image file to base64 string
+      preview.src = reader.result;
+    },
+    false
+  );
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
