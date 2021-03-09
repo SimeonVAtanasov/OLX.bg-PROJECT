@@ -17,6 +17,7 @@ const advertismentBtn = getById("advertisementButton");
 
 const loginForm = getById("loginForm");
 const registrationForm = getById("registrationForm");
+
 // SearchBar elements
 const searchContainer = getById("searchContainer");
 const searchBar = getById("searchInput");
@@ -37,6 +38,9 @@ const downloadText = getById("downloadText");
 const downloadFrom = getById("downloadFromText");
 
 const boxesToChangeText = [googlePlay, appStore, appGalerry];
+
+// registration and login
+const registerForm = getById("registrationForm")
 
 const emailRegisterInput = getById("registerEmail");
 const passwordRegisterInput = getById("registerPassword");
@@ -60,3 +64,10 @@ const inputsToFocus = [adTitleInput, adDescriptionInput,adCityInput,adNumberInpu
 const categoryBtn = getById("categoryBox");
 
 const preview = getById("noticeImg");
+
+//  messages  in notice form
+
+const suggestMessageTitle = getById("suggestMessageTitle");
+  const suggestMessageDescription = getById("suggestMessageDescription");
+  const suggestMessageCity = getById("suggestMessageCity");
+  const suggestMessageNumber = getById("suggestMessageNumber");

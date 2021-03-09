@@ -11,6 +11,16 @@ function createElement(el, text) {
     return element;
 }
 
+function hideElement(el){
+    el.style.display = "none";
+}
+
+function showElement (el,  disp = "block"){
+    el.style.display = disp
+}
+
+
+
 function debounce(func, time) {
     let timerId;
     return function () {

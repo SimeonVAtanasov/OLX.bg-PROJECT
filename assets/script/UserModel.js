@@ -33,13 +33,16 @@ const userManager = (function () {
 
     likeAd(ad) {
       let isAlreadyLiked = false;
-      for (let i = 0; i < this.likedAds.length; i++) {
+      if(this.likedAds.length > 0){
+        for (let i = 0; i < this.likedAds.length; i++) {
         if (this.likedAds[i].id === ad.id) {
           isAlreadyLiked = true;
           break;
         }
       }
-      if (ad instanceof Advertisement && !isAlreadyLiked) {
+      }
+      
+      if (!isAlreadyLiked) {
         this.likedAds.push(ad);
       }
     }
