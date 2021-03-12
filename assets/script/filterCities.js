@@ -39,8 +39,6 @@ const filterCities = function filterCities() {
         showAdds(noticeArr, noticeContainer)
         divBox.innerHTML = ''
         divBox.style.display = 'none'
-
-
     }
     
 };

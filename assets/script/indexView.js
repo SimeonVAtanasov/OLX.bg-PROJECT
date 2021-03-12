@@ -58,7 +58,7 @@ function onHashChange() {
       myAdsPage.style.display = "none";
       break;
 
-    case "myAdsPage":
+    case "myAds":
       indexPage.style.display = "none";
       searchForm.style.display = "none";
       adsContainer.style.display = "none";
@@ -66,16 +66,20 @@ function onHashChange() {
       profilePage.style.display = "none";
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
+      showAdds(userManager.currentUser["addedAds"], getById("myAdsContainer"));
       myAdsPage.style.display = "block";
+
       break;
 
     default:
       indexPage.style.display = "none";
       adsContainer.style.display = "none";
       searchForm.style.display = "none";
-      errorPage.style.display = "block";
       addAdvertisementPage.style.display = "none";
+      profilePage.style.display = "none";
+      singleNoticeContainer.style.display = "none";
       myAdsPage.style.display = "none";
+      errorPage.style.display = "block";
   }
 }
 
@@ -202,7 +206,6 @@ function printPromoAds(arr, container) {
     //
     if (isAlreadyLiked) {
       pop.innerHTML = "<p>Премахни от наблюдавани</p>";
-      // pop.style.top = "-70px";
       watchButton.innerHTML = "<i class='fas fa-heart'></i>";
       watchButton.addEventListener("click", function () {
         userManager.currentUser.removeFromLiked(currentNotice);
@@ -251,7 +254,7 @@ function showAdds(arr, container) {
           let icon = getById(`${idNum}`);
           icon.className = "far fa-heart watched";
 
-          let popDiv = getById(`p${idNum}`);
+          let popDiv = document.getElementById(`p${idNum}`);
           popDiv.innerText = "Наблюдавай";
 
           let toRemove = userManager.currentUser.likedAds.filter(
@@ -264,11 +267,10 @@ function showAdds(arr, container) {
         } else {
           let icon = getById(`${idNum}`);
           icon.className = "fas fa-heart";
-          console.log(idNum);
-          // Is working only when the all ads are displayed, when they are filtered ir does not work
-          let popDiv = getById(`#p${idNum})`);
+          let popDiv = document.getElementById(`p${idNum}`);
           popDiv.innerText = "Премахни от наблюдавани";
           let addToLike = adsManager.allAds.filter((el) => el.id == idNum);
+
           userManager.currentUser.likeAd(addToLike[0]);
 
           countLikeAds();
@@ -281,8 +283,8 @@ function showAdds(arr, container) {
   }
 }
 
-function changeProfileFunctions(email, password) {
-  if (!userManager.login(email, password)) {
+function changeProfileFunctions(email) {
+  if (!userManager.currentUser["email"]) {
     profileMenu.href = "#profilePage";
     profileMenu.style.display = "none";
     dropdownArrow.classList = "";

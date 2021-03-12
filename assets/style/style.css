@@ -1161,7 +1161,7 @@ div.pop-up-div {
 
 .pho {
   position: absolute;
-  left: 45%;
+  left: 43%;
   top: 13px;
   background: #d1e0f5;
   color: #0098d0;
@@ -1320,7 +1320,7 @@ div.pop-up-div {
 }
 
 .contact-information .pho {
-  left: 27%;
+  left: 26%;
 }
 
 .contact-information .suggest-message {
@@ -1456,7 +1456,7 @@ input::-webkit-inner-spin-button {
   cursor: default;
 }
 
-.my-ads {
+.my-notice {
   margin: 90px 90px 0 90px;
 }
 

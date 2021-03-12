@@ -95,7 +95,7 @@
           <div>
             <ul>
               <li>
-                <a href="#offer" id="profile-ads">
+                <a href="#myAds" id="profile-ads">
                   <span>Обяви</span>
                 </a>
               </li>
@@ -478,6 +478,14 @@
                  </button>
                </div>
 
+               <div>
+                <label for="adPrice">Цена:  <span class="star-required">*</span></label>
+              </div>
+
+               <div class="input-box addCategory">
+                <input type="number" id="adPrice" name="adPrice" maxlength="70"> 
+              </div>
+
              </div>
           </div>
 
@@ -485,7 +493,7 @@
             <div class="form-title">
               <p>Описание</p>
             </div>
-            <div class="ad-title">
+            <div class="notice-title">
               <div>
                 <label for="adDescription">Описание <span class="star-required">*</span></label>
               </div>
@@ -614,7 +622,7 @@
                 <a href="javascript:void(0);" class= "preview-link"><span>Преглед</span></a>
               </div>
                <div>
-                  <a href="#myAdsPage" class="continue-button" id="addAdvertisementButton">Напред </a>
+                  <a href="#myAds" class="continue-button" id="addAdvertisementButton">Напред </a>
                </div>
            
             </div>
@@ -639,12 +647,12 @@
         
     </div>
 
-    <div id="errorPage">
+    <div id="errorPage" class="my-notice">
       <h1>Съжаляваме, не можем да намерим тази страница…</h1>
-      <a href="index">Oтиди на заглавната страница!</a>
+      <a href="#index">Oтиди на заглавната страница!</a>
     </div>
 
-    <div id="myAdsPage" class="my-ads">
+    <div id="myAdsPage" class="my-notice">
       <div class = "my-ads-header">
         <div>
            <h1>Моите обяви</h1>
@@ -857,7 +865,8 @@
         {{#each this}}
           <li class="notice-box">
             <div>
-              <img src="{{photo}}" alt="{{title}}" class="notice-img" id="noticeImg"/>
+              <img src="{{photo}}" alt="{{title}}" class="notice-img"/>  
+              <!-- id="noticeImg" -->
             </div>
             <div class="description-box">
               <h3>

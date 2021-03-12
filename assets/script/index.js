@@ -1,12 +1,13 @@
 window.addEventListener("DOMContentLoaded", function () {
-  onHashChange();
+
   if (userManager.checkLoggedUser()) {
     changeProfileFunctions(
       userManager.currentUser.email,
-      userManager.currentUser.password
-    );
-  }
-});
+      );
+    }
+    onHashChange();
+  });
+  
 window.addEventListener("hashchange", onHashChange);
 window.addEventListener("click", hideProfileMenu);
 
@@ -190,27 +191,31 @@ inputsToFocus.forEach((element) => {
 
 function showMessage(e) {
   let target = e.target;
+
   if (target === adTitleInput) {
-    getById("suggestMessageTitle").style.display = "block";
+    showElement(suggestMessageTitle);
   } else if (e.target === adDescriptionInput) {
-    getById("suggestMessageDescription").style.display = "block";
+    showElement(suggestMessageDescription);
   } else if (e.target === adCityInput) {
-    getById("suggestMessageCity").style.display = "block";
+    showElement(suggestMessageDescription);
   } else {
-    getById("suggestMessageNumber").style.display = "block";
+    showElement(suggestMessageNumber);
   }
 }
 
 function hideMessage(e) {
   let target = e.target;
+  
   if (target === adTitleInput) {
-    getById("suggestMessageTitle").style.display = "none";
+    hideElement(suggestMessageTitle);
   } else if (e.target === adDescriptionInput) {
-    getById("suggestMessageDescription").style.display = "none";
+    hideElement(suggestMessageDescription);
   } else if (e.target === adCityInput) {
-    getById("suggestMessageCity").style.display = "none";
+    hideElement(suggestMessageCity);
+
   } else {
-    getById("suggestMessageNumber").style.display = "none";
+    hideElement(suggestMessageNumber);
+
   }
 }
 
@@ -234,15 +239,15 @@ getById("closeCategoryForm").addEventListener("click", function (e) {
 });
 
 let counterId = 51;
-function addNewAd() {
+function addNewAd(photo) {
   // previewFile();
-  let adId = counterId;
+  let adId = `ad${Math.floor(Math.random() * 5640)}`;
   let adTitle = getById("adTitle").value;
   let name = getById("nameContact").value;
-  let email = getById("emailContact").value;
-  let adPrice = counterId;
+  let email = userManager.currentUser.email;
+  let adPrice = getById("adPrice").value;
   let adCity = getById("contactsCity").value;
-  let adPhoto = getById("noticeImg").src;
+  let adPhoto = photo;
 
   let adPromo = false;
   let telNumber = getById("contactsNumber").value;
@@ -263,19 +268,22 @@ function addNewAd() {
     telNumber
   );
 
+  console.log(advertisement);
+
   userManager.currentUser.addAd(advertisement);
   adsManager.addAdvertisement(advertisement);
-  console.log(adPhoto);
+  userManager.setUsers();
   showAdds(userManager.currentUser.addedAds, getById("myAdsContainer"));
 }
 
-getById("addAdvertisementButton").addEventListener("click", addNewAd);
+// getById("addAdvertisementButton").addEventListener("click", ()=> {
+  
+//   addNewAd(previewFile());
+// });
 getById("addAdvertisementButton").addEventListener("click", previewFile);
 
-debugger;
 
 function previewFile() {
-  const preview = getById("noticeImg");
   const file = document.querySelector("input[type=file]").files[0];
   const reader = new FileReader();
 
@@ -283,12 +291,12 @@ function previewFile() {
     "load",
     function () {
       // convert image file to base64 string
-      preview.src = reader.result;
+      addNewAd(reader.result)
     },
     false
-  );
-
-  if (file) {
-    reader.readAsDataURL(file);
-  }
+    );
+    
+    if (file) {
+      reader.readAsDataURL(file);
+    }
 }

@@ -141,7 +141,7 @@ let arrOfAds = [
   },
   {
     id: 9,
-    title: "Картина на Лисаца",
+    title: "Картина на Лисица",
     fullName: "Giulia Bownd",
     email: "gbownd8@list-manage.com",
     price: 304,
