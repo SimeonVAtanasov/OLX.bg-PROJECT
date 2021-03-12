@@ -14,6 +14,10 @@ const loginBtn = getById("navLoginBtn");
 const registrationBtn = getById("navRegistrationBtn");
 const navbar = document.getElementById("header");
 const advertismentBtn = getById("advertisementButton");
+const noticeWrapper = getById("noticeWrapper");
+const noticePromoContainer = getById("noticePromoContainer");
+const noticeUserInformation = getById("userInformationWrapper");
+
 
 const loginForm = getById("loginForm");
 const registrationForm = getById("registrationForm");
@@ -71,3 +75,4 @@ const suggestMessageTitle = getById("suggestMessageTitle");
   const suggestMessageDescription = getById("suggestMessageDescription");
   const suggestMessageCity = getById("suggestMessageCity");
   const suggestMessageNumber = getById("suggestMessageNumber");
+

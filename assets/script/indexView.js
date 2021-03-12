@@ -170,6 +170,9 @@ function printPromoAds(arr, container) {
     imgContainer.className = "img-container";
     let anchor = createElement("a");
     anchor.href = "#offer";
+    anchor.addEventListener("click", function () {
+      printNotice(currentNotice);
+    });
     let img = createElement("img");
     img.src = currentNotice.photo;
     img.alt = currentNotice.title;
@@ -339,3 +342,116 @@ function printFileUploads() {
 }
 
 printFileUploads();
+
+function printNotice(notice) {
+  noticeWrapper.innerHTML = "";
+  noticeUserInformation.innerHTML = "";
+  let breadcrumb = createElement("div");
+  breadcrumb.className = "breadcrumbContainer";
+  let ul = createElement("ul");
+  ul.className = "breadcrumb";
+  let listHome = createElement("li");
+  listHome.className = "breadcrumb-item";
+  let linkHome = createElement("a");
+  linkHome.href = "#index";
+  linkHome.innerText = "Заглавна страница";
+  let listCity = createElement("li");
+  listCity.className = "breadcrumb-item";
+  let linkCity = createElement("a");
+  linkCity.href = "#advertisements";
+  linkCity.innerText = "Обяви в град " + notice.city;
+  linkCity.addEventListener("click", function () {
+    showAdds(adsManager.filterBy("city", notice.title), noticeContainer);
+  });
+  let listCategory = createElement("li");
+  listCategory.className = "breadcrumb-item";
+  let linkCategory = createElement("a");
+  linkCategory.href = "#advertisements";
+  linkCategory.innerText = "Обяви в категория " + notice.category;
+  linkCategory.addEventListener("click", function () {
+    showAdds(adsManager.filterBy("category", notice.title), noticeContainer);
+  });
+
+  listCategory.append(linkCategory);
+  listCity.append(linkCity);
+  listHome.append(linkHome);
+  ul.append(listHome, listCity, listCategory);
+  breadcrumb.append(ul);
+
+  let noticeContainer = createElement("div");
+  noticeContainer.className = "notice-wrapper";
+  let imageContainer = createElement("div");
+  let image = createElement("img");
+  image.src = notice.photo;
+  image.alt = notice.title;
+  imageContainer.append(image);
+
+  noticeContainer.append(imageContainer);
+
+  let informationContainer = createElement("div");
+  informationContainer.className = "information-wrapper";
+
+  let titleContainer = createElement("div");
+  let title = createElement("p", notice.title);
+  title.className = "notice-titl";
+  let priceContainer = createElement("div");
+  let price = createElement("h1", notice.price + " лв");
+  price.className = "notice-price";
+  let promoContainer = createElement("div");
+  promoContainer.className = "promWrapp";
+  let promoLabel = createElement(
+    "div",
+    '<i class="far fa-bookmark"></i> <span> Промотирай </span>'
+  );
+
+  let refresh = createElement(
+    "div",
+    '<i class="fas fa-redo"></i> <span>Обнови</span>'
+  );
+
+  let labelsContainer = createElement("div");
+  labelsContainer.className = "labels-cont";
+  let label1 = createElement("span", "Бизнес");
+  let label2 = createElement("span", "Доставката се поема от: купувача");
+  let label3 = createElement("span", "Състояние: ново");
+
+  let descriptionContainer = createElement("div");
+  descriptionContainer.className = "description-cont";
+  let descriptionHeader = createElement("h1", "Описание");
+  let description = createElement("div", `<p> ${notice.description} </p>`);
+
+  let userContainer = createElement("div");
+  userContainer.className = "notice-user";
+  let userHeader = createElement("div", "<p> Потребител </p>");
+  let userInfo = createElement("div");
+  userInfo.className = "notice-user-info";
+  let userImg = createElement("img");
+  userImg.src = "./images/user.png";
+  userImg.alt = "user avatar";
+  let userName = createElement("p", notice.fullName);
+
+  let btnContainer = createElement("div");
+  btnContainer.className = "notice-user-btns";
+  let btnCall = createElement("button", "Обади се");
+  btnCall.className = "notice-user-btn";
+  let btnMessage = createElement("button", "Съобщение");
+
+  btnContainer.append(btnCall, btnMessage);
+  userInfo.append(userImg, userName);
+  userContainer.append(userHeader, userInfo, btnContainer);
+  descriptionContainer.append(descriptionHeader, description);
+  labelsContainer.append(label1, label2, label3);
+  titleContainer.append(title);
+  priceContainer.append(price);
+  promoContainer.append(promoLabel, refresh);
+
+  informationContainer.append(
+    titleContainer,
+    priceContainer,
+    promoContainer,
+    labelsContainer,
+    descriptionContainer
+  );
+  noticeWrapper.append(breadcrumb, noticeContainer, informationContainer);
+  noticeUserInformation.append(userContainer);
+}
