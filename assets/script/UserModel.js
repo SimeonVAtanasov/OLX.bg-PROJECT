@@ -42,7 +42,7 @@ const userManager = (function () {
       }
       }
       
-      if (!isAlreadyLiked) {
+      if (ad instanceof Advertisement && !isAlreadyLiked) {
         this.likedAds.push(ad);
       }
     }

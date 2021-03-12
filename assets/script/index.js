@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", function () {
   if (userManager.checkLoggedUser()) {
     changeProfileFunctions(
       userManager.currentUser.email,
+      userManager.currentUser.password
       );
     }
     onHashChange();
