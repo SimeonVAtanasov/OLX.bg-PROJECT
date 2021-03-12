@@ -34,8 +34,8 @@ registerBtn.addEventListener("click", function (ev) {
   const email = emailInputRegister;
   const password = passwordInputRegister;
 
-  if (!validateEmail(email, password) || !validatePassword()) {
-    registerForm.reset();
+  if (!validateEmail(email, emailRegMessage) || !validatePassword()) {
+    registrationForm.reset();
     return;
   } else {
     userManager.register(email.value, password.value);
