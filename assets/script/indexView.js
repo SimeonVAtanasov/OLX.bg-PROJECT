@@ -436,7 +436,16 @@ function printNotice(notice) {
   btnCall.className = "notice-user-btn";
   let btnMessage = createElement("button", "Съобщение");
 
-  addToCarousell();
+  let locationContainer = createElement("div");
+  locationContainer.className = "notice-user";
+  let locationHeader = createElement("div" , "<p>Локация</p>");
+  let locationInfo = createElement("div");
+  locationInfo.className = "notice-user-info";
+  let location = createElement("div", `<i class="fas fa-map-marker-alt"></i> <p>${notice.city}</p>`);
+  location.className = "notice-location";
+  let map = createElement("div",'<div class="mapouter"><div class="gmap_canvas"><iframe width="210" height="125" id="gmap_canvas" src="https://maps.google.com/maps?q=sofia%20center&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://soap2day-to.com">soap2day</a><br><style>.mapouter{position:relative;text-align:right;height:125px;width:210px;}</style><a href="https://www.embedgooglemap.net">google map html generator</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:125px;width:210px;}</style></div></div>');
+  
+  
 
   btnContainer.append(btnCall, btnMessage);
   userInfo.append(userImg, userName);
@@ -447,6 +456,9 @@ function printNotice(notice) {
   priceContainer.append(price);
   promoContainer.append(promoLabel, refresh);
 
+  locationInfo.append(location,map);
+  locationContainer.append(locationHeader,locationInfo);
+
   informationContainer.append(
     titleContainer,
     priceContainer,
@@ -455,5 +467,7 @@ function printNotice(notice) {
     descriptionContainer
   );
   noticeWrapper.append(breadcrumb, noticeContainer, informationContainer);
-  noticeUserInformation.append(userContainer);
+  noticeUserInformation.append(userContainer,locationContainer);
+  addToCarousell();
+
 }

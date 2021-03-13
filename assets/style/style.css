@@ -1650,7 +1650,7 @@ input::-webkit-inner-spin-button {
   min-height: 48px;
 }
 
-.breadcrumb a{
+.breadcrumb a {
   color: grey;
   font-size: 12px;
 }
@@ -1661,12 +1661,24 @@ input::-webkit-inner-spin-button {
   left: -10%;
 }
 
-.notice-promo-header{
+.notice-promo-header {
   margin: 20px 0px 20px 104px;
   font-size: 25px;
 }
 
-.fa-chevron-left,.fa-chevron-right {
+.fa-chevron-left,
+.fa-chevron-right {
   font-size: 30px;
   color: #2c4548;
+}
+
+.notice-location {
+  display: flex;
+  margin-right: 2Ï0px;
+  font-size: 20px;
+}
+
+.notice-location p{
+  font-size: 20px;
+  margin-left:5px;
 }

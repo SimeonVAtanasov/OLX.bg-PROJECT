@@ -327,3 +327,4 @@ function addToCarousell(){
   printPromoAds(promoArr3, carousel3,4);
 
 }
+
