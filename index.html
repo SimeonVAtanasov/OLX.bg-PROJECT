@@ -153,8 +153,8 @@
     </header>
 
     <section id="searchForm">
-      <div class="form-wrapper" id="searchContainer">
-        <form id="searchBox">
+      <form class="form-wrapper" id="searchContainer">
+        <div id="searchBox"  action="#">
           <i class="fas fa-search"></i>
           <input
             id="searchInput"
@@ -165,9 +165,9 @@
           <button type="reset" class="resetBtn">
             <i class="fas fa-times"></i>
           </button>
-        </form>
+        </div>
         <div>
-          <form id="citySearchBox">
+          <div id="citySearchBox" action="#">
             <i class="fas fa-map-marker-alt"></i>
             <input
               placeholder="Цялата страна"
@@ -178,17 +178,17 @@
             <button type="reset" class="resetBtn">
               <i class="fas fa-times"></i>
             </button>
-          </form>
-          <!-- cities container -->
+          </div>
+          <!-- cities suggestions  -->
           <div id="suggestion"></div>
         </div>
-
-        <form id="buttonBox">
-          <button id="submitSearch" type="submitnpm">
+  
+        <div id="buttonBox"  action="#">
+          <button id="submitSearch" type="submit">
             Търсене&ThickSpace;<i class="fas fa-search"></i>
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     </section>
 
     <div id="indexPage">
@@ -304,7 +304,7 @@
           </ul>
         </div>
 
-        <form action="" id="loginForm" class="login-form">
+        <form action="#" id="loginForm" class="login-form">
           <div class="invalid-message" id="invalidMessage">
             <p>Невалиден имейл или парола</p>
           </div>
@@ -357,7 +357,7 @@
           </div>
         </form>
 
-        <form action="" id="registrationForm" class="registration-form">
+        <form action="#" id="registrationForm" class="registration-form">
           <div>
             <button class="loginBtn facebook">Вход с Facebook</button>
           </div>
@@ -430,7 +430,7 @@
 
     <div id="addAdvertisementPage">
       
-       <form action="" id="addForm" class="add-form">
+       <form action="#" id="addForm" class="add-form">
 
           <div >
              <h1>Добави обява</h1>
@@ -680,7 +680,7 @@
 
 
     <div id="noticePage">
-      <form id="filtering">
+      <form action="#" id="filtering">
         <div id="checkboxWrapper">
           <input type="checkbox" id="includeDescription" />
           <label for="includeDescription">
@@ -703,10 +703,10 @@
         
         
           <h2>Филтри</h2>
-          <div class="form-box">
+          <div class="form-box filtering">
             <div id="categoryPick">
               <label for="categoryFilter">Категория</label>
-            <select name="categoryFilter" id="categoryFilter">
+            <select name="categoryFilter" id="categoryFilter" class="form-select form-select-md mb-3 mt-2">
               <option>Всички</option>
               <option>Недвижими имоти</option>
               <option>Автомобили, каравани, лодки</option>
@@ -727,15 +727,55 @@
             
             
             <div id="filterPrice">
-              <label for="fromNum">Цена</label>
-              <div>
-                <input type="number" placeholder="от" id="fromNum">
-                <input type="number" placeholder="до" id="toNum">
+              <label for="fromNum" class="ms-2">Цена</label>
+              <div id="fromTo">
+                <input type="number" placeholder="от (лв.)" id="fromNum" class="form-control form-control-md mt-2 ms-2">
+                <input type="number" placeholder="до (лв.)" id="toNum" class="form-control form-control-md mt-2 ms-2" >
               </div>
               
             </div>
+
+            
           </div>
-        
+        <div class="justify-content-start w-100  border-bottom mt-3">
+              <ul class="d-flex flex-row">
+                <li>
+                  <button class="nav-log" id="all">Всички</button>
+                </li>
+                <li>
+                  <button class="nav-reg" id="personalAds">
+                    Частни
+                  </button>
+                </li>
+                <li>
+                  <button class="nav-btn" id="bisnessAds">
+                    Бизнес
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div id="sortingWrapper" class="d-flex justify-content-end align-items-center mt-2">
+              <form action="#" id="sortingForm"  >
+                <label for="sorting" class="ms-2">Сортирай по:</label>
+                <select id="sorting" class="form-select form-select-md mb-3 mt-2 w-25">
+                  <option value="">Избери!</option>
+                  <option value="">Най-евтини</option>
+                  <option value="true">Най-скъпи</option>
+                </select>
+              </form>
+
+              <div>
+                <button class="fas fa-bars" id="bars"></button>
+                <button class="fas fa-th" id="grid"></button>
+              </div>
+
+              <div>
+                <span>Валута:</span>
+                <span>лв.</span>
+                <span>€</span>
+              </div>
+            </div>
       </form>
       <div id="noticeContainer"></div>
     </div>

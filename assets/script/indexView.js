@@ -143,6 +143,7 @@ function printCategories(categories, container) {
 
     if (container === categoriesContainer) {
       categoryCard.addEventListener("click", function () {
+        
         showAdds(
           adsManager.filterBy("category", currentCategory.title),
           noticeContainer
@@ -156,7 +157,11 @@ function printCategories(categories, container) {
 printCategories(categories, categoriesContainer);
 printCategories(categories, categoriesFormContainer);
 
-function printPromoAds(arr, container,n) {
+function printPromoAds(arr, container, n = arr.length) {
+  if (arr.length === 0) {
+    arr = adsManager.allAds;
+    n = arr.length;
+  }
   container.innerHTML = "";
 
   const listOfAds = createElement("ul");
@@ -213,7 +218,7 @@ function printPromoAds(arr, container,n) {
       watchButton.addEventListener("click", function () {
         userManager.currentUser.removeFromLiked(currentNotice);
         countLikeAds();
-        printPromoAds(adsManager.promoAds, promoContainer,16);
+        printPromoAds(arr, container, n);
         userManager.setUsers();
       });
     } else {
@@ -221,7 +226,7 @@ function printPromoAds(arr, container,n) {
       watchButton.addEventListener("click", function () {
         userManager.currentUser.likeAd(currentNotice);
         countLikeAds();
-        printPromoAds(adsManager.promoAds, promoContainer,16);
+        printPromoAds(arr, container, n);
         userManager.setUsers();
       });
     }
@@ -241,6 +246,9 @@ function printPromoAds(arr, container,n) {
 }
 
 function showAdds(arr, container) {
+  if (arr.length === 0) {
+    arr = adsManager.allAds;
+  }
   if (arr.length > 0) {
     const source = document.getElementById("noticeTemplate").innerHTML;
     const template = Handlebars.compile(source);
@@ -438,14 +446,14 @@ function printNotice(notice) {
 
   let locationContainer = createElement("div");
   locationContainer.className = "notice-user";
-  let locationHeader = createElement("div" , "<p>Локация</p>");
+  let locationHeader = createElement("div", "<p>Локация</p>");
   let locationInfo = createElement("div");
   locationInfo.className = "notice-user-info";
   let location = createElement("div", `<i class="fas fa-map-marker-alt"></i> <p>${notice.city}</p>`);
   location.className = "notice-location";
-  let map = createElement("div",'<div class="mapouter"><div class="gmap_canvas"><iframe width="210" height="125" id="gmap_canvas" src="https://maps.google.com/maps?q=sofia%20center&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://soap2day-to.com">soap2day</a><br><style>.mapouter{position:relative;text-align:right;height:125px;width:210px;}</style><a href="https://www.embedgooglemap.net">google map html generator</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:125px;width:210px;}</style></div></div>');
-  
-  
+  let map = createElement("div", '<div class="mapouter"><div class="gmap_canvas"><iframe width="210" height="125" id="gmap_canvas" src="https://maps.google.com/maps?q=sofia%20center&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://soap2day-to.com">soap2day</a><br><style>.mapouter{position:relative;text-align:right;height:125px;width:210px;}</style><a href="https://www.embedgooglemap.net">google map html generator</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:125px;width:210px;}</style></div></div>');
+
+
   let infoBottomContainer = createElement("div", "<hr></hr>");
   infoBottomContainer.style.width = "100%";
   let additionalInfo = createElement("div", `<p>Преглеждания: </p> <p> ID: ${notice.id} </p>`);
@@ -462,8 +470,8 @@ function printNotice(notice) {
   priceContainer.append(price);
   promoContainer.append(promoLabel, refresh);
 
-  locationInfo.append(location,map);
-  locationContainer.append(locationHeader,locationInfo);
+  locationInfo.append(location, map);
+  locationContainer.append(locationHeader, locationInfo);
 
   informationContainer.append(
     titleContainer,
@@ -474,7 +482,7 @@ function printNotice(notice) {
     infoBottomContainer
   );
   noticeWrapper.append(breadcrumb, noticeContainer, informationContainer);
-  noticeUserInformation.append(userContainer,locationContainer);
+  noticeUserInformation.append(userContainer, locationContainer);
   addToCarousell();
 
 }

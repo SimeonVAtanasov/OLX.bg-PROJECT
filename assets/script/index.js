@@ -1,14 +1,24 @@
 window.addEventListener("DOMContentLoaded", function () {
 
   if (userManager.checkLoggedUser()) {
+
     changeProfileFunctions(
       userManager.currentUser.email,
       userManager.currentUser.password
-      );
-    }
-    onHashChange();
-  });
-  
+    );
+  }
+  onHashChange();
+  countLikeAds();
+
+
+  printPromoAds(adsManager.promoAds, promoContainer, 16);
+
+
+  console.log(userManager.currentUser);
+  console.log(adsManager);
+
+});
+
 window.addEventListener("hashchange", onHashChange);
 window.addEventListener("click", hideProfileMenu);
 
@@ -25,8 +35,6 @@ arrOfAds.forEach((el) => {
 adsManager.promoAds = adsManager.allAds.filter((el) => el.promo);
 
 // -------
-
-printPromoAds(adsManager.promoAds, promoContainer,16);
 
 boxesToChangeText.forEach((element) => {
   element.addEventListener("mouseover", changeText);
@@ -206,7 +214,7 @@ function showMessage(e) {
 
 function hideMessage(e) {
   let target = e.target;
-  
+
   if (target === adTitleInput) {
     hideElement(suggestMessageTitle);
   } else if (e.target === adDescriptionInput) {
@@ -239,7 +247,7 @@ getById("closeCategoryForm").addEventListener("click", function (e) {
   getById("selectCategory").style.display = "none";
 });
 
-let counterId = 51;
+
 function addNewAd(photo) {
   // previewFile();
   let adId = `ad${Math.floor(Math.random() * 5640)}`;
@@ -278,7 +286,7 @@ function addNewAd(photo) {
 }
 
 // getById("addAdvertisementButton").addEventListener("click", ()=> {
-  
+
 //   addNewAd(previewFile());
 // });
 getById("addAdvertisementButton").addEventListener("click", previewFile);
@@ -295,14 +303,14 @@ function previewFile() {
       addNewAd(reader.result)
     },
     false
-    );
-    
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+  );
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
 }
 
-function addToCarousell(){
+function addToCarousell() {
   let carousel1 = getById("carousel1");
   let carousel2 = getById("carousel2");
   let carousel3 = getById("carousel3");
@@ -310,21 +318,62 @@ function addToCarousell(){
   let promoArr2 = [];
   let promoArr3 = [];
 
-  for(let i = 5 ; i < 10 ; i++ ){
-   promoArr1.push(adsManager.promoAds[i]);
+  for (let i = 5; i < 10; i++) {
+    promoArr1.push(adsManager.promoAds[i]);
   }
 
-  for(let i = 10; i < 15; i++){
+  for (let i = 10; i < 15; i++) {
     promoArr2.push(adsManager.promoAds[i]);
   }
 
-  for(let i = 20; i < 25; i++){
+  for (let i = 20; i < 25; i++) {
     promoArr3.push(adsManager.promoAds[i]);
   }
 
-  printPromoAds(promoArr1, carousel1,4);
-  printPromoAds(promoArr2, carousel2,4);
-  printPromoAds(promoArr3, carousel3,4);
+  printPromoAds(promoArr1, carousel1, 4);
+  printPromoAds(promoArr2, carousel2, 4);
+  printPromoAds(promoArr3, carousel3, 4);
 
 }
 
+// preventing default on forms
+let forms = Array.from(document.getElementsByTagName("form"));
+
+forms.forEach(el => {
+  el.addEventListener("submit", (e) => { e.preventDefault() })
+})
+
+
+// display preference on notice page
+
+grid.addEventListener("click", () => {
+  printPromoAds(adsManager.filteredAds, noticeContainer);
+})
+
+bars.addEventListener("click", () => {
+  showAdds(adsManager.filteredAds, noticeContainer)
+})
+
+
+sort.addEventListener("change", (ev) => {
+
+  adsManager.sortByPrice(adsManager.filteredAds, ev.target.value);
+  showAdds(adsManager.filteredAds, noticeContainer);
+
+})
+
+let debouncedSort = debounce(function(){
+  let from  = getById("fromNum").value;
+  let to = getById("toNum").value;
+
+  adsManager.filterByPrice(adsManager.filteredAds, from, to);
+  showAdds(adsManager.filteredByPrice, noticeContainer);
+}, 500)
+
+getById("fromTo").addEventListener("input", debouncedSort);
+
+categoryFilter.addEventListener("change", ()=>{
+  let category = categoryFilter.value
+
+  showAdds(adsManager.filterBy("category",   category),  noticeContainer);
+})

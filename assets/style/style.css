@@ -796,7 +796,8 @@ div.pop-up-div {
 }
 
 .nav-log,
-.nav-reg {
+.nav-reg,
+.nav-btn {
   outline: none;
   background: transparent;
   border: none;
@@ -823,6 +824,20 @@ div.pop-up-div {
 }
 
 .nav-reg::before {
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  right: 50%;
+  position: absolute;
+  background: #002f34;
+  transition: width 0.3s ease 0s, right 0.3s ease 0s;
+  width: 0%;
+}
+
+
+
+.nav-btn::before  {
   bottom: 0;
   content: "";
   display: block;
@@ -1070,14 +1085,19 @@ div.pop-up-div {
   border: 4px solid;
 }
 
-.form-box {
-  display: flex;
-}
-
 #categoryPick,
 #filterPrice {
   display: flex;
   flex-direction: column;
+}
+
+#fromTo {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#fromTo input {
+  width: 5em;
 }
 
 #filtering {
@@ -1674,18 +1694,31 @@ input::-webkit-inner-spin-button {
 
 .notice-location {
   display: flex;
-  margin-right: 2Ï0px;
+  margin-right: 2ï0px;
   font-size: 20px;
 }
 
-.notice-location p{
+.notice-location p {
   font-size: 20px;
-  margin-left:5px;
+  margin-left: 5px;
 }
 
-.additional-info{
+.additional-info {
   display: flex;
   justify-content: space-between;
   color: gray;
   font-size: 12px;
+}
+
+.filtering {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#sortingWrapper  * {
+  margin: 0em 1em 0 0;
+}
+
+#sortingWrapper  button {
+  border: none;
 }

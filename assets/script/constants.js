@@ -8,7 +8,9 @@ const profilePage = getById("profilePage");
 const addAdvertisementPage = getById("addAdvertisementPage");
 const promoContainer = getById("promoAdsContainer");
 const seeAllBtn = getById("seeAll");
+
 const adsManager = new AdvertisementManager();
+
 const noticeContainer = getById("noticeContainer");
 const loginBtn = getById("navLoginBtn");
 const registrationBtn = getById("navRegistrationBtn");
@@ -63,16 +65,27 @@ const adTitleInput = getById("adTitle");
 const adDescriptionInput = getById("adDescription");
 const adCityInput = getById("contactsCity");
 const adNumberInput = getById("contactsNumber");
-const inputsToFocus = [adTitleInput, adDescriptionInput,adCityInput,adNumberInput];
+const inputsToFocus = [adTitleInput, adDescriptionInput, adCityInput, adNumberInput];
 
 const categoryBtn = getById("categoryBox");
 
 const preview = getById("noticeImg");
 
-//  messages  in notice form
+//  messages  in add notice form
 
 const suggestMessageTitle = getById("suggestMessageTitle");
-  const suggestMessageDescription = getById("suggestMessageDescription");
-  const suggestMessageCity = getById("suggestMessageCity");
-  const suggestMessageNumber = getById("suggestMessageNumber");
+const suggestMessageDescription = getById("suggestMessageDescription");
+const suggestMessageCity = getById("suggestMessageCity");
+const suggestMessageNumber = getById("suggestMessageNumber");
+
+
+// grid   and bars btns
+
+const grid = getById("grid");
+const bars =  getById("bars");
+
+// filters
+
+const categoryFilter = getById("categoryFilter");
+const sort = getById("sorting");
 

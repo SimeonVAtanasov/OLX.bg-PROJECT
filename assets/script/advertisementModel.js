@@ -31,13 +31,14 @@ class AdvertisementManager {
   constructor() {
     this.allAds = [];
     this.filteredAds = [];
+    this.filteredByPrice = [];
     this.promoAds = [];
   }
 
   addAdvertisement(ad) {
 
     this.allAds.push(ad);
-    
+
   }
 
   filterBy(type, optionA) {
@@ -54,7 +55,6 @@ class AdvertisementManager {
         );
         return this.filteredAds;
       case "category":
-        const categorytype = optionA;
 
         this.filteredAds = this.allAds.filter(
           (notice) => notice.category === optionA
@@ -68,39 +68,57 @@ class AdvertisementManager {
           this.filteredAds = this.filteredAds.filter(notice =>
             notice.city.toLowerCase().includes(filteringStr)
           );
-           
+
           return this.filteredAds;
         } else {
           const filteringStr = optionA.toLowerCase().trim();
 
-        this.filteredAds = this.allAds.filter(notice =>
-          notice.city.toLowerCase().includes(filteringStr)
-        );
+          this.filteredAds = this.allAds.filter(notice =>
+            notice.city.toLowerCase().includes(filteringStr)
+          );
 
-        return this.filteredAds;
+          return this.filteredAds;
         }
 
       default:
         return this.allAds
     }
   }
-  sortByPrice(a, b, decending) {
-    if (a && b) {
-      this.filteredAds = this.allAds.filter(
-        (notice) => notice.price >= optionA && notice.price <= optionB
-      );
-      return this.filteredAds;
-    } else if (a && !b) {
-      this.filteredAds = this.allAds.filter(
-        (notice) => notice.price >= optionA
-      );
-      return this.filteredAds;
-    } else {
-      this.filteredAds = this.allAds.filter(
-        (notice) => notice.price <= optionB
-      );
-      return this.filteredAds;
+
+  filterByPrice(arr, a, b) {
+    if (arr.length === 0) {
+      arr = this.allAds;
     }
+    if (a && b) {
+      this.filteredByPrice = arr.filter(
+        (notice) => notice.price >= a && notice.price <= b
+      );
+      return this.filteredByPrice;
+    } else if (a && !b) {
+      this.filteredByPrice = arr.filter(
+        (notice) => notice.price >= a
+      );
+      return this.filteredByPrice;
+    } else {
+      this.filteredByPrice = arr.filter(
+        (notice) => notice.price <= b
+      );
+
+    }
+  }
+
+  sortByPrice(arr, decending) {
+    if (arr.length === 0) {
+      arr = this.allAds;
+    }
+
+    if (decending) {
+      this.filteredAds = arr.sort((a, b) => a.price - b.price).reverse();
+
+      return
+    }
+
+    this.filteredAds = arr.sort((a, b) => a.price - b.price);
   }
 }
 
