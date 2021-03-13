@@ -26,7 +26,7 @@ adsManager.promoAds = adsManager.allAds.filter((el) => el.promo);
 
 // -------
 
-printPromoAds(adsManager.promoAds, promoContainer);
+printPromoAds(adsManager.promoAds, promoContainer,16);
 
 boxesToChangeText.forEach((element) => {
   element.addEventListener("mouseover", changeText);
@@ -300,4 +300,30 @@ function previewFile() {
     if (file) {
       reader.readAsDataURL(file);
     }
+}
+
+function addToCarousell(){
+  let carousel1 = getById("carousel1");
+  let carousel2 = getById("carousel2");
+  let carousel3 = getById("carousel3");
+  let promoArr1 = [];
+  let promoArr2 = [];
+  let promoArr3 = [];
+
+  for(let i = 5 ; i < 10 ; i++ ){
+   promoArr1.push(adsManager.promoAds[i]);
+  }
+
+  for(let i = 10; i < 15; i++){
+    promoArr2.push(adsManager.promoAds[i]);
+  }
+
+  for(let i = 20; i < 25; i++){
+    promoArr3.push(adsManager.promoAds[i]);
+  }
+
+  printPromoAds(promoArr1, carousel1,4);
+  printPromoAds(promoArr2, carousel2,4);
+  printPromoAds(promoArr3, carousel3,4);
+
 }

@@ -156,13 +156,13 @@ function printCategories(categories, container) {
 printCategories(categories, categoriesContainer);
 printCategories(categories, categoriesFormContainer);
 
-function printPromoAds(arr, container) {
+function printPromoAds(arr, container,n) {
   container.innerHTML = "";
 
   const listOfAds = createElement("ul");
   listOfAds.id = "noticeCardHolder";
 
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < n; i++) {
     const currentNotice = arr[i];
     let noticeCard = createElement("li");
     noticeCard.className = "offer-box";
@@ -213,7 +213,7 @@ function printPromoAds(arr, container) {
       watchButton.addEventListener("click", function () {
         userManager.currentUser.removeFromLiked(currentNotice);
         countLikeAds();
-        printPromoAds(adsManager.promoAds, promoContainer);
+        printPromoAds(adsManager.promoAds, promoContainer,16);
         userManager.setUsers();
       });
     } else {
@@ -221,7 +221,7 @@ function printPromoAds(arr, container) {
       watchButton.addEventListener("click", function () {
         userManager.currentUser.likeAd(currentNotice);
         countLikeAds();
-        printPromoAds(adsManager.promoAds, promoContainer);
+        printPromoAds(adsManager.promoAds, promoContainer,16);
         userManager.setUsers();
       });
     }
@@ -293,7 +293,7 @@ function changeProfileFunctions(email) {
     dropdownArrow.classList = "";
   } else {
     //change href when there is a page for my ads
-    profileMenu.href = "#";
+    profileMenu.href = "#myAds";
     profileUsername.innerText = email;
     dropdownArrow.classList.add("fas", "fa-chevron-down");
 
@@ -435,6 +435,8 @@ function printNotice(notice) {
   let btnCall = createElement("button", "Обади се");
   btnCall.className = "notice-user-btn";
   let btnMessage = createElement("button", "Съобщение");
+
+  addToCarousell();
 
   btnContainer.append(btnCall, btnMessage);
   userInfo.append(userImg, userName);

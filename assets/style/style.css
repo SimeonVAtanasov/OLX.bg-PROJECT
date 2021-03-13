@@ -1654,3 +1654,19 @@ input::-webkit-inner-spin-button {
   color: grey;
   font-size: 12px;
 }
+
+.carousel {
+  position: relative;
+  width: 120%;
+  left: -10%;
+}
+
+.notice-promo-header{
+  margin: 20px 0px 20px 104px;
+  font-size: 25px;
+}
+
+.fa-chevron-left,.fa-chevron-right {
+  font-size: 30px;
+  color: #2c4548;
+}
