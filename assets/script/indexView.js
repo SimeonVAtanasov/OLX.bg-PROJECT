@@ -446,6 +446,12 @@ function printNotice(notice) {
   let map = createElement("div",'<div class="mapouter"><div class="gmap_canvas"><iframe width="210" height="125" id="gmap_canvas" src="https://maps.google.com/maps?q=sofia%20center&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://soap2day-to.com">soap2day</a><br><style>.mapouter{position:relative;text-align:right;height:125px;width:210px;}</style><a href="https://www.embedgooglemap.net">google map html generator</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:125px;width:210px;}</style></div></div>');
   
   
+  let infoBottomContainer = createElement("div", "<hr></hr>");
+  infoBottomContainer.style.width = "100%";
+  let additionalInfo = createElement("div", `<p>Преглеждания: </p> <p> ID: ${notice.id} </p>`);
+  additionalInfo.className = "additional-info";
+
+  infoBottomContainer.append(additionalInfo);
 
   btnContainer.append(btnCall, btnMessage);
   userInfo.append(userImg, userName);
@@ -464,7 +470,8 @@ function printNotice(notice) {
     priceContainer,
     promoContainer,
     labelsContainer,
-    descriptionContainer
+    descriptionContainer,
+    infoBottomContainer
   );
   noticeWrapper.append(breadcrumb, noticeContainer, informationContainer);
   noticeUserInformation.append(userContainer,locationContainer);

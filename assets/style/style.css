@@ -1682,3 +1682,10 @@ input::-webkit-inner-spin-button {
   font-size: 20px;
   margin-left:5px;
 }
+
+.additional-info{
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+  font-size: 12px;
+}
