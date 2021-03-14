@@ -155,20 +155,22 @@
     <section id="searchForm">
       <form class="form-wrapper" id="searchContainer">
         <div id="searchBox"  action="#">
-          <i class="fas fa-search"></i>
+          <div class="d-flex align-items-center">
+            <i class="fas fa-search"></i>
           <input
             id="searchInput"
             type="text"
             name="ads"
             placeholder="Обяви близо до теб"
           />
+          </div>
+          
           <button type="reset" class="resetBtn">
             <i class="fas fa-times"></i>
           </button>
         </div>
-        <div>
           <div id="citySearchBox" action="#">
-            <i class="fas fa-map-marker-alt"></i>
+              <i class="fas fa-map-marker-alt"></i>
             <input
               placeholder="Цялата страна"
               type="text"
@@ -178,7 +180,8 @@
             <button type="reset" class="resetBtn">
               <i class="fas fa-times"></i>
             </button>
-          </div>
+            
+            
           <!-- cities suggestions  -->
           <div id="suggestion"></div>
         </div>
@@ -682,16 +685,25 @@
     <div id="noticePage">
       <form action="#" id="filtering">
         <div id="checkboxWrapper">
-          <input type="checkbox" id="includeDescription" />
+          <div class="me-2">
+             <input type="checkbox" id="includeDescription" />
           <label for="includeDescription">
             търси и в описанието на обявите
           </label>
 
-          <input type="checkbox" id="onlyWithPhoto" />
+          </div>
+          <div class="me-2">
+            <input type="checkbox" id="onlyWithPhoto" />
           <label for="onlyWithPhoto">само със снимка</label>
-
-          <input type="checkbox" id="delivery" id="includeDelivery">
+          </div>
+          <div class="me-2">
+            <input type="checkbox" id="delivery" id="includeDelivery">
           <label for="delivery"><i class="fas fa-truck"></i> само с доставка</label>
+          </div>
+         
+          
+
+          
           
             <div id="button">
               <button class="transparentBtn">
@@ -945,7 +957,9 @@
         {{#each this}}
           <li class="notice-box">
             <div>
-              <img src="{{photo}}" alt="{{title}}" class="notice-img"/>  
+              <a href="#offer" >
+                <img src="{{photo}}" alt="{{title}}"  data-id='{{id}}' class="notice-img"/>  
+              </a>
               <!-- id="noticeImg" -->
             </div>
             <div class="description-box">

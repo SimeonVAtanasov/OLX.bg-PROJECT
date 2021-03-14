@@ -503,7 +503,7 @@ div.pop-up-div {
   position: relative;
   margin-right: 1px;
   height: 72px;
-  width: 540px;
+  width: 45%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -526,7 +526,7 @@ div.pop-up-div {
   position: relative;
   margin-right: 1px;
   height: 72px;
-  width: 340px;
+  width: 26%;
   display: flex;
   justify-content: space-between;
   align-items: center;
