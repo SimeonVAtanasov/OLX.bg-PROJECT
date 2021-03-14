@@ -293,12 +293,10 @@ function showAdds(arr, container) {
     );
 
     let anchors = Array.from(document.getElementsByTagName("a"));
-    anchors.forEach(el    => {
-      el.addEventListener('click',  (ev)   =>   {
-        console.log(ev.target);
-        if(ev.target.dataset.id){
-          let offerToShow = adsManager.allAds.filter(el     =>  el.id  =   ev.target.dataset.id);
-console.log(offerToShow);
+    anchors.forEach(el => {
+      el.addEventListener('click', (ev) => {
+        if (ev.target.dataset.id) {
+          let offerToShow = adsManager.allAds.filter(el => el.id == ev.target.dataset.id);
           printNotice(offerToShow[0])
         }
 
@@ -404,8 +402,8 @@ function printNotice(notice) {
   ul.append(listHome, listCity, listCategory);
   breadcrumb.append(ul);
 
-   let offerContainer= createElement("div");
-   offerContainer.className = "notice-wrapper";
+  let offerContainer = createElement("div");
+  offerContainer.className = "notice-wrapper";
   let imageContainer = createElement("div");
   let image = createElement("img");
   image.src = notice.photo;
@@ -467,6 +465,7 @@ function printNotice(notice) {
   let locationHeader = createElement("div", "<p>Локация</p>");
   let locationInfo = createElement("div");
   locationInfo.className = "notice-user-info";
+  locationInfo.classList.add("justify-content-between");
   let location = createElement("div", `<i class="fas fa-map-marker-alt"></i> <p>${notice.city}</p>`);
   location.className = "notice-location";
   let map = createElement("div", '<div class="mapouter"><div class="gmap_canvas"><iframe width="210" height="125" id="gmap_canvas" src="https://maps.google.com/maps?q=sofia%20center&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://soap2day-to.com">soap2day</a><br><style>.mapouter{position:relative;text-align:right;height:125px;width:210px;}</style><a href="https://www.embedgooglemap.net">google map html generator</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:125px;width:210px;}</style></div></div>');
@@ -504,3 +503,105 @@ function printNotice(notice) {
   addToCarousell();
 
 }
+
+registrationBtn.addEventListener("click", function (ev) {
+  ev.preventDefault();
+  loginForm.style.display = "none";
+  registrationForm.style.display = "flex";
+  loginBtn.style.fontWeight = "normal";
+  registrationBtn.style.fontWeight = "bold";
+});
+
+
+let debouncedMakeNavBarSticky = debounce(makeNavBarSticky, 150);
+
+window.addEventListener("scroll", debouncedMakeNavBarSticky);
+
+let sticky = window.pageYOffset;
+
+function makeNavBarSticky() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky");
+    sticky = window.pageYOffset;
+  } else {
+    navbar.classList.remove("sticky");
+    sticky = window.pageYOffset;
+  }
+}
+
+citySearch.addEventListener("keyup", filterCities);
+
+
+searchButton.addEventListener("click", function (ev) {
+  ev.preventDefault();
+  location.hash = "advertisements";
+});
+
+
+// display preference on notice page
+
+grid.addEventListener("click", () => {
+  printPromoAds(adsManager.filteredAds, noticeContainer);
+})
+
+bars.addEventListener("click", () => {
+  showAdds(adsManager.filteredAds, noticeContainer)
+})
+
+// preventing default on forms
+let forms = Array.from(document.getElementsByTagName("form"));
+
+forms.forEach(el => {
+  el.addEventListener("submit", (e) => { e.preventDefault() })
+})
+
+sort.addEventListener("change", (ev) => {
+
+  adsManager.sortByPrice(adsManager.filteredAds, ev.target.value);
+  showAdds(adsManager.filteredAds, noticeContainer);
+
+})
+
+let debouncedSort = debounce(function(){
+  let from  = getById("fromNum").value;
+  let to = getById("toNum").value;
+
+  adsManager.filterByPrice(adsManager.filteredAds, from, to);
+  showAdds(adsManager.filteredByPrice, noticeContainer);
+}, 500)
+
+getById("fromTo").addEventListener("input", debouncedSort);
+
+categoryFilter.addEventListener("change", ()=>{
+  let category = categoryFilter.value
+
+  showAdds(adsManager.filterBy("category",   category),  noticeContainer);
+})
+
+function addToCarousell() {
+  let carousel1 = getById("carousel1");
+  let carousel2 = getById("carousel2");
+  let carousel3 = getById("carousel3");
+  let promoArr1 = [];
+  let promoArr2 = [];
+  let promoArr3 = [];
+
+  for (let i = 5; i < 10; i++) {
+    promoArr1.push(adsManager.promoAds[i]);
+  }
+
+  for (let i = 10; i < 15; i++) {
+    promoArr2.push(adsManager.promoAds[i]);
+  }
+
+  for (let i = 20; i < 25; i++) {
+    promoArr3.push(adsManager.promoAds[i]);
+  }
+
+  printPromoAds(promoArr1, carousel1, 4);
+  printPromoAds(promoArr2, carousel2, 4);
+  printPromoAds(promoArr3, carousel3, 4);
+
+}
+
+

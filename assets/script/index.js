@@ -1,31 +1,4 @@
-window.addEventListener("DOMContentLoaded", function () {
-
-  if (userManager.checkLoggedUser()) {
-
-    changeProfileFunctions(
-      userManager.currentUser.email,
-      userManager.currentUser.password
-    );
-  }
-  onHashChange();
-  countLikeAds();
-
-
-  printPromoAds(adsManager.promoAds, promoContainer, 16);
-
-
-  console.log(userManager.currentUser);
-  console.log(adsManager);
-
-});
-
 window.addEventListener("hashchange", onHashChange);
-window.addEventListener("click", hideProfileMenu);
-
-logOut.addEventListener("click", function () {
-  userManager.logOut();
-  location.reload();
-});
 
 // This code ads the test data
 arrOfAds.forEach((el) => {
@@ -65,71 +38,8 @@ function changeText(ev) {
   }
 }
 
-function countLikeAds() {
-  let counterLikes = getById("likeCounter");
-  let counter = userManager.currentUser.likedAds.length;
-  if (counter >= 1) {
-    counterLikes.style.display = "inline-flex";
-    counterLikes.innerHTML = counter;
-  } else {
-    counterLikes.style.display = "none";
-  }
-}
-
-loginBtn.addEventListener("click", function (ev) {
-  ev.preventDefault();
-  loginForm.style.display = "flex";
-  registrationForm.style.display = "none";
-  registrationBtn.style.fontWeight = "normal";
-  loginBtn.style.fontWeight = "bold";
-});
-
-registrationBtn.addEventListener("click", function (ev) {
-  ev.preventDefault();
-  loginForm.style.display = "none";
-  registrationForm.style.display = "flex";
-  loginBtn.style.fontWeight = "normal";
-  registrationBtn.style.fontWeight = "bold";
-});
-
-searchContainer.addEventListener("input", function () {
-  let inputValue = searchBar.value.toLowerCase().trim();
-  let citySearched = citySearch.value.toLowerCase().trim();
-
-  if (inputValue && citySearched) {
-    adsManager.filterBy("title", inputValue);
-    adsManager.filterBy("city", citySearched);
-
-    showAdds(adsManager.filteredAds, noticeContainer);
-  } else if (inputValue) {
-    adsManager.filterBy("title", inputValue);
-    showAdds(adsManager.filteredAds, noticeContainer);
-  } else if (citySearched) {
-    adsManager.filterBy("city", citySearched);
-    showAdds(adsManager.filteredAds, noticeContainer);
-  } else {
-    showAdds(adsManager.allAds, noticeContainer);
-  }
-});
-
-citySearch.addEventListener("keyup", filterCities);
-
-searchButton.addEventListener("click", function (ev) {
-  ev.preventDefault();
-  location.hash = "advertisements";
-});
 
 showAdds(adsManager.allAds, noticeContainer);
-
-emailLoginInput.addEventListener("input", function () {
-  validateEmail(emailLoginInput, emailLogMessage);
-});
-
-emailRegisterInput.addEventListener("input", function () {
-  validateEmail(emailRegisterInput, emailRegMessage);
-});
-
-passwordRegisterInput.addEventListener("input", validatePassword);
 
 function validateEmail(email, message) {
   let emailCheck = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -177,26 +87,11 @@ function validateUser() {
   }
 }
 
-let debouncedMakeNavBarSticky = debounce(makeNavBarSticky, 150);
-
-window.addEventListener("scroll", debouncedMakeNavBarSticky);
-
-let sticky = window.pageYOffset;
-
-function makeNavBarSticky() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky");
-    sticky = window.pageYOffset;
-  } else {
-    navbar.classList.remove("sticky");
-    sticky = window.pageYOffset;
-  }
-}
-
 inputsToFocus.forEach((element) => {
   element.addEventListener("focus", showMessage);
   element.addEventListener("focusout", hideMessage);
 });
+
 
 function showMessage(e) {
   let target = e.target;
@@ -228,69 +123,6 @@ function hideMessage(e) {
   }
 }
 
-adTitleInput.addEventListener("input", function () {
-  let length = adTitleInput.value.length;
-  getById("titleSymbols").innerText = 70 - length;
-});
-
-adDescriptionInput.addEventListener("input", function () {
-  let length = adDescriptionInput.value.length;
-  getById("descriptionSymbols").innerText = 9000 - length;
-});
-
-categoryBtn.addEventListener("click", function (ev) {
-  ev.preventDefault();
-  getById("selectCategory").style.display = "block";
-});
-
-getById("closeCategoryForm").addEventListener("click", function (e) {
-  getById("selectCategory").style.display = "none";
-});
-
-
-function addNewAd(photo) {
-  // previewFile();
-  let adId = `ad${Math.floor(Math.random() * 5640)}`;
-  let adTitle = getById("adTitle").value;
-  let name = getById("nameContact").value;
-  let email = userManager.currentUser.email;
-  let adPrice = getById("adPrice").value;
-  let adCity = getById("contactsCity").value;
-  let adPhoto = photo;
-
-  let adPromo = false;
-  let telNumber = getById("contactsNumber").value;
-  let adCategory = getById("chosenCategoryContainer").lastChild.innerText;
-  let adDescription = getById("adDescription").value;
-
-  let advertisement = new Advertisement(
-    adId,
-    adTitle,
-    adCategory,
-    adDescription,
-    adPrice,
-    adPhoto,
-    adCity,
-    name,
-    email,
-    adPromo,
-    telNumber
-  );
-
-  console.log(advertisement);
-
-  userManager.currentUser.addAd(advertisement);
-  adsManager.addAdvertisement(advertisement);
-  userManager.setUsers();
-  showAdds(userManager.currentUser.addedAds, getById("myAdsContainer"));
-}
-
-// getById("addAdvertisementButton").addEventListener("click", ()=> {
-
-//   addNewAd(previewFile());
-// });
-getById("addAdvertisementButton").addEventListener("click", previewFile);
-
 
 function previewFile() {
   const file = document.querySelector("input[type=file]").files[0];
@@ -310,70 +142,5 @@ function previewFile() {
   }
 }
 
-function addToCarousell() {
-  let carousel1 = getById("carousel1");
-  let carousel2 = getById("carousel2");
-  let carousel3 = getById("carousel3");
-  let promoArr1 = [];
-  let promoArr2 = [];
-  let promoArr3 = [];
-
-  for (let i = 5; i < 10; i++) {
-    promoArr1.push(adsManager.promoAds[i]);
-  }
-
-  for (let i = 10; i < 15; i++) {
-    promoArr2.push(adsManager.promoAds[i]);
-  }
-
-  for (let i = 20; i < 25; i++) {
-    promoArr3.push(adsManager.promoAds[i]);
-  }
-
-  printPromoAds(promoArr1, carousel1, 4);
-  printPromoAds(promoArr2, carousel2, 4);
-  printPromoAds(promoArr3, carousel3, 4);
-
-}
-
-// preventing default on forms
-let forms = Array.from(document.getElementsByTagName("form"));
-
-forms.forEach(el => {
-  el.addEventListener("submit", (e) => { e.preventDefault() })
-})
 
 
-// display preference on notice page
-
-grid.addEventListener("click", () => {
-  printPromoAds(adsManager.filteredAds, noticeContainer);
-})
-
-bars.addEventListener("click", () => {
-  showAdds(adsManager.filteredAds, noticeContainer)
-})
-
-
-sort.addEventListener("change", (ev) => {
-
-  adsManager.sortByPrice(adsManager.filteredAds, ev.target.value);
-  showAdds(adsManager.filteredAds, noticeContainer);
-
-})
-
-let debouncedSort = debounce(function(){
-  let from  = getById("fromNum").value;
-  let to = getById("toNum").value;
-
-  adsManager.filterByPrice(adsManager.filteredAds, from, to);
-  showAdds(adsManager.filteredByPrice, noticeContainer);
-}, 500)
-
-getById("fromTo").addEventListener("input", debouncedSort);
-
-categoryFilter.addEventListener("change", ()=>{
-  let category = categoryFilter.value
-
-  showAdds(adsManager.filterBy("category",   category),  noticeContainer);
-})
