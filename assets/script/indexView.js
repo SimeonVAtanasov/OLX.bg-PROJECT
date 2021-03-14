@@ -4,7 +4,6 @@ function onHashChange() {
   switch (page) {
     case "":
     case "index":
-
       indexPage.style.display = "block";
       searchForm.style.display = "block";
       adsContainer.style.display = "none";
@@ -13,6 +12,7 @@ function onHashChange() {
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
       myAdsPage.style.display = "none";
+
       break;
 
     case "advertisements":
@@ -144,7 +144,7 @@ function printCategories(categories, container) {
 
     if (container === categoriesContainer) {
       categoryCard.addEventListener("click", function () {
-        
+
         showAdds(
           adsManager.filterBy("category", currentCategory.title),
           noticeContainer
@@ -251,6 +251,7 @@ function showAdds(arr, container) {
     arr = adsManager.allAds;
   }
   if (arr.length > 0) {
+    container.innerHTML = '';
     const source = document.getElementById("noticeTemplate").innerHTML;
     const template = Handlebars.compile(source);
     const html = template(arr);
@@ -290,6 +291,21 @@ function showAdds(arr, container) {
         }
       })
     );
+
+    let anchors = Array.from(document.getElementsByTagName("a"));
+    anchors.forEach(el    => {
+      el.addEventListener('click',  (ev)   =>   {
+        console.log(ev.target);
+        if(ev.target.dataset.id){
+          let offerToShow = adsManager.allAds.filter(el     =>  el.id  =   ev.target.dataset.id);
+console.log(offerToShow);
+          printNotice(offerToShow[0])
+        }
+
+
+      })
+    })
+
   } else {
     container.innerHTML = "Няма намерени обяви";
   }
@@ -370,7 +386,7 @@ function printNotice(notice) {
   linkCity.href = "#advertisements";
   linkCity.innerText = "Обяви в град " + notice.city;
   linkCity.addEventListener("click", function () {
-    showAdds(adsManager.filterBy("city", notice.title), noticeContainer);
+    showAdds(adsManager.filterBy("city", notice.city), noticeContainer);
   });
   let listCategory = createElement("li");
   listCategory.className = "breadcrumb-item";
@@ -378,7 +394,8 @@ function printNotice(notice) {
   linkCategory.href = "#advertisements";
   linkCategory.innerText = "Обяви в категория " + notice.category;
   linkCategory.addEventListener("click", function () {
-    showAdds(adsManager.filterBy("category", notice.title), noticeContainer);
+    adsManager.filterBy("category", notice.category);
+    showAdds(adsManager.filteredAds, noticeContainer);
   });
 
   listCategory.append(linkCategory);
@@ -387,15 +404,15 @@ function printNotice(notice) {
   ul.append(listHome, listCity, listCategory);
   breadcrumb.append(ul);
 
-  let noticeContainer = createElement("div");
-  noticeContainer.className = "notice-wrapper";
+   let offerContainer= createElement("div");
+   offerContainer.className = "notice-wrapper";
   let imageContainer = createElement("div");
   let image = createElement("img");
   image.src = notice.photo;
   image.alt = notice.title;
   imageContainer.append(image);
 
-  noticeContainer.append(imageContainer);
+  offerContainer.append(imageContainer);
 
   let informationContainer = createElement("div");
   informationContainer.className = "information-wrapper";
@@ -482,7 +499,7 @@ function printNotice(notice) {
     descriptionContainer,
     infoBottomContainer
   );
-  noticeWrapper.append(breadcrumb, noticeContainer, informationContainer);
+  noticeWrapper.append(breadcrumb, offerContainer, informationContainer);
   noticeUserInformation.append(userContainer, locationContainer);
   addToCarousell();
 
