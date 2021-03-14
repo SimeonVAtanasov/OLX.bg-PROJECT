@@ -4,6 +4,7 @@ function onHashChange() {
   switch (page) {
     case "":
     case "index":
+
       indexPage.style.display = "block";
       searchForm.style.display = "block";
       adsContainer.style.display = "none";
@@ -210,13 +211,13 @@ function printPromoAds(arr, container, n = arr.length) {
 
     pop.classList.add("pop-up-div", "message");
 
-    let isAlreadyLiked = userManager.currentUser.isInLiked(currentNotice.id);
+    let isAlreadyLiked = userManager.isInLiked(currentNotice.id);
     //
     if (isAlreadyLiked) {
       pop.innerHTML = "<p>Премахни от наблюдавани</p>";
       watchButton.innerHTML = "<i class='fas fa-heart'></i>";
       watchButton.addEventListener("click", function () {
-        userManager.currentUser.removeFromLiked(currentNotice);
+        userManager.removeFromLiked(currentNotice);
         countLikeAds();
         printPromoAds(arr, container, n);
         userManager.setUsers();
@@ -224,7 +225,7 @@ function printPromoAds(arr, container, n = arr.length) {
     } else {
       pop.innerHTML = "<p>Наблюдавай </p>";
       watchButton.addEventListener("click", function () {
-        userManager.currentUser.likeAd(currentNotice);
+        userManager.likeAd(currentNotice);
         countLikeAds();
         printPromoAds(arr, container, n);
         userManager.setUsers();
@@ -261,7 +262,7 @@ function showAdds(arr, container) {
       el.addEventListener("click", function (ev) {
         let idNum = ev.target.id;
 
-        if (userManager.currentUser.isInLiked(idNum)) {
+        if (userManager.isInLiked(idNum)) {
           let icon = getById(`${idNum}`);
           icon.className = "far fa-heart watched";
 
@@ -271,7 +272,7 @@ function showAdds(arr, container) {
           let toRemove = userManager.currentUser.likedAds.filter(
             (el) => el.id == idNum
           );
-          userManager.currentUser.removeFromLiked(toRemove[0]);
+          userManager.removeFromLiked(toRemove[0]);
 
           countLikeAds();
           userManager.setUsers();
@@ -282,7 +283,7 @@ function showAdds(arr, container) {
           popDiv.innerText = "Премахни от наблюдавани";
           let addToLike = adsManager.allAds.filter((el) => el.id == idNum);
 
-          userManager.currentUser.likeAd(addToLike[0]);
+          userManager.likeAd(addToLike[0]);
 
           countLikeAds();
           userManager.setUsers();

@@ -31,71 +31,16 @@ const userManager = (function () {
       }
     }
 
-    likeAd(ad) {
-      let isAlreadyLiked = false;
-      if(this.likedAds.length > 0){
-        for (let i = 0; i < this.likedAds.length; i++) {
-        if (this.likedAds[i].id === ad.id) {
-          isAlreadyLiked = true;
-          break;
-        }
-      }
-      }
-      
-      if (!isAlreadyLiked) {
-        this.likedAds.push(ad);
-      }
-    }
-
-    removeFromLiked(ad) {
-      let foundAdIndex;
-      for (let i = 0; i < this.likedAds.length; i++) {
-        if (this.likedAds[i].title === ad.title) {
-          foundAdIndex = i;
-          break;
-        }
-      }
-
-      this.likedAds.splice(foundAdIndex, 1);
-    }
-
-    isInLiked(id) {
-      let isAlreadyLiked = false;
-      for (let i = 0; i < this.likedAds.length; i++) {
-        if (this.likedAds[i].id == id) {
-          isAlreadyLiked = true;
-          break;
-        }
-      }
-
-      return isAlreadyLiked;
-    }
-
-    addAd(ad){
- 
-      this.addedAds.push(ad);
-    }
+    
   }
 
   class UserManager {
     constructor() {
       if (localStorage.getItem("users")) {
-        this.users = [];
-        let localUsers = JSON.parse(localStorage.getItem("users"));
-        localUsers.forEach((el) => {
-          let userToPush = new User(
-            el.email,
-            el.password,
-            el.isLogged,
-            el.likedAds,
-            el.favouriteSearches,
-            el.addedAds
-          );
-          this.users.push(userToPush);
-        });
+        this.users = JSON.parse(localStorage.getItem("users"));
       } else {
         this.users = [];
-        localStorage.setItem("users", JSON.stringify(this.users));
+        this.setUsers();
       }
       this.currentUser = new User();
     }
@@ -154,6 +99,50 @@ const userManager = (function () {
       );
 
       return isUserRegistered;
+    }
+    likeAd(ad) {
+      let isAlreadyLiked = false;
+      if(this.currentUser.likedAds.length > 0){
+        for (let i = 0; i < this.currentUser.likedAds.length; i++) {
+        if (this.currentUser.likedAds[i].id === ad.id) {
+          isAlreadyLiked = true;
+          break;
+        }
+      }
+      }
+      
+      if (!isAlreadyLiked) {
+        this.currentUser.likedAds.push(ad);
+      }
+    }
+
+    removeFromLiked(ad) {
+      let foundAdIndex;
+      for (let i = 0; i < this.currentUser.likedAds.length; i++) {
+        if (this.currentUser.likedAds[i].title === ad.title) {
+          foundAdIndex = i;
+          break;
+        }
+      }
+
+      this.currentUser.likedAds.splice(foundAdIndex, 1);
+    }
+
+    isInLiked(id) {
+      let isAlreadyLiked = false;
+      for (let i = 0; i < this.currentUser.likedAds.length; i++) {
+        if (this.currentUser.likedAds[i].id == id) {
+          isAlreadyLiked = true;
+          break;
+        }
+      }
+
+      return isAlreadyLiked;
+    }
+
+    addAd(ad){
+ 
+      this.currentUser.addedAds.push(ad);
     }
   }
 
