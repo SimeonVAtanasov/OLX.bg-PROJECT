@@ -50,6 +50,7 @@ function printAdsBars(arr, container) {
           if (ev.target.dataset.id) {
             let offerToShow = adsManager.allAds.filter(el => el.id == ev.target.dataset.id);
             printNotice(offerToShow[0])
+            userManager.setLastOpenedAd(offerToShow[0])
           }
         })
       })

@@ -10,7 +10,10 @@ function printAdsGrid(arr, container, n = arr.length) {
   
     for (let i = 0; i < n; i++) {
       const currentNotice = arr[i];
-      let noticeCard = createElement("li");
+
+      if(currentNotice){
+
+        let noticeCard = createElement("li");
       noticeCard.className = "offer-box";
       let imgContainer = createElement("div");
       imgContainer.className = "img-container";
@@ -18,6 +21,7 @@ function printAdsGrid(arr, container, n = arr.length) {
       anchor.href = "#offer";
       anchor.addEventListener("click", function () {
         printNotice(currentNotice);
+        userManager.setLastOpenedAd(currentNotice)
       });
       let img = createElement("img");
       img.src = currentNotice.photo;
@@ -83,6 +87,10 @@ function printAdsGrid(arr, container, n = arr.length) {
       );
   
       listOfAds.append(noticeCard);
+      } else {
+        continue;
+      }
+      
     }
     container.append(listOfAds);
   }

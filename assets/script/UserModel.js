@@ -123,6 +123,14 @@ const userManager = (function () {
     addAd(ad){
       this.currentUser.addedAds.push(ad);
     }
+
+    setLastOpenedAd(obj){
+      localStorage.setItem("lastOpenedOffer",JSON.stringify(obj))
+    }
+
+    getLastOpenedAd(){
+      return JSON.parse(localStorage.getItem("lastOpenedOffer"))
+  }
   }
 
   return new UserManager();

@@ -29,6 +29,7 @@ function onHashChange() {
       break;
 
     case "offer":
+      printNotice(userManager.getLastOpenedAd())
       indexPage.style.display = "none";
       searchForm.style.display = "none";
       adsContainer.style.display = "none";
