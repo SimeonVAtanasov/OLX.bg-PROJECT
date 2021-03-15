@@ -66,7 +66,6 @@ function printAdsGrid(arr, container, n = arr.length) {
           userManager.removeFromLiked(currentNotice);
           countLikeAds();
           printAdsGrid(arr, container, n);
-          console.log(arr,container,n);
           userManager.setUsers();
         });
       } else {
