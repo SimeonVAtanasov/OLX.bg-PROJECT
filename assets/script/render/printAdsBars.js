@@ -49,8 +49,11 @@ function printAdsBars(arr, container) {
         el.addEventListener('click', (ev) => {
           if (ev.target.dataset.id) {
             let offerToShow = adsManager.allAds.filter(el => el.id == ev.target.dataset.id);
-            printNotice(offerToShow[0])
-            userManager.setLastOpenedAd(offerToShow[0])
+            let index = adsManager.allAds.indexOf(offerToShow[0]);
+            adsManager.allAds[index].counterView += 1;
+            printNotice(offerToShow[0]);
+            userManager.setLastOpenedAd(offerToShow[0]);
+            adsManager.setAds();
           }
         })
       })

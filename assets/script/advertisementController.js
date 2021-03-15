@@ -52,7 +52,7 @@ function addNewAd(photo) {
   adsManager.addAdvertisement(advertisement);
   userManager.setUsers();
   adsManager.setAds();
-  showAdds(userManager.currentUser.addedAds, getById("myAdsContainer"));
+  printAdsBars(userManager.currentUser.addedAds, getById("myAdsContainer"));
 }
 
 getById("addAdvertisementButton").addEventListener("click", previewFile);

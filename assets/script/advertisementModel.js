@@ -7,7 +7,7 @@ class Advertisement {
     price,
     photo,
     city,
-    contactName,
+    fullName,
     email,
     promo,
     telephoneNumber,
@@ -21,7 +21,7 @@ class Advertisement {
     this.photo = photo;
     this.city = city;
     this.country = "Bulgaria";
-    this.contactName = contactName;
+    this.fullName = fullName;
     this.email = email;
     this.promo = promo;
     this.telephoneNumber = telephoneNumber;

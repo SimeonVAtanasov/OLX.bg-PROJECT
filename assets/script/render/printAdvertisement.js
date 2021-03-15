@@ -105,7 +105,7 @@ function printNotice(notice) {
 
   let infoBottomContainer = createElement("div", "<hr></hr>");
   infoBottomContainer.style.width = "100%";
-  let additionalInfo = createElement("div", `<p>Преглеждания: </p> <p> ID: ${notice.id} </p>`);
+  let additionalInfo = createElement("div", `<p>Преглеждания:${notice.counterView} </p> <p> ID: ${notice.id} </p>`);
   additionalInfo.className = "additional-info";
 
   infoBottomContainer.append(additionalInfo);

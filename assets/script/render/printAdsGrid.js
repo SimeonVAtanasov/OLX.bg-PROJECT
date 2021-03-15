@@ -19,9 +19,11 @@ function printAdsGrid(arr, container, n = arr.length) {
       imgContainer.className = "img-container";
       let anchor = createElement("a");
       anchor.href = "#offer";
+      currentNotice.counterView += 1;
       anchor.addEventListener("click", function () {
         printNotice(currentNotice);
         userManager.setLastOpenedAd(currentNotice)
+        adsManager.setAds();
       });
       let img = createElement("img");
       img.src = currentNotice.photo;
