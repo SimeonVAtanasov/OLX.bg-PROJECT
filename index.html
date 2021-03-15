@@ -304,8 +304,8 @@
         </div>
 
         <form action="#" id="loginForm" class="login-form">
-          <div class="invalid-message" id="invalidMessage">
-            <p>Невалиден имейл или парола</p>
+          <div class="invalid-message align-top" id="invalidMessage">
+            Невалиден имейл или парола
           </div>
           <div>
             <button class="loginBtn facebook">Вход с Facebook</button>
@@ -748,15 +748,15 @@
         <div class="justify-content-start w-100  border-bottom mt-3">
               <ul class="d-flex flex-row">
                 <li>
-                  <button class="nav-log" id="all">Всички</button>
+                  <button class="nav-log disabled" id="all">Всички</button>
                 </li>
                 <li>
-                  <button class="nav-reg" id="personalAds">
+                  <button class="nav-reg disabled" id="personalAds">
                     Частни
                   </button>
                 </li>
                 <li>
-                  <button class="nav-btn" id="bisnessAds">
+                  <button class="nav-btn disabled" id="bisnessAds">
                     Бизнес
                   </button>
                 </li>
@@ -956,7 +956,6 @@
               <a href="#offer" >
                 <img src="{{photo}}" alt="{{title}}"  data-id='{{id}}' class="notice-img"/>  
               </a>
-              <!-- id="noticeImg" -->
             </div>
             <div class="description-box">
               <h3>

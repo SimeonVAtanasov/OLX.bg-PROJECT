@@ -104,6 +104,14 @@ function countLikeAds() {
   }
 }
 
+loginBtn.addEventListener("click", function (ev) {
+  ev.preventDefault();
+  loginForm.style.display = "flex";
+  registrationForm.style.display = "none";
+  loginBtn.style.fontWeight = "bold";
+  registrationBtn.style.fontWeight = "normal";
+});
+
 registrationBtn.addEventListener("click", function (ev) {
   ev.preventDefault();
   loginForm.style.display = "none";
