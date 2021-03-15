@@ -12,7 +12,6 @@ function onHashChange() {
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
       myAdsPage.style.display = "none";
-
       break;
 
     case "advertisements":
@@ -48,7 +47,7 @@ function onHashChange() {
       myAdsPage.style.display = "none";
       break;
 
-    case "addAdvertisementPage":
+    case "addAdvertisement":
       indexPage.style.display = "none";
       searchForm.style.display = "none";
       adsContainer.style.display = "none";

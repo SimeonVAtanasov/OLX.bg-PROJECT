@@ -51,6 +51,7 @@ adTitleInput.addEventListener("input", function () {
     userManager.addAd(advertisement);
     adsManager.addAdvertisement(advertisement);
     userManager.setUsers();
+    adsManager.setAds();
     showAdds(userManager.currentUser.addedAds, getById("myAdsContainer"));
   }
   
