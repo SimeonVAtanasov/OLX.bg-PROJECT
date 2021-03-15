@@ -52,7 +52,7 @@ function onHashChange() {
       likeAdsPage.style.display = "none";
       break;
 
-    case "addAdvertisementPage":
+    case "addAdvertisement":
       indexPage.style.display = "none";
       searchForm.style.display = "none";
       adsContainer.style.display = "none";

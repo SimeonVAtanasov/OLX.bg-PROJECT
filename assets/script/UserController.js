@@ -1,3 +1,4 @@
+onHashChange();
 
 let loginButton = getById("loginButton");
 let registerBtn = getById("registerButton");
@@ -12,7 +13,6 @@ window.addEventListener("DOMContentLoaded", function () {
       userManager.currentUser.email
       );
     }
-    onHashChange();
     countLikeAds();
       
     printAdsGrid(adsManager.promoAds, promoContainer, 16);
@@ -103,6 +103,14 @@ function countLikeAds() {
   }
 }
 
+loginBtn.addEventListener("click", function (ev) {
+  ev.preventDefault();
+  loginForm.style.display = "flex";
+  registrationForm.style.display = "none";
+  loginBtn.style.fontWeight = "bold";
+  registrationBtn.style.fontWeight = "normal";
+});
+
 registrationBtn.addEventListener("click", function (ev) {
   ev.preventDefault();
   loginForm.style.display = "none";
@@ -192,4 +200,13 @@ inputsToFocus.forEach((element) => {
 
 getById("heartBtn").addEventListener("click", function(){
   printAdsGrid(userManager.currentUser.likedAds, likeAdsPage, userManager.currentUser.likedAds.length);
+})
+
+advertismentBtn.addEventListener("click",  (ev) => {
+  ev.preventDefault
+  if(userManager.currentUser.email)  {
+    window.location.hash = "addAdvertisement"
+  }else{
+    window.location.hash= "profilePage"
+  }
 })

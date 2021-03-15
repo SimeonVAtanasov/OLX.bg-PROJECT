@@ -34,18 +34,16 @@ class AdvertisementManager {
     this.filteredAds = [];
     this.filteredByPrice = [];
     this.promoAds = [];
-
     if (localStorage.getItem("advertisements")) {
+      this.allAds = [];
       this.allAds = JSON.parse(localStorage.getItem("advertisements"));
     } else {
       this.allAds = [];
-      this.setAds();
     }
   }
 
   addAdvertisement(ad) {
     this.allAds.push(ad);
-    this.setAds();
   }
 
   setAds() {

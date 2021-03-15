@@ -777,7 +777,9 @@ div.pop-up-div {
   width: 350px;
   margin-bottom: 18px;
 }
-
+.login-navigation {
+  margin-top: 30%;
+}
 .login-navigation ul {
   display: flex;
   justify-content: center;
@@ -835,9 +837,7 @@ div.pop-up-div {
   width: 0%;
 }
 
-
-
-.nav-btn::before  {
+.nav-btn::before {
   bottom: 0;
   content: "";
   display: block;
@@ -985,7 +985,8 @@ div.pop-up-div {
   display: none;
   background: #ffe7e7;
   color: #d83232;
-  padding: 10px;
+  padding-top: 4%;
+  padding-bottom: 7%;
   margin: 15px 20px 20px 20px;
   border-radius: 3px;
   width: 320px;
@@ -1715,10 +1716,14 @@ input::-webkit-inner-spin-button {
   flex-flow: row nowrap;
 }
 
-#sortingWrapper  * {
+#sortingWrapper * {
   margin: 0em 1em 0 0;
 }
 
-#sortingWrapper  button {
+#sortingWrapper button {
   border: none;
+}
+
+.disabled {
+  pointer-events: none;
 }
