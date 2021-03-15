@@ -1,4 +1,4 @@
-const divBox  =  document.getElementById('suggestion');
+
 const filterCities = function filterCities() {
 
     let inputValue = getById('citySearch').value;
@@ -36,7 +36,7 @@ const filterCities = function filterCities() {
         let valueToFill = e.target.innerText
         citySearch.value = valueToFill
         let noticeArr = adsManager.allAds.filter(el => el.city === valueToFill )
-        showAdds(noticeArr, noticeContainer)
+        printAdsBars(noticeArr, noticeContainer)
         divBox.innerHTML = ''
         divBox.style.display = 'none'
     }

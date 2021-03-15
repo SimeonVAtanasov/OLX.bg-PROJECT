@@ -12,6 +12,7 @@ let arrOfAds = [
     category: "Работа",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ let arrOfAds = [
     category: "Животни",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 51,
@@ -54,6 +56,7 @@ let arrOfAds = [
     category: "Машини, инструменти, бизнес оборудване",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 4,
@@ -68,6 +71,7 @@ let arrOfAds = [
     category: "За бебето и детето",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 5,
@@ -82,6 +86,7 @@ let arrOfAds = [
     category: "Мода",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 6,
@@ -96,6 +101,7 @@ let arrOfAds = [
     category: "Животни",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 7,
@@ -110,6 +116,7 @@ let arrOfAds = [
     category: "Екскурзии, почивки",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 8,
@@ -124,6 +131,7 @@ let arrOfAds = [
     category: "Мода",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 39,
@@ -138,6 +146,7 @@ let arrOfAds = [
     category: "Животни",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 9,
@@ -152,6 +161,7 @@ let arrOfAds = [
     category: "Дом и градина",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 10,
@@ -166,6 +176,7 @@ let arrOfAds = [
     category: "Дом и градина",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 11,
@@ -180,6 +191,7 @@ let arrOfAds = [
     category: "Екскурзии, почивки",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 12,
@@ -194,6 +206,7 @@ let arrOfAds = [
     category: "Електроника",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 13,
@@ -208,6 +221,7 @@ let arrOfAds = [
     category: "Недвижими имоти",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 14,
@@ -222,6 +236,7 @@ let arrOfAds = [
     category: "Автомобили, каравани, лодки",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 14,
@@ -236,6 +251,7 @@ let arrOfAds = [
     category: "Автомобили, каравани, лодки",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 14,
@@ -250,6 +266,7 @@ let arrOfAds = [
     category: "Подарявам",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 15,
@@ -264,6 +281,7 @@ let arrOfAds = [
     category: "Машини, инструменти, бизнес оборудване",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 15,
@@ -278,6 +296,7 @@ let arrOfAds = [
     category: "Подарявам",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 15,
@@ -292,6 +311,7 @@ let arrOfAds = [
     category: "За бебето и детето",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 16,
@@ -306,6 +326,7 @@ let arrOfAds = [
     category: "Работа",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 17,
@@ -320,6 +341,7 @@ let arrOfAds = [
     category: "Подарявам",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 18,
@@ -334,6 +356,7 @@ let arrOfAds = [
     category: "Машини, инструменти, бизнес оборудване",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 19,
@@ -348,6 +371,7 @@ let arrOfAds = [
     category: "Недвижими имоти",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 20,
@@ -363,6 +387,7 @@ let arrOfAds = [
     category: "Работа",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 21,
@@ -377,6 +402,7 @@ let arrOfAds = [
     category: "Работа",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 22,
@@ -391,6 +417,7 @@ let arrOfAds = [
     category: "Електроника",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 23,
@@ -405,6 +432,7 @@ let arrOfAds = [
     category: "Електроника",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 24,
@@ -419,6 +447,7 @@ let arrOfAds = [
     category: "Мода",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 25,
@@ -433,6 +462,7 @@ let arrOfAds = [
     category: "Мода",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 26,
@@ -447,6 +477,7 @@ let arrOfAds = [
     category: "Мода",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 27,
@@ -461,6 +492,7 @@ let arrOfAds = [
     category: "Недвижими имоти",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 28,
@@ -475,6 +507,7 @@ let arrOfAds = [
     category: "Работа",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 29,
@@ -490,6 +523,7 @@ let arrOfAds = [
     category: "Работа",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 30,
@@ -504,6 +538,7 @@ let arrOfAds = [
     category: "Работа",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 31,
@@ -518,6 +553,7 @@ let arrOfAds = [
     category: "Подарявам",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 32,
@@ -532,6 +568,7 @@ let arrOfAds = [
     category: "Недвижими имоти",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 33,
@@ -546,6 +583,7 @@ let arrOfAds = [
     category: "Спорт, книги, хоби",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 34,
@@ -560,6 +598,7 @@ let arrOfAds = [
     category: "Работа",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 35,
@@ -574,6 +613,7 @@ let arrOfAds = [
     category: "За бебето и детето",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 36,
@@ -588,6 +628,7 @@ let arrOfAds = [
     category: "За бебето и детето",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 37,
@@ -602,6 +643,7 @@ let arrOfAds = [
     category: "Мода",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 38,
@@ -616,6 +658,7 @@ let arrOfAds = [
     category: "Мода",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 40,
@@ -630,6 +673,7 @@ let arrOfAds = [
     category: "Спорт, книги, хоби",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 41,
@@ -644,6 +688,7 @@ let arrOfAds = [
     category: "Работа",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 42,
@@ -658,6 +703,7 @@ let arrOfAds = [
     category: "Услуги",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 43,
@@ -672,6 +718,7 @@ let arrOfAds = [
     category: "Дом и градина",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 44,
@@ -686,6 +733,7 @@ let arrOfAds = [
     category: "Дом и градина",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 45,
@@ -700,6 +748,7 @@ let arrOfAds = [
     category: "Дом и градина",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 46,
@@ -714,6 +763,7 @@ let arrOfAds = [
     category: "Електроника",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 47,
@@ -728,6 +778,7 @@ let arrOfAds = [
     category: "Спорт, книги, хоби",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 48,
@@ -742,6 +793,7 @@ let arrOfAds = [
     category: "Спорт, книги, хоби",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 49,
@@ -756,6 +808,7 @@ let arrOfAds = [
     category: "Спорт, книги, хоби",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
   {
     id: 50,
@@ -770,5 +823,6 @@ let arrOfAds = [
     category: "Екскурзии, почивки",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et lectus vitae ante malesuada lobortis. Morbi semper, libero ut semper.",
+    counterView: 0,
   },
 ];

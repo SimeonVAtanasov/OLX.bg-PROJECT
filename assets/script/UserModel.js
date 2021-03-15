@@ -9,13 +9,12 @@ const userManager = (function () {
       this.password = password;
       this.isLogged = isLogged;
 
-      this.likedAds = [];
-      this.favouriteSearches = [];
-      this.addedAds = [];
-
+        this.likedAds = [];
+        this.favouriteSearches = [];
+        this.addedAds = [];
+      }
     }
-  }
-
+  
   class UserManager {
     constructor() {
       if (localStorage.getItem("users")) {
@@ -121,9 +120,17 @@ const userManager = (function () {
       return isAlreadyLiked;
     }
 
-    addAd(ad) {
+    addAd(ad){
       this.currentUser.addedAds.push(ad);
     }
+
+    setLastOpenedAd(obj){
+      localStorage.setItem("lastOpenedOffer",JSON.stringify(obj))
+    }
+
+    getLastOpenedAd(){
+      return JSON.parse(localStorage.getItem("lastOpenedOffer"))
+  }
   }
 
   return new UserManager();

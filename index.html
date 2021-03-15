@@ -45,7 +45,7 @@
           <div class="menu">
             <ul>
               <li>
-                <a href="" class="like-icon">
+                <a href="#likedAdsPage" class="like-icon" id="heartBtn">
                   <i class="far fa-heart liked"></i>
                   <span class="counter" id="likeCounter"></span>
                 </a>
@@ -61,7 +61,6 @@
               </li>
               <li>
                 <a
-                  href="#addAdvertisementPage"
                   class="advertisement-button"
                   id="advertisementButton"
                 >
@@ -304,8 +303,8 @@
         </div>
 
         <form action="#" id="loginForm" class="login-form">
-          <div class="invalid-message" id="invalidMessage">
-            <p>Невалиден имейл или парола</p>
+          <div class="invalid-message align-top" id="invalidMessage">
+            Невалиден имейл или парола
           </div>
           <div>
             <button class="loginBtn facebook">Вход с Facebook</button>
@@ -533,8 +532,8 @@
             </div>
             <div>
             <ul class="upload-images" id="uploadImages">
-              <li class = "add-file">
-                <input type="file" class="file-input" id="fileInput">
+              <li class = "add-file" id="addFile">
+                <input type="file" accept="image/*" class="file-input" id="fileInput">
                 <p>Кликни, за да добавиш снимка на корицата</p>
               </li>
 
@@ -651,6 +650,11 @@
       <a href="#index">Oтиди на заглавната страница!</a>
     </div>
 
+    <div id="likedAdsPage" class = "my-notice">
+      <h1>Твоите любими търсения</h1>
+
+    </div>
+
     <div id="myAdsPage" class="my-notice">
       <div class = "my-ads-header">
         <div>
@@ -677,7 +681,6 @@
       </div>
     </div>
 
-
     <div id="noticePage">
       <form action="#" id="filtering">
         <div id="checkboxWrapper">
@@ -696,11 +699,7 @@
             <input type="checkbox" id="delivery" id="includeDelivery">
           <label for="delivery"><i class="fas fa-truck"></i> само с доставка</label>
           </div>
-         
-          
-
-          
-          
+                   
             <div id="button">
               <button class="transparentBtn">
               <i class="far fa-heart watched"></i>&ThickSpace;Любимо търсене </i></i>
@@ -708,7 +707,6 @@
             </div>
             
         </div>
-        
         
           <h2>Филтри</h2>
           <div class="form-box filtering">
@@ -731,32 +729,27 @@
               <option>Подарявам</option>
             </select>
             </div>
-        
-            
-            
+          
             <div id="filterPrice">
               <label for="fromNum" class="ms-2">Цена</label>
               <div id="fromTo">
                 <input type="number" placeholder="от (лв.)" id="fromNum" class="form-control form-control-md mt-2 ms-2">
                 <input type="number" placeholder="до (лв.)" id="toNum" class="form-control form-control-md mt-2 ms-2" >
               </div>
-              
             </div>
-
-            
           </div>
         <div class="justify-content-start w-100  border-bottom mt-3">
               <ul class="d-flex flex-row">
                 <li>
-                  <button class="nav-log" id="all">Всички</button>
+                  <button class="nav-log disabled" id="all">Всички</button>
                 </li>
                 <li>
-                  <button class="nav-reg" id="personalAds">
+                  <button class="nav-reg disabled" id="personalAds">
                     Частни
                   </button>
                 </li>
                 <li>
-                  <button class="nav-btn" id="bisnessAds">
+                  <button class="nav-btn disabled" id="bisnessAds">
                     Бизнес
                   </button>
                 </li>
@@ -956,7 +949,6 @@
               <a href="#offer" >
                 <img src="{{photo}}" alt="{{title}}"  data-id='{{id}}' class="notice-img"/>  
               </a>
-              <!-- id="noticeImg" -->
             </div>
             <div class="description-box">
               <h3>
@@ -984,20 +976,25 @@
       </ul>
     </script>
 
-    <script src="./assets/script/utils.js"></script>
-    <script src="./assets/script/functions.js"></script>
-    
-    <script src="./assets/script/categories.js"></script>
-    <script src="./assets/script/ads.js"></script>
-    <script src="./assets/script/advertisementModel.js"></script>
-    <script src="./assets/script/UserModel.js"></script>
+    <script src="./assets/script/main/utils.js"></script>
+    <script src="./assets/script/main/ads.js"></script>
+    <script src="./assets/script/AdvertisementModel.js"></script>
+   <script src="./assets/script/main/constants.js"></script>
+   <script src="./assets/script/main/categories.js"></script>
+  
+   <script src="./assets/script/render/printAdsBars.js"></script>
+   <script src="./assets/script/render/printAdvertisement.js"></script>
+   <script src="./assets/script/render/printAdsGrid.js"></script>
+   <script src="./assets/script/render/printCategories.js"></script>
+   <script src="./assets/script/render/router.js"></script>
+   <script src="./assets/script/render/renderUtils.js"></script>
+       
+   <script src="./assets/script/UserModel.js"></script>
 
-    <script src="./assets/script/constants.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script src="./assets/script/filterCities.js"></script>
-    <script src="./assets/script/indexView.js"></script>
-    <script src="./assets/script/index.js"></script>
-    <script src="./assets/script/advertisementController.js"></script>
-    <script src="./assets/script/UserController.js"></script>
+   <script src="./assets/script/render/filterCities.js"></script>
+   <script src="./assets/script/AdvertisementController.js"></script>
+   <script src="./assets/script/UserController.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
   </body>
 </html>
