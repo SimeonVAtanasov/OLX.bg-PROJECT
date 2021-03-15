@@ -19,8 +19,6 @@ function showElement (el,  disp = "block"){
     el.style.display = disp
 }
 
-
-
 function debounce(func, time) {
     let timerId;
     return function () {

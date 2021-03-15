@@ -965,10 +965,11 @@ div.pop-up-div {
 
 #suggestion {
   position: absolute;
+  top: 97%;
   background-color: white;
   display: none;
   overflow: hidden auto;
-  width: 340px;
+  width: 296px;
   max-height: 350px;
   z-index: 2;
 }
@@ -1694,7 +1695,6 @@ input::-webkit-inner-spin-button {
 
 .notice-location {
   display: flex;
-  margin-right: 2ï0px;
   font-size: 20px;
 }
 

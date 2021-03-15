@@ -1,4 +1,4 @@
-const divBox  =  document.getElementById('suggestion');
+
 const filterCities = function filterCities() {
 
     let inputValue = getById('citySearch').value;

@@ -10,7 +10,8 @@ class Advertisement {
     contactName,
     email,
     promo,
-    telephoneNumber
+    telephoneNumber,
+    viewCounter
   ) {
     this.id = id;
     this.title = title;
@@ -24,21 +25,31 @@ class Advertisement {
     this.email = email;
     this.promo = promo;
     this.telephoneNumber = telephoneNumber;
+    this.viewCounter = viewCounter;
   }
 }
 
 class AdvertisementManager {
   constructor() {
-    this.allAds = [];
     this.filteredAds = [];
     this.filteredByPrice = [];
     this.promoAds = [];
+
+    if (localStorage.getItem("advertisements")) {
+      this.allAds = JSON.parse(localStorage.getItem("advertisements"));
+    } else {
+      this.allAds = [];
+      this.setAds();
+    }
   }
 
   addAdvertisement(ad) {
-
     this.allAds.push(ad);
+    this.setAds();
+  }
 
+  setAds() {
+    localStorage.setItem("advertisements", JSON.stringify(this.allAds));
   }
 
   filterBy(type, optionA) {
@@ -55,7 +66,6 @@ class AdvertisementManager {
         );
         return this.filteredAds;
       case "category":
-
         this.filteredAds = this.allAds.filter(
           (notice) => notice.category === optionA
         );
@@ -65,7 +75,7 @@ class AdvertisementManager {
         if (this.filteredAds.length > 0) {
           const filteringStr = optionA.toLowerCase().trim();
 
-          this.filteredAds = this.filteredAds.filter(notice =>
+          this.filteredAds = this.filteredAds.filter((notice) =>
             notice.city.toLowerCase().includes(filteringStr)
           );
 
@@ -73,7 +83,7 @@ class AdvertisementManager {
         } else {
           const filteringStr = optionA.toLowerCase().trim();
 
-          this.filteredAds = this.allAds.filter(notice =>
+          this.filteredAds = this.allAds.filter((notice) =>
             notice.city.toLowerCase().includes(filteringStr)
           );
 
@@ -81,7 +91,7 @@ class AdvertisementManager {
         }
 
       default:
-        return this.allAds
+        return this.allAds;
     }
   }
 
@@ -95,15 +105,10 @@ class AdvertisementManager {
       );
       return this.filteredByPrice;
     } else if (a && !b) {
-      this.filteredByPrice = arr.filter(
-        (notice) => notice.price >= a
-      );
+      this.filteredByPrice = arr.filter((notice) => notice.price >= a);
       return this.filteredByPrice;
     } else {
-      this.filteredByPrice = arr.filter(
-        (notice) => notice.price <= b
-      );
-
+      this.filteredByPrice = arr.filter((notice) => notice.price <= b);
     }
   }
 
@@ -115,12 +120,9 @@ class AdvertisementManager {
     if (decending) {
       this.filteredAds = arr.sort((a, b) => a.price - b.price).reverse();
 
-      return
+      return;
     }
 
     this.filteredAds = arr.sort((a, b) => a.price - b.price);
   }
 }
-
-
-

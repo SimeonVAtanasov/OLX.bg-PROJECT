@@ -89,3 +89,6 @@ const bars =  getById("bars");
 const categoryFilter = getById("categoryFilter");
 const sort = getById("sorting");
 
+const categoriesContainer = getById("categoriesContainer");
+const categoriesFormContainer = getById("addCategories");
+const divBox  =  document.getElementById('suggestion');

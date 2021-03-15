@@ -3,36 +3,17 @@ const userManager = (function () {
     constructor(
       email,
       password,
-      isLogged = false,
-      likedAds,
-      favouriteSearches,
-      addedAds
+      isLogged = false
     ) {
       this.email = email;
       this.password = password;
       this.isLogged = isLogged;
 
-      if (likedAds) {
-        this.likedAds = likedAds;
-      } else {
         this.likedAds = [];
-      }
-
-      if (favouriteSearches) {
-        this.favouriteSearches = favouriteSearches;
-      } else {
         this.favouriteSearches = [];
-      }
-
-      if (addedAds) {
-        this.addedAds = addedAds;
-      } else {
         this.addedAds = [];
       }
     }
-
-    
-  }
 
   class UserManager {
     constructor() {
@@ -57,7 +38,6 @@ const userManager = (function () {
       let index = this.users.findIndex(
         (el) => el["email"] === email && el["password"] === password
       );
-      // this.users.forEach(el => el.isLogged = false)
       this.currentUser = this.users[index];
       this.currentUser.isLogged = true;
 
@@ -67,7 +47,7 @@ const userManager = (function () {
     }
 
     setUsers() {
-      localStorage.setItem("users", JSON.stringify(userManager.users));
+      localStorage.setItem("users", JSON.stringify(this.users));
     }
 
     logOut() {
@@ -102,7 +82,7 @@ const userManager = (function () {
     }
     likeAd(ad) {
       let isAlreadyLiked = false;
-      if(this.currentUser.likedAds.length > 0){
+      if (this.currentUser.likedAds.length > 0) {
         for (let i = 0; i < this.currentUser.likedAds.length; i++) {
         if (this.currentUser.likedAds[i].id === ad.id) {
           isAlreadyLiked = true;
@@ -141,7 +121,6 @@ const userManager = (function () {
     }
 
     addAd(ad){
- 
       this.currentUser.addedAds.push(ad);
     }
   }
