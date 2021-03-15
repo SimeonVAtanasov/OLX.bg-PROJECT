@@ -1,4 +1,4 @@
-function showAdds(arr, container) {
+function printAdsBars(arr, container) {
     if (arr.length === 0) {
       arr = adsManager.allAds;
     }

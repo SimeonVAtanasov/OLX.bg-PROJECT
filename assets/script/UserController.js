@@ -9,14 +9,13 @@ window.addEventListener("DOMContentLoaded", function () {
   if (userManager.checkLoggedUser()) {
     
     changeProfileFunctions(
-      userManager.currentUser.email,
-      userManager.currentUser.password
+      userManager.currentUser.email
       );
     }
     onHashChange();
     countLikeAds();
       
-    printPromoAds(adsManager.promoAds, promoContainer, 16);
+    printAdsGrid(adsManager.promoAds, promoContainer, 16);
   
 });
 
@@ -29,8 +28,8 @@ loginButton.addEventListener("click", function (ev) {
   
   if (userManager.login(email, password)) {
     countLikeAds();
-    printPromoAds(adsManager.promoAds, promoContainer,16);
-    changeProfileFunctions(email,password);
+    printAdsGrid(adsManager.promoAds, promoContainer,16);
+    changeProfileFunctions(email);
     getById("emailContact").value = email;
     location.hash = "index";
     
@@ -71,15 +70,15 @@ searchContainer.addEventListener("input", function () {
     adsManager.filterBy("title", inputValue);
     adsManager.filterBy("city", citySearched);
 
-    showAdds(adsManager.filteredAds, noticeContainer);
+    printAdsBars(adsManager.filteredAds, noticeContainer);
   } else if (inputValue) {
     adsManager.filterBy("title", inputValue);
-    showAdds(adsManager.filteredAds, noticeContainer);
+    printAdsBars(adsManager.filteredAds, noticeContainer);
   } else if (citySearched) {
     adsManager.filterBy("city", citySearched);
-    showAdds(adsManager.filteredAds, noticeContainer);
+    printAdsBars(adsManager.filteredAds, noticeContainer);
   } else {
-    showAdds(adsManager.allAds, noticeContainer);
+    printAdsBars(adsManager.allAds, noticeContainer);
   }
 });
 
@@ -138,11 +137,11 @@ searchButton.addEventListener("click", function (ev) {
 // display preference on notice page
 
 grid.addEventListener("click", () => {
-  printPromoAds(adsManager.filteredAds, noticeContainer);
+  printAdsGrid(adsManager.filteredAds, noticeContainer);
 })
 
 bars.addEventListener("click", () => {
-  showAdds(adsManager.filteredAds, noticeContainer)
+  printAdsBars(adsManager.filteredAds, noticeContainer)
 })
 
 // preventing default on forms
@@ -155,7 +154,7 @@ forms.forEach(el => {
 sort.addEventListener("change", (ev) => {
 
   adsManager.sortByPrice(adsManager.filteredAds, ev.target.value);
-  showAdds(adsManager.filteredAds, noticeContainer);
+  printAdsBars(adsManager.filteredAds, noticeContainer);
 
 })
 
@@ -164,7 +163,7 @@ let debouncedSort = debounce(function(){
   let to = getById("toNum").value;
 
   adsManager.filterByPrice(adsManager.filteredAds, from, to);
-  showAdds(adsManager.filteredByPrice, noticeContainer);
+  printAdsBars(adsManager.filteredByPrice, noticeContainer);
 }, 500)
 
 getById("fromTo").addEventListener("input", debouncedSort);
@@ -172,7 +171,7 @@ getById("fromTo").addEventListener("input", debouncedSort);
 categoryFilter.addEventListener("change", ()=>{
   let category = categoryFilter.value
 
-  showAdds(adsManager.filterBy("category",   category),  noticeContainer);
+  printAdsBars(adsManager.filterBy("category",   category),  noticeContainer);
 })
 
 function validateUser() {
@@ -189,3 +188,8 @@ inputsToFocus.forEach((element) => {
   element.addEventListener("focus", showMessage);
   element.addEventListener("focusout", hideMessage);
 });
+
+
+getById("heartBtn").addEventListener("click", function(){
+  printAdsGrid(userManager.currentUser.likedAds, likeAdsPage, userManager.currentUser.likedAds.length);
+})

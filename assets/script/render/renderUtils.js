@@ -77,9 +77,9 @@ function addToCarousell() {
       promoArr3.push(adsManager.promoAds[i]);
     }
   
-    printPromoAds(promoArr1, carousel1, 4);
-    printPromoAds(promoArr2, carousel2, 4);
-    printPromoAds(promoArr3, carousel3, 4);
+    printAdsGrid(promoArr1, carousel1, 4);
+    printAdsGrid(promoArr2, carousel2, 4);
+    printAdsGrid(promoArr3, carousel3, 4);
   
   }
   
@@ -113,7 +113,7 @@ function addToCarousell() {
   }
   
   
-  showAdds(adsManager.allAds, noticeContainer);
+  printAdsBars(adsManager.allAds, noticeContainer);
   
   function validateEmail(email, message) {
     let emailCheck = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

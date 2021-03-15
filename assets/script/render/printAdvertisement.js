@@ -16,7 +16,7 @@ function printNotice(notice) {
   linkCity.href = "#advertisements";
   linkCity.innerText = "Обяви в град " + notice.city;
   linkCity.addEventListener("click", function () {
-    showAdds(adsManager.filterBy("city", notice.city), noticeContainer);
+   printAdsBars(adsManager.filterBy("city", notice.city), noticeContainer);
   });
   let listCategory = createElement("li");
   listCategory.className = "breadcrumb-item";
@@ -25,7 +25,7 @@ function printNotice(notice) {
   linkCategory.innerText = "Обяви в категория " + notice.category;
   linkCategory.addEventListener("click", function () {
     adsManager.filterBy("category", notice.category);
-    showAdds(adsManager.filteredAds, noticeContainer);
+   printAdsBars(adsManager.filteredAds, noticeContainer);
   });
 
   listCategory.append(linkCategory);

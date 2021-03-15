@@ -12,6 +12,7 @@ function onHashChange() {
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
       myAdsPage.style.display = "none";
+      likeAdsPage.style.display = "none";
 
       break;
 
@@ -24,6 +25,7 @@ function onHashChange() {
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
       myAdsPage.style.display = "none";
+      likeAdsPage.style.display = "none";
       break;
 
     case "offer":
@@ -35,6 +37,7 @@ function onHashChange() {
       singleNoticeContainer.style.display = "block";
       addAdvertisementPage.style.display = "none";
       myAdsPage.style.display = "none";
+      likeAdsPage.style.display = "none";
       break;
 
     case "profilePage":
@@ -46,6 +49,7 @@ function onHashChange() {
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
       myAdsPage.style.display = "none";
+      likeAdsPage.style.display = "none";
       break;
 
     case "addAdvertisementPage":
@@ -57,6 +61,7 @@ function onHashChange() {
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "block";
       myAdsPage.style.display = "none";
+      likeAdsPage.style.display = "none";
       break;
 
     case "myAds":
@@ -67,10 +72,25 @@ function onHashChange() {
       profilePage.style.display = "none";
       singleNoticeContainer.style.display = "none";
       addAdvertisementPage.style.display = "none";
-      showAdds(userManager.currentUser["addedAds"], getById("myAdsContainer"));
+      printAdsBars(userManager.currentUser["addedAds"], getById("myAdsContainer"));
       myAdsPage.style.display = "block";
+      likeAdsPage.style.display = "none";
 
       break;
+
+      case "likedAdsPage":
+      indexPage.style.display = "none";
+      searchForm.style.display = "none";
+      adsContainer.style.display = "none";
+      errorPage.style.display = "none";
+      profilePage.style.display = "none";
+      singleNoticeContainer.style.display = "none";
+      addAdvertisementPage.style.display = "none";
+      printAdsBars(userManager.currentUser["addedAds"], getById("myAdsContainer"));
+      myAdsPage.style.display = "none";
+      likeAdsPage.style.display = "block";
+      break;
+
 
     default:
       indexPage.style.display = "none";
@@ -81,5 +101,6 @@ function onHashChange() {
       singleNoticeContainer.style.display = "none";
       myAdsPage.style.display = "none";
       errorPage.style.display = "block";
+      likeAdsPage.style.display = "none";
   }
 }

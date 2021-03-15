@@ -1,4 +1,4 @@
-function printPromoAds(arr, container, n = arr.length) {
+function printAdsGrid(arr, container, n = arr.length) {
     if (arr.length === 0) {
       arr = adsManager.allAds;
       n = arr.length;
@@ -59,7 +59,8 @@ function printPromoAds(arr, container, n = arr.length) {
         watchButton.addEventListener("click", function () {
           userManager.removeFromLiked(currentNotice);
           countLikeAds();
-          printPromoAds(arr, container, n);
+          printAdsGrid(arr, container, n);
+          console.log(arr,container,n);
           userManager.setUsers();
         });
       } else {
@@ -67,7 +68,7 @@ function printPromoAds(arr, container, n = arr.length) {
         watchButton.addEventListener("click", function () {
           userManager.likeAd(currentNotice);
           countLikeAds();
-          printPromoAds(arr, container, n);
+          printAdsGrid(arr, container, n);
           userManager.setUsers();
         });
       }

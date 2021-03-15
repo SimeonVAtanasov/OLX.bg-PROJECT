@@ -45,7 +45,7 @@
           <div class="menu">
             <ul>
               <li>
-                <a href="" class="like-icon">
+                <a href="#likedAdsPage" class="like-icon" id="heartBtn">
                   <i class="far fa-heart liked"></i>
                   <span class="counter" id="likeCounter"></span>
                 </a>
@@ -533,8 +533,8 @@
             </div>
             <div>
             <ul class="upload-images" id="uploadImages">
-              <li class = "add-file">
-                <input type="file" class="file-input" id="fileInput">
+              <li class = "add-file" id="addFile">
+                <input type="file" accept="image/*" class="file-input" id="fileInput">
                 <p>Кликни, за да добавиш снимка на корицата</p>
               </li>
 
@@ -651,6 +651,11 @@
       <a href="#index">Oтиди на заглавната страница!</a>
     </div>
 
+    <div id="likedAdsPage" class = "my-notice">
+      <h1>Твоите любими търсения</h1>
+
+    </div>
+
     <div id="myAdsPage" class="my-notice">
       <div class = "my-ads-header">
         <div>
@@ -677,7 +682,6 @@
       </div>
     </div>
 
-
     <div id="noticePage">
       <form action="#" id="filtering">
         <div id="checkboxWrapper">
@@ -696,11 +700,7 @@
             <input type="checkbox" id="delivery" id="includeDelivery">
           <label for="delivery"><i class="fas fa-truck"></i> само с доставка</label>
           </div>
-         
-          
-
-          
-          
+                   
             <div id="button">
               <button class="transparentBtn">
               <i class="far fa-heart watched"></i>&ThickSpace;Любимо търсене </i></i>
@@ -708,7 +708,6 @@
             </div>
             
         </div>
-        
         
           <h2>Филтри</h2>
           <div class="form-box filtering">
@@ -731,19 +730,14 @@
               <option>Подарявам</option>
             </select>
             </div>
-        
-            
-            
+          
             <div id="filterPrice">
               <label for="fromNum" class="ms-2">Цена</label>
               <div id="fromTo">
                 <input type="number" placeholder="от (лв.)" id="fromNum" class="form-control form-control-md mt-2 ms-2">
                 <input type="number" placeholder="до (лв.)" id="toNum" class="form-control form-control-md mt-2 ms-2" >
               </div>
-              
             </div>
-
-            
           </div>
         <div class="justify-content-start w-100  border-bottom mt-3">
               <ul class="d-flex flex-row">
@@ -994,9 +988,9 @@
   
    
 
-   <script src="./assets/script/render/showAds.js"></script>
+   <script src="./assets/script/render/printAdsBars.js"></script>
    <script src="./assets/script/render/printAdvertisement.js"></script>
-   <script src="./assets/script/render/printPromoAds.js"></script>
+   <script src="./assets/script/render/printAdsGrid.js"></script>
    <script src="./assets/script/render/printCategories.js"></script>
    <script src="./assets/script/render/router.js"></script>
    <script src="./assets/script/render/renderUtils.js"></script>

@@ -56,7 +56,7 @@ function printCategories(categories, container) {
         if (container === categoriesContainer) {
           categoryCard.addEventListener("click", function () {
     
-            showAdds(
+            printAdsBars(
               adsManager.filterBy("category", currentCategory.title),
               noticeContainer
             );
