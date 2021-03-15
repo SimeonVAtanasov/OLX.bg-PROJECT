@@ -5,11 +5,13 @@ let registerBtn = getById("registerButton");
 
 window.addEventListener("hashchange", onHashChange);
 window.addEventListener("click", hideProfileMenu);
+
 window.addEventListener("DOMContentLoaded", function () {
   
   if (userManager.checkLoggedUser()) {
     
     changeProfileFunctions(
+
       userManager.currentUser.email
       );
     }
@@ -55,7 +57,6 @@ registerBtn.addEventListener("click", function (ev) {
     registrationForm.reset();
   }
 });
-
 
 logOut.addEventListener("click", function () {
   userManager.logOut();

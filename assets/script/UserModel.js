@@ -14,7 +14,7 @@ const userManager = (function () {
         this.addedAds = [];
       }
     }
-
+  
   class UserManager {
     constructor() {
       if (localStorage.getItem("users")) {
@@ -84,13 +84,13 @@ const userManager = (function () {
       let isAlreadyLiked = false;
       if (this.currentUser.likedAds.length > 0) {
         for (let i = 0; i < this.currentUser.likedAds.length; i++) {
-        if (this.currentUser.likedAds[i].id === ad.id) {
-          isAlreadyLiked = true;
-          break;
+          if (this.currentUser.likedAds[i].id === ad.id) {
+            isAlreadyLiked = true;
+            break;
+          }
         }
       }
-      }
-      
+
       if (!isAlreadyLiked) {
         this.currentUser.likedAds.push(ad);
       }

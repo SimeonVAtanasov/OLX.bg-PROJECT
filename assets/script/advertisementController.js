@@ -1,8 +1,8 @@
 adTitleInput.addEventListener("input", function () {
+
   let length = adTitleInput.value.length;
   getById("titleSymbols").innerText = 70 - length;
 });
-
 
 adDescriptionInput.addEventListener("input", function () {
   let length = adDescriptionInput.value.length;
@@ -55,7 +55,6 @@ function addNewAd(photo) {
   showAdds(userManager.currentUser.addedAds, getById("myAdsContainer"));
 }
 
-
 getById("addAdvertisementButton").addEventListener("click", previewFile);
 
 if (adsManager.allAds.length === 0) {
@@ -63,7 +62,6 @@ if (adsManager.allAds.length === 0) {
     adsManager.addAdvertisement(el);
   });
 }
-
 
 adsManager.promoAds = adsManager.allAds.filter((el) => el.promo);
 
@@ -84,6 +82,7 @@ function previewFile() {
     reader.readAsDataURL(file);
   }
 }
+
 
 
 
