@@ -15,7 +15,7 @@ Live link: https://simeonvatanasov.github.io/OLX.bg-PROJECT/
 * Add your own advertisements 
 * Single page for each advertisement
 * Search and filter 
-* The data is stored to localy
+* The data is stored in local storage
 
 ![Screenshot 2021-03-17 at 18 13 17](https://user-images.githubusercontent.com/32630123/111500277-7d09f180-874c-11eb-8dbc-8b3a6b7be72c.png)
 
